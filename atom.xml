@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://example.com</id>
+    <id>https://nonhana.github.io</id>
     <title>GreyFlowers</title>
     <subtitle>『grey flowers will bloom again.』</subtitle>
-    <icon>http://example.com/assets/favicon.ico</icon>
-    <link href="http://example.com" />
+    <icon>https://nonhana.github.io/assets/favicon.ico</icon>
+    <link href="https://nonhana.github.io" />
     <author>
       <name>non_hana</name>
     </author>
@@ -21,9 +21,9 @@
     <category term="Hexo" />
     <category term="ShokaX" />
     <entry>
-        <id>http://example.com/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ATS%E4%B8%AD%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88Decorator%EF%BC%89/</id>
+        <id>https://nonhana.github.io/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ATS%E4%B8%AD%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88Decorator%EF%BC%89/</id>
         <title>学习Nest.js笔记（三）：TS中的装饰器（Decorator）</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ATS%E4%B8%AD%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88Decorator%EF%BC%89/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ATS%E4%B8%AD%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88Decorator%EF%BC%89/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;在 Nest.js 中，有一个非常非常鲜明的特点，就是几乎全方面的采用了 &lt;strong&gt;装饰器 (Decorator)&lt;/strong&gt; 作为接口的封装，以实现 AOP 面向切面编程的编程范式。再结合其用依赖注入的形式实现了控制反转，使得整个框架和  &lt;code&gt;SpringBoot&lt;/code&gt;  在形式上越来越接近。&lt;/p&gt;
 &lt;p&gt;那么，既然提到了装饰器，就不得不先聊一聊 AOP 面向切面编程究竟是什么，再来探讨一下 Decorator 具体是怎么实现的 AOP。&lt;/p&gt;
@@ -117,18 +117,18 @@
 &lt;p&gt;在装饰器函数（被返回的这个函数）内部，原始的方法（通过  &lt;code&gt;descriptor.value&lt;/code&gt;  获取）被保存在  &lt;code&gt;fnc&lt;/code&gt;  中。然后使用 axios 发起一个 GET 请求到提供的 URL。请求成功时，调用原始方法  &lt;code&gt;fnc&lt;/code&gt; ，传入响应对象和一个包含状态码 200 和成功标志的对象。如果请求失败，调用  &lt;code&gt;fnc&lt;/code&gt;  时传入错误对象和一个包含状态码 500 和失败标志的对象。&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Controller&lt;/code&gt;  类中定义了一个方法  &lt;code&gt;getList&lt;/code&gt; ，它被  &lt;code&gt;@Get(&amp;quot;XXXXXX&amp;quot;)&lt;/code&gt;  装饰器装饰。也就是说在调用  &lt;code&gt;getList&lt;/code&gt;  方法时，它实际上会发送一个 GET 请求到你定义的具体 URL，然后根据请求的成功或失败来处理响应或错误。 &lt;code&gt;getList&lt;/code&gt;  方法接收两个参数： &lt;code&gt;res&lt;/code&gt; （响应或错误对象）和  &lt;code&gt;params&lt;/code&gt; （包含状态码和成功 / 失败标志的对象）。在方法内部，它简单地将响应数据和  &lt;code&gt;params&lt;/code&gt;  对象打印到控制台，当然可以拿到这两个参数之后进行一些更加复杂和符合业务的操作。&lt;/p&gt;
 </content>
-        <category term="Nest.js学习笔记" scheme="http://example.com/categories/nestjs-study-notes/" />
-        <category term="TypeScript" scheme="http://example.com/tags/TypeScript/" />
-        <category term="Node.js" scheme="http://example.com/tags/Node-js/" />
-        <category term="Nest.js" scheme="http://example.com/tags/Nest-js/" />
-        <category term="后端" scheme="http://example.com/tags/%E5%90%8E%E7%AB%AF/" />
-        <category term="Decorator(TypeScript)" scheme="http://example.com/tags/Decorator-TypeScript/" />
+        <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
+        <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
+        <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
+        <category term="Decorator(TypeScript)" scheme="https://nonhana.github.io/tags/Decorator-TypeScript/" />
         <updated>2024-01-31T07:50:23.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</id>
+        <id>https://nonhana.github.io/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</id>
         <title>学习Nest.js笔记（二）：控制反转和依赖注入</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;在对 Nest.js 的介绍中提到了其以控制反转（IOC）和依赖注入（DI）为其设计理念的核心思想，因此我们有必要好好讨论一下 IOC 和 DI 到底是什么东西，尤其是 &lt;strong&gt;它们在 TypeScript 当中到底是怎么体现的？&lt;/strong&gt;&lt;/p&gt;
 &lt;h1 id=&#34;二-控制反转ioc&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-控制反转ioc&#34;&gt;#&lt;/a&gt; 二、控制反转（IOC）&lt;/h1&gt;
@@ -187,18 +187,18 @@
 &lt;li&gt;&lt;strong&gt;灵活性&lt;/strong&gt;：IoC 版本提供了更高的灵活性，因为它允许在应用程序的不同部分或不同环境中重用相同的组件，而不需要更改组件内部的实现。&lt;/li&gt;
 &lt;/ol&gt;
 </content>
-        <category term="Nest.js学习笔记" scheme="http://example.com/categories/nestjs-study-notes/" />
-        <category term="TypeScript" scheme="http://example.com/tags/TypeScript/" />
-        <category term="Node.js" scheme="http://example.com/tags/Node-js/" />
-        <category term="Nest.js" scheme="http://example.com/tags/Nest-js/" />
-        <category term="后端" scheme="http://example.com/tags/%E5%90%8E%E7%AB%AF/" />
-        <category term="IOC/DI" scheme="http://example.com/tags/IOC-DI/" />
+        <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
+        <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
+        <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
+        <category term="IOC/DI" scheme="https://nonhana.github.io/tags/IOC-DI/" />
         <updated>2024-01-31T07:49:20.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9ANest-js%E6%98%AF%E4%BB%80%E4%B9%88/</id>
+        <id>https://nonhana.github.io/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9ANest-js%E6%98%AF%E4%BB%80%E4%B9%88/</id>
         <title>学习Nest.js笔记（一）：Nest.js是什么</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9ANest-js%E6%98%AF%E4%BB%80%E4%B9%88/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9ANest-js%E6%98%AF%E4%BB%80%E4%B9%88/"/>
         <content type="html">&lt;h1 id=&#34;一-nestjs-简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-nestjs-简介&#34;&gt;#&lt;/a&gt; 一、Nest.js 简介&lt;/h1&gt;
 &lt;p&gt;Nest.js 是一个用于构建高效、可靠和可扩展的服务器端应用程序的框架。它 &lt;strong&gt;完全使用 TypeScript 编写&lt;/strong&gt; ，但同时也 &lt;strong&gt;兼容纯 JavaScript&lt;/strong&gt; 。Nest.js 结合了 &lt;strong&gt;OOP（面向对象编程）&lt;/strong&gt; 、 &lt;strong&gt;FP（函数式编程）&lt;/strong&gt; 和 &lt;strong&gt;FRP（函数响应式编程）&lt;/strong&gt; 的特点。&lt;/p&gt;
 &lt;p&gt;其完全支持 TypeScript，并且结合了 &lt;strong&gt;面向切面（AOP）&lt;/strong&gt; 的编程方式。&lt;/p&gt;
@@ -268,17 +268,17 @@
 &lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; fastify&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; @types/node typescript ts-node --save-dev&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;接下来，创建一个名为  &lt;code&gt;server.ts&lt;/code&gt;  的文件，并写入以下代码：&lt;/p&gt;
 &lt;figure class=&#34;highlight typescript&#34;&gt;&lt;figcaption data-lang=&#34;typescript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; fastify &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;fastify&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; server &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;fastify&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;/&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;request&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; reply&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt; hello&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;world&#34;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;listen&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;3000&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; address&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;log&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    process&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token builtin&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token template-string&#34;&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;Server listening at &lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;$&amp;#123;&lt;/span&gt;address&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后直接在控制台运行  &lt;code&gt;ts-node server.ts&lt;/code&gt;  就可以启动了。最终的效果和上述 Express 启动的服务类似。&lt;/p&gt;
 </content>
-        <category term="Nest.js学习笔记" scheme="http://example.com/categories/nestjs-study-notes/" />
-        <category term="TypeScript" scheme="http://example.com/tags/TypeScript/" />
-        <category term="Node.js" scheme="http://example.com/tags/Node-js/" />
-        <category term="Nest.js" scheme="http://example.com/tags/Nest-js/" />
-        <category term="后端" scheme="http://example.com/tags/%E5%90%8E%E7%AB%AF/" />
+        <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
+        <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
+        <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
         <updated>2024-01-31T07:47:09.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/interview-records/%E7%99%BE%E5%BA%94%E7%A7%91%E6%8A%80%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</id>
+        <id>https://nonhana.github.io/2024/01/31/interview-records/%E7%99%BE%E5%BA%94%E7%A7%91%E6%8A%80%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</id>
         <title>百应科技前端开发实习生一面面试记录</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/interview-records/%E7%99%BE%E5%BA%94%E7%A7%91%E6%8A%80%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/interview-records/%E7%99%BE%E5%BA%94%E7%A7%91%E6%8A%80%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;有一说一，这可以说是我近期最糟糕的面试体验。我本来就没什么经验，紧张的要死，面对面试官强迫着自己不要紧张堆出来笑脸，可我对面的我感觉不是个人坐在那里，就是一个无情的问题提出机。他问我一个问题，我叽里呱啦讲了半天，中途我不对的地方没有帮我指出，甚至一声不吭，对我的发言完全没有任何的反应，马上又给了我下一个问题，让我感觉他是不是赶着下班？是不是不太想面我？&lt;/p&gt;
 &lt;p&gt;总而言之，这次面试到后面连我自己都不耐烦起来了，对这样的一个面试官我的发挥自然也不能算好。&lt;/p&gt;
@@ -422,15 +422,15 @@
 &lt;h1 id=&#34;三-后记&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-后记&#34;&gt;#&lt;/a&gt; 三、后记&lt;/h1&gt;
 &lt;p&gt;目前结果还没出，我很惊讶为什么这么执着于 CSS 的部分，问的还比较细，主要是对我擅长的 Vue 框架只字不提，我回答的怎么样也不给我回复，我只感觉挺无语的，面到后面我也没啥心情了，也才 40min 左右。慢慢等结果吧。&lt;/p&gt;
 </content>
-        <category term="面试记录" scheme="http://example.com/categories/interview-records/" />
-        <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/" />
-        <category term="面试" scheme="http://example.com/tags/%E9%9D%A2%E8%AF%95/" />
+        <category term="面试记录" scheme="https://nonhana.github.io/categories/interview-records/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
+        <category term="面试" scheme="https://nonhana.github.io/tags/%E9%9D%A2%E8%AF%95/" />
         <updated>2024-01-31T07:24:35.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/interview-records/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%B9%BF%E5%91%8A%E5%89%8D%E7%AB%AF%EF%BC%88%E5%85%A8%E6%A0%88%EF%BC%89%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F-Ads-Infra%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</id>
+        <id>https://nonhana.github.io/2024/01/31/interview-records/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%B9%BF%E5%91%8A%E5%89%8D%E7%AB%AF%EF%BC%88%E5%85%A8%E6%A0%88%EF%BC%89%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F-Ads-Infra%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</id>
         <title>字节跳动广告前端（全栈）开发实习生-Ads Infra一面面试记录</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/interview-records/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%B9%BF%E5%91%8A%E5%89%8D%E7%AB%AF%EF%BC%88%E5%85%A8%E6%A0%88%EF%BC%89%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F-Ads-Infra%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/interview-records/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%B9%BF%E5%91%8A%E5%89%8D%E7%AB%AF%EF%BC%88%E5%85%A8%E6%A0%88%EF%BC%89%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F-Ads-Infra%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;上个星期心血来潮，暑假带领一个小团队参加了字节跳动第六届前端青训营的进阶班并且在最后的大项目决赛当中取得了优秀奖，让我的信心有着前所未有的提升 —— 因此趁着刚开学无事，自己向身边的前辈请教了简历的编写和排版之后也准备了一份看得过去的但是仍有很多漏洞的前端开发简历，希望能够找一下实习丰富自己的实际工作与项目经历。&lt;/p&gt;
 &lt;p&gt;上个星期准备完了之后，直接在 Boss 和字节的内推投了几份简历。字节的内推投的是： &lt;strong&gt;广告前端（全栈）开发实习生 - Ads Infra&lt;/strong&gt; 岗位，因为我认为我有着一定的 Node.js 实际开发经历。我以为至少一周多之后才会给我答复吧？我趁着等待的时间先好好准备一下面试 —— 结果 &lt;strong&gt;当天下午&lt;/strong&gt; 直接告诉我简历初筛过了（当时大脑直接一片空白），进了一面。然而我之前根本就一丁点的对于面试的准备都没有做过（真的是零经验零经验），然后约了四天后进行一面。可想而知，四天的准备怎么能过得了字节的一面？当然是直接被筛下来了，而且事后听录音觉得自己讲的很多地方都很粗浅、知识点掌握不到位等等。&lt;/p&gt;
@@ -729,15 +729,15 @@
 &lt;h1 id=&#34;三-后记&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-后记&#34;&gt;#&lt;/a&gt; 三、后记&lt;/h1&gt;
 &lt;p&gt;暂时就是这样。准备的实在是太不充分了，算是给自己的面试经历填了浓墨重彩的一笔吧，也希望能给希望进行前端面试的同学们一些比较好的参考吧！这次经历也提醒我基础还是要好好巩固的。日积月累，技术功底扎实才是硬道理呀！&lt;/p&gt;
 </content>
-        <category term="面试记录" scheme="http://example.com/categories/interview-records/" />
-        <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/" />
-        <category term="面试" scheme="http://example.com/tags/%E9%9D%A2%E8%AF%95/" />
+        <category term="面试记录" scheme="https://nonhana.github.io/categories/interview-records/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
+        <category term="面试" scheme="https://nonhana.github.io/tags/%E9%9D%A2%E8%AF%95/" />
         <updated>2024-01-31T06:31:23.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/daily-developing/%E6%80%8E%E4%B9%88%E5%9C%A8%E4%BD%BF%E7%94%A8Vue3-Pinia-Vite-TS-ElementPlus%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BC%95%E5%85%A5Vite-SSG%E6%89%93%E5%8C%85/</id>
+        <id>https://nonhana.github.io/2024/01/31/daily-developing/%E6%80%8E%E4%B9%88%E5%9C%A8%E4%BD%BF%E7%94%A8Vue3-Pinia-Vite-TS-ElementPlus%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BC%95%E5%85%A5Vite-SSG%E6%89%93%E5%8C%85/</id>
         <title>怎么在使用Vue3+Pinia+Vite+TS+ElementPlus的应用中引入Vite-SSG打包</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/daily-developing/%E6%80%8E%E4%B9%88%E5%9C%A8%E4%BD%BF%E7%94%A8Vue3-Pinia-Vite-TS-ElementPlus%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BC%95%E5%85%A5Vite-SSG%E6%89%93%E5%8C%85/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/daily-developing/%E6%80%8E%E4%B9%88%E5%9C%A8%E4%BD%BF%E7%94%A8Vue3-Pinia-Vite-TS-ElementPlus%E7%9A%84%E5%BA%94%E7%94%A8%E4%B8%AD%E5%BC%95%E5%85%A5Vite-SSG%E6%89%93%E5%8C%85/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;公司目前由我负责的主要有两个网页项目：&lt;/p&gt;
 &lt;ol&gt;
@@ -858,19 +858,19 @@
 &lt;p&gt;这篇文章是我在平常接触的业务的积累，当作是一个技术随笔吧。如果有对自己的个人项目（比如自己的博客）想做 SEO 的同学，可以参考一下我的经历。&lt;/p&gt;
 &lt;p&gt;希望能够给大家想对自己的项目进行 SEO 优化的同学们提供一点小小的帮助！（不过其实主要是给自己做记录（笑））&lt;/p&gt;
 </content>
-        <category term="一些日常开发积累" scheme="http://example.com/categories/daily-developing/" />
-        <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/" />
-        <category term="Vue3" scheme="http://example.com/tags/Vue3/" />
-        <category term="Vite-SSG" scheme="http://example.com/tags/Vite-SSG/" />
-        <category term="SEO" scheme="http://example.com/tags/SEO/" />
-        <category term="SSG" scheme="http://example.com/tags/SSG/" />
-        <category term="SSR" scheme="http://example.com/tags/SSR/" />
+        <category term="一些日常开发积累" scheme="https://nonhana.github.io/categories/daily-developing/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
+        <category term="Vue3" scheme="https://nonhana.github.io/tags/Vue3/" />
+        <category term="Vite-SSG" scheme="https://nonhana.github.io/tags/Vite-SSG/" />
+        <category term="SEO" scheme="https://nonhana.github.io/tags/SEO/" />
+        <category term="SSG" scheme="https://nonhana.github.io/tags/SSG/" />
+        <category term="SSR" scheme="https://nonhana.github.io/tags/SSR/" />
         <updated>2024-01-31T06:22:42.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/daily-developing/Vue3%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E8%83%BD%E5%A4%9F%E6%8B%96%E6%9B%B3%E8%BE%B9%E7%BC%98%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6/</id>
+        <id>https://nonhana.github.io/2024/01/31/daily-developing/Vue3%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E8%83%BD%E5%A4%9F%E6%8B%96%E6%9B%B3%E8%BE%B9%E7%BC%98%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6/</id>
         <title>Vue3手动实现能够拖曳边缘改变大小的容器组件</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/daily-developing/Vue3%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E8%83%BD%E5%A4%9F%E6%8B%96%E6%9B%B3%E8%BE%B9%E7%BC%98%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/daily-developing/Vue3%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E8%83%BD%E5%A4%9F%E6%8B%96%E6%9B%B3%E8%BE%B9%E7%BC%98%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;最近刚刚实习，还是处于公司的一个试用实习期。因此我目前在公司干的活，几乎无一例外都是根据他们给的项目原型图，把页面一点点根据自己之前的项目经验渲染出来。自然这种单纯又基础的工作，干久了之后自然会觉得枯燥乏味，写再多的页面都是如此。&lt;/p&gt;
 &lt;p&gt;上个星期，我帮公司做一款类似于  &lt;code&gt;leetcode&lt;/code&gt;  写题那样的代码编辑项目。项目只有一个主页面，是非常经典的左文章、右上代码编辑器、右下终端的经典布局，但是有一个比较新的需求，就是&lt;strong&gt;文章和代码编辑器的间距是可以调整的；代码编辑器和终端的间距也是可以调整的&lt;/strong&gt;。&lt;/p&gt;
@@ -1074,16 +1074,16 @@ function initDrag(side: string, event: MouseEvent) &amp;#123;
 &amp;lt;/BoxDraggable&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 </content>
-        <category term="一些日常开发积累" scheme="http://example.com/categories/daily-developing/" />
-        <category term="TypeScript" scheme="http://example.com/tags/TypeScript/" />
-        <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/" />
-        <category term="Vue3" scheme="http://example.com/tags/Vue3/" />
+        <category term="一些日常开发积累" scheme="https://nonhana.github.io/categories/daily-developing/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
+        <category term="Vue3" scheme="https://nonhana.github.io/tags/Vue3/" />
         <updated>2024-01-31T06:19:40.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/daily-developing/Vue3-Node-js%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/</id>
+        <id>https://nonhana.github.io/2024/01/31/daily-developing/Vue3-Node-js%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/</id>
         <title>Vue3+Node.js实现微信扫码登录流程</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/daily-developing/Vue3-Node-js%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/daily-developing/Vue3-Node-js%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;最近刚刚实习，接到了个简单又不简单的需求：前端实现内嵌微信二维码扫码登录，而公司的技术栈用的是 &lt;code&gt;Vue3+Pinia+TypeScript&lt;/code&gt; 。而我之前也仅仅只接触过微信小程序的微信授权登录，这种第三方 web 应用的微信授权登录还是头一次遇到。上网查了好多资料 + 问了 GPT 好久，最后整理了一下流程和大致的实现，希望对大家有所帮助～！&lt;/p&gt;
 &lt;h1 id=&#34;二-流程梳理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-流程梳理&#34;&gt;#&lt;/a&gt; 二、流程梳理&lt;/h1&gt;
@@ -1263,16 +1263,16 @@ export default defineComponent(&amp;#123;
 &lt;li&gt;前端根据这个消息更新 UI 或跳转到用户的主页。&lt;/li&gt;
 &lt;/ol&gt;
 </content>
-        <category term="一些日常开发积累" scheme="http://example.com/categories/daily-developing/" />
-        <category term="Vue3" scheme="http://example.com/tags/Vue3/" />
-        <category term="Node.js" scheme="http://example.com/tags/Node-js/" />
-        <category term="微信API" scheme="http://example.com/tags/%E5%BE%AE%E4%BF%A1API/" />
+        <category term="一些日常开发积累" scheme="https://nonhana.github.io/categories/daily-developing/" />
+        <category term="Vue3" scheme="https://nonhana.github.io/tags/Vue3/" />
+        <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="微信API" scheme="https://nonhana.github.io/tags/%E5%BE%AE%E4%BF%A1API/" />
         <updated>2024-01-31T06:18:11.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/common-study-notes/%E5%85%B3%E4%BA%8ERxJS%E4%B8%AD%E7%9A%84Observable%E7%9A%84%E7%90%86%E8%A7%A3/</id>
+        <id>https://nonhana.github.io/2024/01/31/common-study-notes/%E5%85%B3%E4%BA%8ERxJS%E4%B8%AD%E7%9A%84Observable%E7%9A%84%E7%90%86%E8%A7%A3/</id>
         <title>关于RxJS中的Observable的理解</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/common-study-notes/%E5%85%B3%E4%BA%8ERxJS%E4%B8%AD%E7%9A%84Observable%E7%9A%84%E7%90%86%E8%A7%A3/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/common-study-notes/%E5%85%B3%E4%BA%8ERxJS%E4%B8%AD%E7%9A%84Observable%E7%9A%84%E7%90%86%E8%A7%A3/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;如果有对 &lt;strong&gt;如何优雅的处理异步事件以及数据流&lt;/strong&gt; 感兴趣的小伙伴，可以进来看看。&lt;/p&gt;
 &lt;p&gt;其实本来这篇文章打算放在 Nest.js 学习笔记里面一起总结掉的，但是我发现我低估了 Observable 这个概念理解起来的难度，导致我对着几行代码死盯了很久。。。&lt;/p&gt;
@@ -1549,17 +1549,17 @@ export default defineComponent(&amp;#123;
 &lt;p&gt;这是头一次写这么长的文章啊。。。也算是自己对  &lt;code&gt;RxJS&lt;/code&gt;  这个库的一些浅薄的理解吧，毕竟之前在接触 Nest.js 之前这类的需求遇到的相对比较少，而且对 JS 设计模式也不太熟悉。&lt;/p&gt;
 &lt;p&gt;另外，关于其实际在 Nest.js 的封装，我打算单独写在 Nest.js 学习笔记里面，比如响应拦截器、异常过滤器等非常常用的工具的自定义封装。&lt;/p&gt;
 </content>
-        <category term="平时学习" scheme="http://example.com/categories/common-study-notes/" />
-        <category term="RxJS" scheme="http://example.com/tags/RxJS/" />
-        <category term="TypeScript" scheme="http://example.com/tags/TypeScript/" />
-        <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/" />
-        <category term="数据流" scheme="http://example.com/tags/%E6%95%B0%E6%8D%AE%E6%B5%81/" />
+        <category term="平时学习" scheme="https://nonhana.github.io/categories/common-study-notes/" />
+        <category term="RxJS" scheme="https://nonhana.github.io/tags/RxJS/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
+        <category term="数据流" scheme="https://nonhana.github.io/tags/%E6%95%B0%E6%8D%AE%E6%B5%81/" />
         <updated>2024-01-31T03:50:31.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/project-experiences/%E5%85%B3%E4%BA%8E%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E3%80%81%E5%85%A8%E6%A0%88%E7%BC%96%E5%86%99%E5%87%BA%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%AB%99%E7%9A%84%E7%BB%8F%E5%8E%86/</id>
+        <id>https://nonhana.github.io/2024/01/31/project-experiences/%E5%85%B3%E4%BA%8E%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E3%80%81%E5%85%A8%E6%A0%88%E7%BC%96%E5%86%99%E5%87%BA%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%AB%99%E7%9A%84%E7%BB%8F%E5%8E%86/</id>
         <title>关于我是如何从零自己设计、全栈编写出个人小站的经历</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/project-experiences/%E5%85%B3%E4%BA%8E%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E3%80%81%E5%85%A8%E6%A0%88%E7%BC%96%E5%86%99%E5%87%BA%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%AB%99%E7%9A%84%E7%BB%8F%E5%8E%86/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/project-experiences/%E5%85%B3%E4%BA%8E%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E3%80%81%E5%85%A8%E6%A0%88%E7%BC%96%E5%86%99%E5%87%BA%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%AB%99%E7%9A%84%E7%BB%8F%E5%8E%86/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;其实本来很早就开始打算为我的个人项目稍微的引个流了，不过由于之前一直在进行功能更新以及 bug 修复的工作，所以一直打算等把整个项目开发的能够使用了之后再写个文稍微介绍一下。就在前几天把文章资源的上传全部转移至腾讯云 COS 了之后，我才打算动笔写一写这段经历，并给出  &lt;code&gt;github&lt;/code&gt;  仓库地址以及访问的网址，希望可以给想要学习前后端的大家一点参考。&lt;/p&gt;
 &lt;p&gt;这个项目本来是打算当成我的个人博客来用的，不过转念一想似乎这个项目其实已经完全可以算成一个个人实现的作品了，集成的功能之后也会随着更新逐渐增多，因此美其名曰 &lt;strong&gt;“知识分享小站”&lt;/strong&gt; 。&lt;/p&gt;
@@ -1991,19 +1991,19 @@ COS_DOMAIN = xxx
 &lt;p&gt;最近也是在打算开一个新坑：  &lt;code&gt;Picals&lt;/code&gt;  ，一个模仿  &lt;code&gt;Pixiv&lt;/code&gt;  的插画收藏网站，使用 Nuxt3 + Nest.js 作为主要技术栈。可以看我的前几篇文章，基本都是用的我之前存的图图。由于我本人是一个存图怪，又有比较强的收藏欲，因此老早就想有这么一个属于自己的存图空间了，因此开始计划了这么一个项目。如果开发进行了，我也会专门写点东西来介绍一下开发的经验过程的。&lt;/p&gt;
 &lt;p&gt;那就先这样吧，感谢你能够读到这里。如果对这个项目感到满意或者受到了一些小小的借鉴启发，希望能够点个小小的 star！~&lt;/p&gt;
 </content>
-        <category term="一些项目相关总结" scheme="http://example.com/categories/project-experiences/" />
-        <category term="TypeScript" scheme="http://example.com/tags/TypeScript/" />
-        <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/" />
-        <category term="Vue3" scheme="http://example.com/tags/Vue3/" />
-        <category term="Node.js" scheme="http://example.com/tags/Node-js/" />
-        <category term="后端" scheme="http://example.com/tags/%E5%90%8E%E7%AB%AF/" />
-        <category term="经验总结" scheme="http://example.com/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" />
+        <category term="一些项目相关总结" scheme="https://nonhana.github.io/categories/project-experiences/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
+        <category term="Vue3" scheme="https://nonhana.github.io/tags/Vue3/" />
+        <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
+        <category term="经验总结" scheme="https://nonhana.github.io/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" />
         <updated>2024-01-31T03:44:51.000Z</updated>
     </entry>
     <entry>
-        <id>http://example.com/2024/01/31/daily-developing/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEvercel%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8%EF%BC%9F/</id>
+        <id>https://nonhana.github.io/2024/01/31/daily-developing/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEvercel%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8%EF%BC%9F/</id>
         <title>如何在国内访问vercel部署应用？</title>
-        <link rel="alternate" href="http://example.com/2024/01/31/daily-developing/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEvercel%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8%EF%BC%9F/"/>
+        <link rel="alternate" href="https://nonhana.github.io/2024/01/31/daily-developing/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEvercel%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8%EF%BC%9F/"/>
         <content type="html">&lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;在今年暑假的字节青训营的最终大项目的答辩当中，当我还在为我的前端项目如何部署到服务器而焦头烂额之时，许多牛人在描述自己的项目部署经历的时候只是随口的提了一句 —— 使用 &lt;strong&gt;Vercel&lt;/strong&gt; 进行前端项目的一键部署。我寻思还有这么牛逼的玩意儿？吓得我赶紧去查了一下 —— 有一说一这是我第一次对部署项目感到这么的简单和轻松，这玩意能够自动检测你在 git 上面的提交（需要指定分支），然后自动的进行重新构建并且重新部署，最最最重要的就是 &lt;strong&gt;它还会自动生成一个免费的域名并且自带 SSL 证书也就是可以直接通过 https 进行访问。&lt;/strong&gt; 这玩意不知道能省多少钱。&lt;/p&gt;
 &lt;p&gt;当天晚上我用这玩意一次性把我写的乱七八糟的一堆项目全都扔上去了，也是美滋滋的享受到了自动部署的安逸。我买的服务器就纯纯作为一个后端服务的提供者就好了；前端的应用一律用 vercel 一股脑扔上去就好了。&lt;/p&gt;
@@ -2065,10 +2065,10 @@ COS_DOMAIN = xxx
 &lt;p&gt;&lt;img data-src=&#34;https://raw.githubusercontent.com/nonhana/Typora-Pictures-Store/master/images/image-20231114230301888.png&#34; alt=&#34;image-20231114230301888&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;这样子之后你的 vercel 应用应该是可以正常的在国内进行访问了。&lt;/p&gt;
 </content>
-        <category term="一些日常开发积累" scheme="http://example.com/categories/daily-developing/" />
-        <category term="前端" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF/" />
-        <category term="Vercel" scheme="http://example.com/tags/Vercel/" />
-        <category term="前端部署" scheme="http://example.com/tags/%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2/" />
+        <category term="一些日常开发积累" scheme="https://nonhana.github.io/categories/daily-developing/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
+        <category term="Vercel" scheme="https://nonhana.github.io/tags/Vercel/" />
+        <category term="前端部署" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2/" />
         <updated>2024-01-31T03:32:59.000Z</updated>
     </entry>
 </feed>
