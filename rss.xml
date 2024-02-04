@@ -30,8 +30,8 @@
             <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
             <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
             <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
-            <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
+            <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
             <category term="Decorator(TypeScript)" scheme="https://nonhana.github.io/tags/Decorator-TypeScript/" />
             <pubDate>Wed, 31 Jan 2024 15:50:23 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
@@ -135,8 +135,8 @@
             <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
             <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
             <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
-            <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
+            <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
             <category term="IOC/DI" scheme="https://nonhana.github.io/tags/IOC-DI/" />
             <pubDate>Wed, 31 Jan 2024 15:49:20 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
@@ -205,8 +205,8 @@
             <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
             <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
             <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
-            <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
+            <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
             <pubDate>Wed, 31 Jan 2024 15:47:09 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-nestjs-简介&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-nestjs-简介&#34;&gt;#&lt;/a&gt; 一、Nest.js 简介&lt;/h1&gt;
 &lt;p&gt;Nest.js 是一个用于构建高效、可靠和可扩展的服务器端应用程序的框架。它 &lt;strong&gt;完全使用 TypeScript 编写&lt;/strong&gt; ，但同时也 &lt;strong&gt;兼容纯 JavaScript&lt;/strong&gt; 。Nest.js 结合了 &lt;strong&gt;OOP（面向对象编程）&lt;/strong&gt; 、 &lt;strong&gt;FP（函数式编程）&lt;/strong&gt; 和 &lt;strong&gt;FRP（函数响应式编程）&lt;/strong&gt; 的特点。&lt;/p&gt;
