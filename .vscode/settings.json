@@ -1,0 +1,8 @@
+{
+  "yaml.schemas": {
+    "https://json.schemastore.org/prettierrc.json": [
+      "file:///d%3A/Folders/code%20life/GreyFlowers/frontend/_config.yml",
+      "file:///d%3A/Folders/code%20life/GreyFlowers/frontend-shokax/_config.yml"
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+# 静态资源
+statics: "/" # 静态文件根目录，可用于 CDN 加速
+assets: "assets" # 图片资源存放目录
+css: "css" # css 存放目录 (不建议改动)
+js: "js" # js 存放目录 (不建议改动)
+
+# 社交链接
+social:
+  github: https://github.com/nonhana || github || "#191717"
+  zhihu: https://www.zhihu.com/people/da-ming-22-8-3 || zhihu || "#1e88e5"
+  twitter: https://twitter.com/non_hanaz || twitter || "#1da1f2"
+  email: mailto:zhouxiang757@gmail.com || envelope || "#007bff"
+
+# 导航栏
+menu:
+  home: / || home
+  about: /about/ || user
+  posts:
+    default: / || feather
+    categories: /categories/ || list-ol
+    tags: /tags/ || tags
+    archives: /archives/ || archive
+
+# 侧边栏
+sidebar:
+  position: left # left/right分别对应左侧/右侧
+  avatar: avatar.jpg
+
+# 大标题
+alternate: "hana's blog" #站点大标题，（比 title 高一级，但仅在 index 显示）
+
+# 页脚设置
+widgets:
+  random_posts: true # 随机文章
+  recent_comments: true # 显示最近评论
+footer: # 页尾全站统计
+  since: 2010 # 开始时间
+  count: true # 开启
+post: # 文章界面统计
+  count: true # 开启
+
+# 预加载
+performance:
+  # 使用 preconnect 预加载的地址 (不建议超过三个)
+  preConnect:
+    - "https://lf9-cdn-tos.bytecdntp.com"
+  # 使用 dns-prefetch 预解析的地址
+  dnsPrefetch:
+    - "https://cdn.jsdelivr.net"
+    - "https://unpkg.com"
+
+# 评论-waline
+waline:
+  enable: true # 是否启用
+  serverURL: "https://greyflowers-waline.zeabur.app" # 将此链接换成您自己的 Domains，主页链接后面不能加 /  会出错
