@@ -37,6 +37,7 @@
 &lt;h1 id=&#34;优化性能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#优化性能&#34;&gt;#&lt;/a&gt; 优化性能&lt;/h1&gt;
 &lt;p&gt;合理使用  &lt;code&gt;useCallback&lt;/code&gt;  和  &lt;code&gt;useMemo&lt;/code&gt;  来避免不必要的重新渲染，尤其是在将回调和其他值传递给子组件时。同时，正确使用依赖项数组，确保  &lt;code&gt;useEffect&lt;/code&gt;  不会在每次渲染时都执行，除非确实需要根据依赖的变化来执行。&lt;/p&gt;
 </content>
+        <category term="React学习笔记" scheme="https://nonhana.github.io/categories/react-study-notes/" />
         <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
         <category term="React" scheme="https://nonhana.github.io/tags/React/" />
         <category term="Hook" scheme="https://nonhana.github.io/tags/Hook/" />
@@ -159,6 +160,7 @@ function Example() &amp;#123;
 &lt;h1 id=&#34;总结&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#总结&#34;&gt;#&lt;/a&gt; 总结&lt;/h1&gt;
 &lt;p&gt;React 这个 hook 的用法可以说是把很多不用的生命周期全都扔到一边了，并且把监听数据的操作也一并纳入，综其名曰 &lt;strong&gt;副作用函数&lt;/strong&gt; 。这一点我觉得比 Vue 的生命周期 + watch 的方式要优雅方便。&lt;/p&gt;
 </content>
+        <category term="React学习笔记" scheme="https://nonhana.github.io/categories/react-study-notes/" />
         <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
         <category term="React" scheme="https://nonhana.github.io/tags/React/" />
         <category term="Hook" scheme="https://nonhana.github.io/tags/Hook/" />
@@ -1263,8 +1265,8 @@ export default Conter;
 &lt;p&gt;&lt;code&gt;Controller&lt;/code&gt;  类中定义了一个方法  &lt;code&gt;getList&lt;/code&gt; ，它被  &lt;code&gt;@Get(&amp;quot;XXXXXX&amp;quot;)&lt;/code&gt;  装饰器装饰。也就是说在调用  &lt;code&gt;getList&lt;/code&gt;  方法时，它实际上会发送一个 GET 请求到你定义的具体 URL，然后根据请求的成功或失败来处理响应或错误。 &lt;code&gt;getList&lt;/code&gt;  方法接收两个参数： &lt;code&gt;res&lt;/code&gt; （响应或错误对象）和  &lt;code&gt;params&lt;/code&gt; （包含状态码和成功 / 失败标志的对象）。在方法内部，它简单地将响应数据和  &lt;code&gt;params&lt;/code&gt;  对象打印到控制台，当然可以拿到这两个参数之后进行一些更加复杂和符合业务的操作。&lt;/p&gt;
 </content>
         <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
-        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
         <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
         <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
         <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
         <category term="Decorator(TypeScript)" scheme="https://nonhana.github.io/tags/Decorator-TypeScript/" />
@@ -1333,8 +1335,8 @@ export default Conter;
 &lt;/ol&gt;
 </content>
         <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
-        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
         <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
         <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
         <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
         <category term="IOC/DI" scheme="https://nonhana.github.io/tags/IOC-DI/" />
@@ -1414,8 +1416,8 @@ export default Conter;
 &lt;figure class=&#34;highlight typescript&#34;&gt;&lt;figcaption data-lang=&#34;typescript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; fastify &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;fastify&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; server &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;fastify&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;/&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;request&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; reply&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt; hello&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;world&#34;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;listen&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;3000&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; address&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;log&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    process&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token builtin&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token template-string&#34;&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;Server listening at &lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;$&amp;#123;&lt;/span&gt;address&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后直接在控制台运行  &lt;code&gt;ts-node server.ts&lt;/code&gt;  就可以启动了。最终的效果和上述 Express 启动的服务类似。&lt;/p&gt;
 </content>
         <category term="Nest.js学习笔记" scheme="https://nonhana.github.io/categories/nestjs-study-notes/" />
-        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
         <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
         <category term="Nest.js" scheme="https://nonhana.github.io/tags/Nest-js/" />
         <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
         <updated>2024-01-31T07:47:09.000Z</updated>
@@ -2004,8 +2006,8 @@ export default Conter;
 &lt;p&gt;希望能够给大家想对自己的项目进行 SEO 优化的同学们提供一点小小的帮助！（不过其实主要是给自己做记录（笑））&lt;/p&gt;
 </content>
         <category term="一些日常开发积累" scheme="https://nonhana.github.io/categories/daily-developing/" />
-        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
         <category term="Vue3" scheme="https://nonhana.github.io/tags/Vue3/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
         <category term="Vite-SSG" scheme="https://nonhana.github.io/tags/Vite-SSG/" />
         <category term="SEO" scheme="https://nonhana.github.io/tags/SEO/" />
         <category term="SSG" scheme="https://nonhana.github.io/tags/SSG/" />
@@ -2220,9 +2222,9 @@ function initDrag(side: string, event: MouseEvent) &amp;#123;
 &lt;/code&gt;&lt;/pre&gt;
 </content>
         <category term="一些日常开发积累" scheme="https://nonhana.github.io/categories/daily-developing/" />
+        <category term="Vue3" scheme="https://nonhana.github.io/tags/Vue3/" />
         <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
         <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
-        <category term="Vue3" scheme="https://nonhana.github.io/tags/Vue3/" />
         <updated>2024-01-31T06:19:40.000Z</updated>
     </entry>
     <entry>
@@ -2695,9 +2697,9 @@ export default defineComponent(&amp;#123;
 &lt;p&gt;另外，关于其实际在 Nest.js 的封装，我打算单独写在 Nest.js 学习笔记里面，比如响应拦截器、异常过滤器等非常常用的工具的自定义封装。&lt;/p&gt;
 </content>
         <category term="平时学习" scheme="https://nonhana.github.io/categories/common-study-notes/" />
-        <category term="RxJS" scheme="https://nonhana.github.io/tags/RxJS/" />
         <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
         <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
+        <category term="RxJS" scheme="https://nonhana.github.io/tags/RxJS/" />
         <category term="数据流" scheme="https://nonhana.github.io/tags/%E6%95%B0%E6%8D%AE%E6%B5%81/" />
         <updated>2024-01-31T03:50:31.000Z</updated>
     </entry>
@@ -3137,10 +3139,10 @@ COS_DOMAIN = xxx
 &lt;p&gt;那就先这样吧，感谢你能够读到这里。如果对这个项目感到满意或者受到了一些小小的借鉴启发，希望能够点个小小的 star！~&lt;/p&gt;
 </content>
         <category term="一些项目相关总结" scheme="https://nonhana.github.io/categories/project-experiences/" />
-        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
-        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
         <category term="Vue3" scheme="https://nonhana.github.io/tags/Vue3/" />
         <category term="Node.js" scheme="https://nonhana.github.io/tags/Node-js/" />
+        <category term="TypeScript" scheme="https://nonhana.github.io/tags/TypeScript/" />
+        <category term="前端" scheme="https://nonhana.github.io/tags/%E5%89%8D%E7%AB%AF/" />
         <category term="后端" scheme="https://nonhana.github.io/tags/%E5%90%8E%E7%AB%AF/" />
         <category term="经验总结" scheme="https://nonhana.github.io/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" />
         <updated>2024-01-31T03:44:51.000Z</updated>
