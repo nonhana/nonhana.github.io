@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <rss version="2.0">
     <channel>
-        <title>hana&#39;s blog</title>
-        <subtitle>GreyFlowers.</subtitle>
+        <title>GreyFlowers</title>
+        <subtitle>『灰色的花终会绽放。』</subtitle>
         <icon>https://nonhana.xyz/assets/favicon.ico</icon>
         <link>https://nonhana.xyz</link>
         <author>
@@ -2023,8 +2023,8 @@ export default Conter;
             <link>https://nonhana.xyz/2024/01/31/daily-developing/Vue3%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E8%83%BD%E5%A4%9F%E6%8B%96%E6%9B%B3%E8%BE%B9%E7%BC%98%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6/</link>
             <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
             <category term="Vue3" scheme="https://nonhana.xyz/tags/Vue3/" />
-            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
+            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <pubDate>Wed, 31 Jan 2024 14:19:40 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;最近刚刚实习，还是处于公司的一个试用实习期。因此我目前在公司干的活，几乎无一例外都是根据他们给的项目原型图，把页面一点点根据自己之前的项目经验渲染出来。自然这种单纯又基础的工作，干久了之后自然会觉得枯燥乏味，写再多的页面都是如此。&lt;/p&gt;
@@ -2424,9 +2424,9 @@ export default defineComponent(&amp;#123;
             <title>关于RxJS中的Observable的理解</title>
             <link>https://nonhana.xyz/2024/01/31/common-study-notes/%E5%85%B3%E4%BA%8ERxJS%E4%B8%AD%E7%9A%84Observable%E7%9A%84%E7%90%86%E8%A7%A3/</link>
             <category term="平时学习" scheme="https://nonhana.xyz/categories/common-study-notes/" />
-            <category term="RxJS" scheme="https://nonhana.xyz/tags/RxJS/" />
-            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
+            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="RxJS" scheme="https://nonhana.xyz/tags/RxJS/" />
             <category term="数据流" scheme="https://nonhana.xyz/tags/%E6%95%B0%E6%8D%AE%E6%B5%81/" />
             <pubDate>Wed, 31 Jan 2024 11:50:31 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
@@ -2713,8 +2713,8 @@ export default defineComponent(&amp;#123;
             <category term="一些项目相关总结" scheme="https://nonhana.xyz/categories/project-experiences/" />
             <category term="Vue3" scheme="https://nonhana.xyz/tags/Vue3/" />
             <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
-            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
+            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <category term="经验总结" scheme="https://nonhana.xyz/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" />
             <pubDate>Wed, 31 Jan 2024 11:44:51 +0800</pubDate>
@@ -3155,9 +3155,9 @@ COS_DOMAIN = xxx
             <title>如何在国内访问vercel部署应用？</title>
             <link>https://nonhana.xyz/2024/01/31/daily-developing/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEvercel%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8%EF%BC%9F/</link>
             <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
-            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
             <category term="Vercel" scheme="https://nonhana.xyz/tags/Vercel/" />
             <category term="前端部署" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2/" />
+            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
             <pubDate>Wed, 31 Jan 2024 11:32:59 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;在今年暑假的字节青训营的最终大项目的答辩当中，当我还在为我的前端项目如何部署到服务器而焦头烂额之时，许多牛人在描述自己的项目部署经历的时候只是随口的提了一句 —— 使用 &lt;strong&gt;Vercel&lt;/strong&gt; 进行前端项目的一键部署。我寻思还有这么牛逼的玩意儿？吓得我赶紧去查了一下 —— 有一说一这是我第一次对部署项目感到这么的简单和轻松，这玩意能够自动检测你在 git 上面的提交（需要指定分支），然后自动的进行重新构建并且重新部署，最最最重要的就是 &lt;strong&gt;它还会自动生成一个免费的域名并且自带 SSL 证书也就是可以直接通过 https 进行访问。&lt;/strong&gt; 这玩意不知道能省多少钱。&lt;/p&gt;
