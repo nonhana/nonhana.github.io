@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nonhana.xyz/2024/02/16/react-study-notes/React%E5%AD%A6%E4%B9%A0-React%E7%9A%84memo%E6%96%B9%E6%B3%95/</loc>
+    <lastmod>2024-02-16</lastmod>
+  </url>
+  <url>
     <loc>https://nonhana.xyz/2024/01/31/daily-developing/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AEvercel%E9%83%A8%E7%BD%B2%E5%BA%94%E7%94%A8%EF%BC%9F/</loc>
     <lastmod>2024-02-16</lastmod>
   </url>
