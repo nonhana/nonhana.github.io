@@ -10,8 +10,8 @@
         </author>
         <description>不要为每一件事都赋予意义。</description>
         <language>zh-CN</language>
-        <pubDate>Fri, 16 Feb 2024 14:57:35 +0800</pubDate>
-        <lastBuildDate>Fri, 16 Feb 2024 14:57:35 +0800</lastBuildDate>
+        <pubDate>Sun, 18 Feb 2024 16:46:42 +0800</pubDate>
+        <lastBuildDate>Sun, 18 Feb 2024 16:46:42 +0800</lastBuildDate>
         <category term="Blog" />
         <category term="Frontend" />
         <category term="Developer" />
@@ -23,6 +23,51 @@
         <category term="Node" />
         <category term="Hexo" />
         <category term="ShokaX" />
+        <item>
+            <guid isPermalink="true">https://nonhana.xyz/2024/02/18/daily-developing/%E6%80%8E%E4%B9%88%E7%BB%99Node-js%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%90%AF%E7%94%A8https-%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3/</guid>
+            <title>怎么给Node.js后端项目启用https+域名访问接口</title>
+            <link>https://nonhana.xyz/2024/02/18/daily-developing/%E6%80%8E%E4%B9%88%E7%BB%99Node-js%E5%90%8E%E7%AB%AF%E9%A1%B9%E7%9B%AE%E5%90%AF%E7%94%A8https-%E5%9F%9F%E5%90%8D%E8%AE%BF%E9%97%AE%E6%8E%A5%E5%8F%A3/</link>
+            <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
+            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
+            <category term="HTTPS" scheme="https://nonhana.xyz/tags/HTTPS/" />
+            <category term="域名" scheme="https://nonhana.xyz/tags/%E5%9F%9F%E5%90%8D/" />
+            <pubDate>Sun, 18 Feb 2024 16:46:42 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
+&lt;p&gt;我们知道，一般而言我们在自己本地调试 Node.js 项目的时候，无一例外都是通过  &lt;code&gt;http://localhost:&amp;lt;port&amp;gt;&lt;/code&gt;  后接具体的接口 url 地址来进行接口访问。但是当我们本地开发完成之后，需要在我们自己的服务器上面进行项目的部署，这也就意味着在服务端启动的项目需要使用  &lt;code&gt;http://&amp;lt;服务器公网IP地址&amp;gt;:&amp;lt;后端服务启动端口&amp;gt;&lt;/code&gt;  来进行访问。&lt;/p&gt;
+&lt;p&gt;这样乍一听是不是也没什么问题？但是当我们的前端项目已经部署好，并且已经成功的绑定了 https 与域名，这个时候如果再去访问后端的 http 的接口， &lt;strong&gt;极大概率都会被浏览器本身的安全策略给拦下来，理由是 https 访问 http 类型协议的资源，很容易造成安全隐患。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;这个时候我们意识到， &lt;strong&gt;后端的服务不可能永远使用 http+IP 地址的形式进行访问，成熟的项目必将使用 https + 域名的形式来访问服务。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;因此，在这篇文章中我将给出我为我自己的后端项目配置 https + 域名的过程，供有需要参考的同学借鉴学习。&lt;/p&gt;
+&lt;h1 id=&#34;前置准备&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前置准备&#34;&gt;#&lt;/a&gt; 前置准备&lt;/h1&gt;
+&lt;p&gt;既然是需要使用 https + 域名，那么 &lt;strong&gt;域名&lt;/strong&gt; 和 &lt;strong&gt;启用 https 所需的 SSL 证书&lt;/strong&gt; 两者都必不可少。&lt;/p&gt;
+&lt;h2 id=&#34;准备一个域名&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#准备一个域名&#34;&gt;#&lt;/a&gt; 准备一个域名&lt;/h2&gt;
+&lt;p&gt;域名的准备相对比较简单，直接去各大类型的云服务提供商如阿里云、腾讯云、AWS 等去搜索 “域名注册”，然后输入一个自己喜欢的域名看看能不能买。&lt;/p&gt;
+&lt;p&gt;一般对于服务器的域名而言，比较常见的是采用  &lt;code&gt;api.example.com&lt;/code&gt;  这样格式命名居多（Pixiv 就是这样的格式），我自己使用的是  &lt;code&gt;nonhana-server.cn&lt;/code&gt;  ，我觉得意思到了即可。&lt;/p&gt;
+&lt;p&gt;我的域名是在腾讯云进行购买的，所以接下来我的演示会以腾讯云这边为例。&lt;/p&gt;
+&lt;h2 id=&#34;为域名准备-ssl-证书&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为域名准备-ssl-证书&#34;&gt;#&lt;/a&gt; 为域名准备 SSL 证书&lt;/h2&gt;
+&lt;p&gt;在上一步购买域名完毕之后，我们进入到腾讯云的&lt;a href=&#34;https://console.cloud.tencent.com/ssl&#34;&gt; SSL 证书管理页面&lt;/a&gt;，然后选择我的证书，点击 &lt;strong&gt;免费申请证书（默认大家都是白嫖的）&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;腾讯云总共为我们每个个人用户提供了 30 个免费证书的发放额度，我觉得对于我们平时学习使用已经是绰绰有余了。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240218152446139.png&#34; alt=&#34;image-20240218152446139&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;选择 &lt;strong&gt;申请免费证书&lt;/strong&gt; ，根据其验证步骤提示一步一步进行验证提交即可。由于我已经通过了验证，所以这边不再进行展示验证的过程。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240218152522672.png&#34; alt=&#34;image-20240218152522672&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;申请完成，并且审核通过之后，你的域名所对应的证书就可以在 &lt;strong&gt;我的证书&lt;/strong&gt; 一栏查看到了。选择自己对应想要操作的域名证书，点击右侧的下载按钮，打开选择弹窗。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240218155504312.png&#34; alt=&#34;image-20240218155504312&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;我们在这里选择 &lt;strong&gt;Nginx&lt;/strong&gt; 类型的证书进行下载，包含了 pem、crt 以及 key 文件。我们待会儿要使用的就是 pem 和 key 文件。&lt;/p&gt;
+&lt;h2 id=&#34;把域名绑定到服务器&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#把域名绑定到服务器&#34;&gt;#&lt;/a&gt; 把域名绑定到服务器&lt;/h2&gt;
+&lt;p&gt;当然，你购买了域名之后还需要将这个域名解析到对应的服务器上。&lt;/p&gt;
+&lt;p&gt;进入&lt;a href=&#34;https://console.cloud.tencent.com/domain/all-domain/all&#34;&gt;我的域名&lt;/a&gt;页面，然后点击右侧的解析按钮进入目标域名的解析页面，向其中添加主机记录为  &lt;code&gt;@&lt;/code&gt;  与  &lt;code&gt;www&lt;/code&gt;  的  &lt;code&gt;A&lt;/code&gt;  类型域名解析，两条解析对应的 IP 地址都是你的服务器对应的公网访问 IP 地址。&lt;/p&gt;
+&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240218155956486.png&#34; alt=&#34;image-20240218155956486&#34; /&gt;&lt;/p&gt;
+&lt;h1 id=&#34;在原生-express-项目中接入&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#在原生-express-项目中接入&#34;&gt;#&lt;/a&gt; 在原生 Express 项目中接入&lt;/h1&gt;
+&lt;p&gt;上述步骤全部完成之后，就可以开始进行在 Express 项目中的接入了。&lt;/p&gt;
+&lt;p&gt;我们在上述步骤中已经完成了对 ssl 证书的下载，其中包括了 pem 格式以及 key 格式。&lt;/p&gt;
+&lt;p&gt;首先，我们将这两种格式的证书复制到你的项目的静态资源目录下面。在我个人的项目中就是  &lt;code&gt;/public/ssl&lt;/code&gt;  目录下。&lt;/p&gt;
+&lt;p&gt;然后，我们在服务启动脚本  &lt;code&gt;/bin/server.ts&lt;/code&gt;  中，把原本启动服务的方法改写成一个函数。这个函数首先通过环境变量获取当前的环境类型，判断当前项目所处的环境是开发环境（development）还是生产环境（production），如果是开发环境则不启用 https + 域名访问；如果是生产环境则采用 https + 域名进行访问。最后通过调用这个函数来启动服务，即可。&lt;/p&gt;
+&lt;p&gt;而具体究竟是怎么启用 https + 域名进行访问的呢？这个是怎么实现的呢？这就借助了 express 项目中内置的  &lt;code&gt;https&lt;/code&gt;  模块。我们首先在最上方进行这个模块的导入：  &lt;code&gt;import https from https&lt;/code&gt;  ，然后再调用它提供的  &lt;code&gt;createServer()&lt;/code&gt;  方法，传入配置项以及 express 项目的核心脚本  &lt;code&gt;app.ts&lt;/code&gt;  从而启动服务。而我们的证书，就是在  &lt;code&gt;createServer()&lt;/code&gt;  这个方法的第一个参数中传进去的。&lt;/p&gt;
+&lt;p&gt;具体可以参考一下我自己的实现代码：&lt;/p&gt;
+&lt;figure class=&#34;highlight typescript&#34;&gt;&lt;figcaption data-lang=&#34;typescript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; dotenv &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;dotenv&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; http &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;http&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; https &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;https&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; fs &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;fs&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; path &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;path&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; app &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;../app&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; debug &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;debug&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;/**&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; * 读取环境变量配置。&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; */&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;dotenv&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;config&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//... 其他的配置&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;16&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;/**&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;17&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; * 定义创建 HTTP/HTTPS 服务器的函数：&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;18&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; * 如果是生产环境，则使用 HTTPS 创建服务器，否则使用 HTTP 创建服务器。&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;19&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt; */&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;20&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;createServer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;21&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;process&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;env&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token constant&#34;&gt;NODE_ENV&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;===&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;production&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;22&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; options &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;23&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      key&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; fs&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;readFileSync&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;24&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        path&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__dirname&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;../public/ssl/nonhana-server.cn.key&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;25&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;26&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      cert&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; fs&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;readFileSync&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;27&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;        path&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;join&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;__dirname&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;../public/ssl/nonhana-server.cn_bundle.pem&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;28&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;      &lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;29&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;30&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; https&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;createServer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;options&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; app&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;31&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;else&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;32&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; http&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;createServer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;app&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;33&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;34&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;35&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; server &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;createServer&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;36&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;37&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token comment&#34;&gt;//... 其他的配置&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;在这里我采用的是  &lt;code&gt;dotenv&lt;/code&gt;  这个第三方库来实现对  &lt;code&gt;.env&lt;/code&gt;  环境变量的读取操作。&lt;/p&gt;
+&lt;p&gt;我们可以看到，我这边的配置项  &lt;code&gt;options&lt;/code&gt;  实际上就是一个对象，里面放了两个属性  &lt;code&gt;key&lt;/code&gt;  以及  &lt;code&gt;cert&lt;/code&gt;  。  &lt;code&gt;key&lt;/code&gt;  对应的就是  &lt;code&gt;.key&lt;/code&gt;  格式的证书，而  &lt;code&gt;cert&lt;/code&gt;  对应的就是  &lt;code&gt;.pem&lt;/code&gt;  格式的证书，直接通过 path 模块进行导入就可以了。&lt;/p&gt;
+&lt;p&gt;完成之后，我们只要在服务端把  &lt;code&gt;.env&lt;/code&gt;  中的  &lt;code&gt;NODE_ENV&lt;/code&gt;  字段改为 production，然后再确保证书已经配置 OK，就可以使用 https + 域名来进行访问你的后端项目了。&lt;/p&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://nonhana.xyz/2024/02/16/react-study-notes/React%E5%AD%A6%E4%B9%A0-React%E7%9A%84memo%E6%96%B9%E6%B3%95/</guid>
             <title>React学习 React的memo方法</title>
@@ -1463,8 +1508,8 @@ export default Conter;
             <title>学习Nest.js笔记（三）：TS中的装饰器（Decorator）</title>
             <link>https://nonhana.xyz/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89%EF%BC%9ATS%E4%B8%AD%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88Decorator%EF%BC%89/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <category term="Decorator(TypeScript)" scheme="https://nonhana.xyz/tags/Decorator-TypeScript/" />
@@ -1568,8 +1613,8 @@ export default Conter;
             <title>学习Nest.js笔记（二）：控制反转和依赖注入</title>
             <link>https://nonhana.xyz/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89%EF%BC%9A%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <category term="IOC/DI" scheme="https://nonhana.xyz/tags/IOC-DI/" />
@@ -1638,8 +1683,8 @@ export default Conter;
             <title>学习Nest.js笔记（一）：Nest.js是什么</title>
             <link>https://nonhana.xyz/2024/01/31/nestjs-study-notes/%E5%AD%A6%E4%B9%A0Nest-js%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9ANest-js%E6%98%AF%E4%BB%80%E4%B9%88/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <pubDate>Wed, 31 Jan 2024 15:47:09 +0800</pubDate>
@@ -2177,8 +2222,8 @@ export default Conter;
             <title>怎么在Vue3中引入Vite-SSG打包</title>
             <link>https://nonhana.xyz/2024/01/31/daily-developing/%E6%80%8E%E4%B9%88%E5%9C%A8Vue3%E4%B8%AD%E5%BC%95%E5%85%A5Vite-SSG%E6%89%93%E5%8C%85/</link>
             <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
-            <category term="Vue3" scheme="https://nonhana.xyz/tags/Vue3/" />
             <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
+            <category term="Vue3" scheme="https://nonhana.xyz/tags/Vue3/" />
             <category term="Vite-SSG" scheme="https://nonhana.xyz/tags/Vite-SSG/" />
             <category term="SEO" scheme="https://nonhana.xyz/tags/SEO/" />
             <category term="SSG" scheme="https://nonhana.xyz/tags/SSG/" />
@@ -2310,9 +2355,9 @@ export default Conter;
             <title>Vue3手动实现能够拖曳边缘改变大小的容器组件</title>
             <link>https://nonhana.xyz/2024/01/31/daily-developing/Vue3%E6%89%8B%E5%8A%A8%E5%AE%9E%E7%8E%B0%E8%83%BD%E5%A4%9F%E6%8B%96%E6%9B%B3%E8%BE%B9%E7%BC%98%E6%94%B9%E5%8F%98%E5%A4%A7%E5%B0%8F%E7%9A%84%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6/</link>
             <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
-            <category term="Vue3" scheme="https://nonhana.xyz/tags/Vue3/" />
-            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
+            <category term="Vue3" scheme="https://nonhana.xyz/tags/Vue3/" />
             <pubDate>Wed, 31 Jan 2024 14:19:40 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
 &lt;p&gt;最近刚刚实习，还是处于公司的一个试用实习期。因此我目前在公司干的活，几乎无一例外都是根据他们给的项目原型图，把页面一点点根据自己之前的项目经验渲染出来。自然这种单纯又基础的工作，干久了之后自然会觉得枯燥乏味，写再多的页面都是如此。&lt;/p&gt;
@@ -2712,9 +2757,9 @@ export default defineComponent(&amp;#123;
             <title>关于RxJS中的Observable的理解</title>
             <link>https://nonhana.xyz/2024/01/31/common-study-notes/%E5%85%B3%E4%BA%8ERxJS%E4%B8%AD%E7%9A%84Observable%E7%9A%84%E7%90%86%E8%A7%A3/</link>
             <category term="平时学习" scheme="https://nonhana.xyz/categories/common-study-notes/" />
-            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
-            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="RxJS" scheme="https://nonhana.xyz/tags/RxJS/" />
+            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
             <category term="数据流" scheme="https://nonhana.xyz/tags/%E6%95%B0%E6%8D%AE%E6%B5%81/" />
             <pubDate>Wed, 31 Jan 2024 11:50:31 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
@@ -2992,450 +3037,6 @@ export default defineComponent(&amp;#123;
 &lt;h1 id=&#34;六-结语&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#六-结语&#34;&gt;#&lt;/a&gt; 六、结语&lt;/h1&gt;
 &lt;p&gt;这是头一次写这么长的文章啊。。。也算是自己对  &lt;code&gt;RxJS&lt;/code&gt;  这个库的一些浅薄的理解吧，毕竟之前在接触 Nest.js 之前这类的需求遇到的相对比较少，而且对 JS 设计模式也不太熟悉。&lt;/p&gt;
 &lt;p&gt;另外，关于其实际在 Nest.js 的封装，我打算单独写在 Nest.js 学习笔记里面，比如响应拦截器、异常过滤器等非常常用的工具的自定义封装。&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://nonhana.xyz/2024/01/31/project-experiences/%E5%85%B3%E4%BA%8E%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E3%80%81%E5%85%A8%E6%A0%88%E7%BC%96%E5%86%99%E5%87%BA%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%AB%99%E7%9A%84%E7%BB%8F%E5%8E%86/</guid>
-            <title>关于我是如何从零自己设计、全栈编写出个人小站的经历</title>
-            <link>https://nonhana.xyz/2024/01/31/project-experiences/%E5%85%B3%E4%BA%8E%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E3%80%81%E5%85%A8%E6%A0%88%E7%BC%96%E5%86%99%E5%87%BA%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%AB%99%E7%9A%84%E7%BB%8F%E5%8E%86/</link>
-            <category term="一些项目相关总结" scheme="https://nonhana.xyz/categories/project-experiences/" />
-            <category term="Vue3" scheme="https://nonhana.xyz/tags/Vue3/" />
-            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
-            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
-            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
-            <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
-            <category term="经验总结" scheme="https://nonhana.xyz/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" />
-            <pubDate>Wed, 31 Jan 2024 11:44:51 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
-&lt;p&gt;其实本来很早就开始打算为我的个人项目稍微的引个流了，不过由于之前一直在进行功能更新以及 bug 修复的工作，所以一直打算等把整个项目开发的能够使用了之后再写个文稍微介绍一下。就在前几天把文章资源的上传全部转移至腾讯云 COS 了之后，我才打算动笔写一写这段经历，并给出  &lt;code&gt;github&lt;/code&gt;  仓库地址以及访问的网址，希望可以给想要学习前后端的大家一点参考。&lt;/p&gt;
-&lt;p&gt;这个项目本来是打算当成我的个人博客来用的，不过转念一想似乎这个项目其实已经完全可以算成一个个人实现的作品了，集成的功能之后也会随着更新逐渐增多，因此美其名曰 &lt;strong&gt;“知识分享小站”&lt;/strong&gt; 。&lt;/p&gt;
-&lt;p&gt;项目地址：&lt;a href=&#34;https://littlesharing.cn&#34;&gt;https://littlesharing.cn&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;前端代码地址：&lt;a href=&#34;https://github.com/nonhana/littleSharing-Frontend&#34;&gt;https://github.com/nonhana/littleSharing-Frontend&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;后端代码地址：&lt;a href=&#34;https://github.com/nonhana/littleSharing-Backend-TS&#34;&gt;https://github.com/nonhana/littleSharing-Backend-TS&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;这个项目是完完全全由我 100% 从 0 开始进行开发到上线，包括：模块设计、功能设计、前端界面 UI 设计、数据库设计、后端接口设计、前端代码编写、后端代码编写、联调测试、部署上线等等。&lt;/strong&gt; 我写这篇文章的目的也是为了分享一下我的这段经历。&lt;/p&gt;
-&lt;p&gt;先讲一下这个项目的开发背景。这个项目项目创立之初的目标有两个：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;记录自己在开发过程中所遇到的各种困难，作为自己的积累之地；&lt;/li&gt;
-&lt;li&gt;为了巩固、实践自己所学到的最前沿的技术到实际运用上面，并在不断的 bug 调试当中优化自己的编程思想。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;综上，我会从 &lt;strong&gt;项目设计&lt;/strong&gt; 、 &lt;strong&gt;技术实现&lt;/strong&gt; 两个方面来讲述这个项目。先贴几张项目截图：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231228152207492.png&#34; alt=&#34;登录页&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231228152251044.png&#34; alt=&#34;主页1&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231228152344500.png&#34; alt=&#34;消息中心&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231228152409579.png&#34; alt=&#34;上传文章1&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231228152440478.png&#34; alt=&#34;上传文章2&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240105222234353.png&#34; alt=&#34;文章详情页&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231228153337278.png&#34; alt=&#34;评论区&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/screencapture-littlesharing-cn-MyArticles-23-2023-12-28-15_34_06.png&#34; alt=&#34;个人主页1&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/screencapture-littlesharing-cn-MyFocusList-17-2023-12-28-15_35_12.png&#34; alt=&#34;个人主页2&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/screencapture-littlesharing-cn-MyData-17-2023-12-28-15_35_41.png&#34; alt=&#34;个人主页3&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/screencapture-littlesharing-cn-MyInfo-17-2023-12-28-15_36_10.png&#34; alt=&#34;个人主页4&#34; /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;二-项目设计&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-项目设计&#34;&gt;#&lt;/a&gt; 二、项目设计&lt;/h1&gt;
-&lt;p&gt;&lt;strong&gt;对于一个项目，奠定了整个开发基调的就是位于最开始的项目设计。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;按照我自己的经验，我将一个新项目的设计步骤划分为：功能模块划分、前端 UI 界面设计、数据库设计、API 接口设计。&lt;/p&gt;
-&lt;p&gt;其实本来还得在功能模块划分之前加一个用户需求分析的步骤，不过对于我自己来说，一个项目的开发更多的是基于我本身的需求或者说是基于兴趣，因此没有必要特地的进行用户需求分析。&lt;/p&gt;
-&lt;h2 id=&#34;功能模块划分&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#功能模块划分&#34;&gt;#&lt;/a&gt; 功能模块划分&lt;/h2&gt;
-&lt;p&gt;在项目开发设计的时候，功能模块的划分往往意味着要编写 &lt;strong&gt;哪几类&lt;/strong&gt; 的页面。&lt;/p&gt;
-&lt;p&gt;这个项目在最新的版本，总共可以划分为如下几个功能模块：&lt;/p&gt;
-&lt;h3 id=&#34;登录页&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#登录页&#34;&gt;#&lt;/a&gt; 登录页&lt;/h3&gt;
-&lt;p&gt;登录页面，顾名思义就是用户第一次访问或者登录失效的时候会跳转到的页面。在这个页面主要就是提供一个欢迎页，并且提醒进入的用户先进行登录或者注册的操作。当注册成功后，窗口会变为登录窗口；当注册成功后，会跳转到首页。&lt;/p&gt;
-&lt;h3 id=&#34;首页&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#首页&#34;&gt;#&lt;/a&gt; 首页&lt;/h3&gt;
-&lt;p&gt;首页是本站最核心的内容之一，因此需要展现的内容也是较为丰富的。首页主要展现的有：文章列表、文章分类搜索栏、文章浏览趋势、最新发布的五篇文章列表以及顶部导航栏。&lt;/p&gt;
-&lt;p&gt;其中文章列表是按照用户的浏览趋势进行推荐获取的。文章列表由一个个文章项目组成，包含了文章除了主要内容以外的全部基本信息，并且包括了文章作者的一系列信息。用户可以通过点击项目标题、简介进入文章详情页面；点击用户头像进入用户个人主页。&lt;/p&gt;
-&lt;p&gt;文章分类搜索栏是为了给用户筛选出或者搜索出自己想要的文章而编写的。搜索栏提供了很多学科的分类，并且也提供了文章搜索关键字来进行检索。检索完毕之后，可以点击 “还原” 按钮进行还原。&lt;/p&gt;
-&lt;p&gt;文章浏览趋势是用于记录用户浏览具有某类标签的文章的次数的。当用户点击进入某篇文章的详情页的时候，会自动地把标签提交给后端进行记录，并且根据浏览时间将其划分到第几个月份，最终在折线图上进行趋势展示。&lt;/p&gt;
-&lt;p&gt;最新发布的五篇文章列表就是获取到按时间顺序倒序的最新的文章列表。&lt;/p&gt;
-&lt;p&gt;顶部导航栏提供了最左侧的页面 logo 按钮，点击就可以返回主页；中间的搜索框，目前暂时只作为装饰使用；右侧的消息中心按钮、上传文章按钮，点击可以跳转到对应的页面；最右侧的用户个人头像，鼠标移到头像处会显示下拉框，可以选择退出登录还是进入可个人主页。顶部导航栏几乎在任何页面都存在，除了 &lt;strong&gt;登录页&lt;/strong&gt; 和 &lt;strong&gt;消息中心页面&lt;/strong&gt; 。&lt;/p&gt;
-&lt;h3 id=&#34;文章详情页&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#文章详情页&#34;&gt;#&lt;/a&gt; 文章详情页&lt;/h3&gt;
-&lt;p&gt;文章详情页是用户浏览文章的主要页面。文章详情页主要的作用为浏览文章、记录文章书签、文章操作（点赞、收藏、评论、转发）等。另外也提供了相似文章推荐、作者信息栏展示等功能，便于用户去浏览其他的文章或者前往作者主页。&lt;/p&gt;
-&lt;h3 id=&#34;文章编写-上传页&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#文章编写-上传页&#34;&gt;#&lt;/a&gt; 文章编写、上传页&lt;/h3&gt;
-&lt;p&gt;文章编写、上传页可以通过顶部导航栏的上传文章按钮进入。在这个页面，文章的编写分为两步：1. 文章基本信息的填写；2. 文章内容的填写。文章基本信息又分为转载文章与非转载文章，区别在于是否需要填入原文地址。文章基本信息填写完成之后，点击下一步可以进入到文章内容的填写，采用 Markdown 的文章格式。&lt;/p&gt;
-&lt;h3 id=&#34;消息中心页&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#消息中心页&#34;&gt;#&lt;/a&gt; 消息中心页&lt;/h3&gt;
-&lt;p&gt;消息的作用是为了提醒用户之间的互动行为，以及官方的通知送达。&lt;/p&gt;
-&lt;p&gt;按照基本的分析，可以把消息作如下分类：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;用户消息
-&lt;ol&gt;
-&lt;li&gt;被点赞、收藏消息（文章和评论可共用，也就是评论被点赞、文章被点赞是一样的）&lt;/li&gt;
-&lt;li&gt;评论消息（自己的文章被评论、自己的评论被回复）&lt;/li&gt;
-&lt;li&gt;被其他用户关注消息&lt;/li&gt;
-&lt;li&gt;关注的用户发布新文章消息&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;系统消息
-&lt;ol&gt;
-&lt;li&gt;文章审核通过与否（目前并未配置后台审核，因此暂时没有用上，后续准备弄个模板）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;为了使消息能够切实的被用户注意到并且有意的去查看，需要引入 &lt;strong&gt;未读标记 (badge)&lt;/strong&gt; 的形式来提醒用户自己有未读消息需要处理。&lt;/p&gt;
-&lt;h3 id=&#34;个人中心页&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#个人中心页&#34;&gt;#&lt;/a&gt; 个人中心页&lt;/h3&gt;
-&lt;p&gt;个人中心给用户浏览在本站记录的与自己相关的数据，包括：自己发布的文章列表、自己收藏的文章列表、自己的关注 / 粉丝列表、自己的数据、自己的资料。&lt;/p&gt;
-&lt;p&gt;发布的文章列表也就是用户自己在这个站内发布的文章列表，以专门的文章项目进行展示，并且可以点击右上角确定是否删除或者重新编辑。&lt;/p&gt;
-&lt;p&gt;收藏的文章列表是用户在浏览文章的过程中进行的收藏操作，会将该文章添加进用户的收藏列表，之后可以在这里访问到收藏的文章。&lt;/p&gt;
-&lt;p&gt;自己的关注 / 粉丝列表能够获取到用户自己的关注列表或者被关注的用户列表进行展示，显示了一些用户的基本信息，点击可以进入其他用户的个人主页。&lt;/p&gt;
-&lt;p&gt;自己的数据记录了用户在本站所获得的一系列数据。包括：浏览文章关键词统计饼图、发布文章类别统计饼图、获得的点赞量变化曲线、获得的收藏量的变化曲线。&lt;/p&gt;
-&lt;p&gt;自己的资料就是用户自己设置自己相关的信息的地方。用户可以在这个页面浏览、修改自己的个人基本信息，包括用户名、头像、背景图等等信息。 &lt;strong&gt;如果是浏览他人的个人主页，无法进入到他人的个人资料页。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;前端-ui-界面设计&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前端-ui-界面设计&#34;&gt;#&lt;/a&gt; 前端 UI 界面设计&lt;/h2&gt;
-&lt;p&gt;基于上述的功能模块分析，基本上要设计哪几个页面、页面中所出现的元素如何进行有效的组合，应该也是一目了然了。在 UI 设计中，我采用了  &lt;code&gt;MasterGO&lt;/code&gt;  这一款原型设计软件进行界面样式的设计。以下贴一些当初的设计截图：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231229093233347.png&#34; alt=&#34;个人中心&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231229093310130.png&#34; alt=&#34;首页&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231229093336025.png&#34; alt=&#34;文章详情页&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231229093355675.png&#34; alt=&#34;消息中心页&#34; /&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231229093415615.png&#34; alt=&#34;提交文章页&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;其实看得出来，现在的版本和最初的 UI 设计相差的有点大，不过整体的实现基调是没有发生太大变化的。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;我认为一个好的 UI 设计，重要的不是每个页面具体的样式是如何设计的，而是整个项目的整体风格的确定。&lt;/strong&gt; 只有当整个项目风格确定了之后，才能够有条不紊的推进每个具体页面、具体细节的设计制作。比如我在另一个项目中在整体设计开始之前的公共约定：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20231229093827214.png&#34; alt=&#34;样式的公共约定&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;有了这个约定之后，整个项目的设计都基于一个固定的范式，无论是对于开发者来说还是设计者来说都能够基于这一套模板进行样式的编写与设计，能够极大的提高开发的效率。 &lt;strong&gt;其实更多的是给整个项目一个风格基调的确定吧。。。不然每个页面都有着自己的风格设计，我觉得这才是最致命的一点（因为我就吃过这个亏）。&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&#34;数据库设计&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#数据库设计&#34;&gt;#&lt;/a&gt; 数据库设计&lt;/h2&gt;
-&lt;p&gt;我是在 UI 设计基本完成之后再进行数据库表的设计的。&lt;/p&gt;
-&lt;p&gt;在数据库表的设计过程中，我并没有特别的去注重所谓的设计范式 (Normalization)，而是着眼于这个项目中所包含哪几个重要的 &lt;strong&gt;数据实体 (entity)&lt;/strong&gt; ，先将最基本的实体类型划分好，然后再在这个实体的基础之上根据需要实现的功能或者这个实体包含另外的同样也需要另外的实体去表示的数据，那么再加二级实体、关联表或者外键，形成一对多、多对多、一对一的关系。&lt;/p&gt;
-&lt;h3 id=&#34;实体划分一级实体-二级实体&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实体划分一级实体-二级实体&#34;&gt;#&lt;/a&gt; 实体划分：“一级实体”、“二级实体”&lt;/h3&gt;
-&lt;p&gt;&lt;strong&gt;那么数据实体该怎么去划分呢？&lt;/strong&gt; 我们首先应该清楚一点，一个数据实体必须要包含最基本的几个要素：增删改查，并且自身需要包含某种程度的信息。 &lt;strong&gt;但凡某个对象是涉及到增删改查四种类型的操作，并且有着自己的属性信息的，都是可以划分为一个实体出来的。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;在基本实体的定义中，可以根据我们的原型设计图与功能模块分析去做一个初步的推断。比如我在功能模块划分中着重提到了文章、用户、评论等几个概念，我们就可以先定下一级实体：文章 (articles)、用户 (users)、评论 (comments)，然后我们可以基于这最基本的实体，分析它们当中又包含哪些信息是需要其他的实体去表示的，也就是二级实体。&lt;/p&gt;
-&lt;h3 id=&#34;实体和实体之间的关联关系一对多-一对一-多对多&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#实体和实体之间的关联关系一对多-一对一-多对多&#34;&gt;#&lt;/a&gt; 实体和实体之间的关联关系：一对多、一对一、多对多&lt;/h3&gt;
-&lt;h4 id=&#34;一对多&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一对多&#34;&gt;#&lt;/a&gt; 一对多&lt;/h4&gt;
-&lt;p&gt;我们以用户 (users) 这个基本实体举例，一个用户基本信息包括用户头像、用户名、用户签名、用户浏览文章关键字等等。而在我们的设计中，用户关键字是在用户浏览文章的过程中自己进行添加的，并且具有自己有意义的字段：关键字浏览次数 (keywords_count)、关键字名称 (keywords_name)，因此有必要将其单独提取出一个数据实体：关键字 (keywords)。由于一个用户可以有多个浏览关键字，一个浏览关键字的相关数据只能属于一个用户，因此用户与关键字之间是一对多的关系，其外键需要加载 keywords 这个数据实体表当中，和 users 表相关联。&lt;/p&gt;
-&lt;p&gt;如果一级实体之前也存在关联关系，那么思路也是和之前一样进行分析。比如一篇文章只有一个作者，而一个作者可以发很多篇的文章，这是一个一对多的关系，需要在 articles 表当中加一个 author_id 字段来标明作者的 id，和 users 表相关联。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;不过也并非一切一对多关联的实体都需要通过外键来约束。&lt;/strong&gt; 在特定的情况下，比如某个实体的内容对于另外一个实体来说是 &lt;strong&gt;共用的&lt;/strong&gt; ，那就没必要通过外键来进行约束，直接在另外的那一个实体内部进行 id 的添加即可。比如对于文章标签 (article_labels) 这一个实体，我们知道一个文章是可以加多个标签的，本来应该是一对多的关系，外键加在 article_labels 这个表中是第一直觉；但是实际上，大多数的文章都会重复的使用同一个文章标签来标明自己的所属类别，意味着如果采用了外键的形式，那么数据库表中大多数 label_name 字段都会是重复的。并且对于前端来说，文章标签是用户自行选择添加的，主要方式并不是自己输入，因此获取到不重复的文章标签列表也是重要的功能。基于以上几点的考虑，文章标签是没必要通过外键关联 articles 表，而是直接在 articles 表中加一个 article_labels 字段，其中包含了以英文逗号为分隔的 label_id 列表来标明这篇文章的标签，这样子才能够确保文章标签表的干净，也便于前后端的接口实现。&lt;/p&gt;
-&lt;p&gt;总结一下，面对一个一对多的关系：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;如果 “多” 的这个实体所包含的信息对于每个 “一” 的实体来说 &lt;strong&gt;是唯一的&lt;/strong&gt; ，那么有必要在 “多” 的实体表中加一个关联 “一” 表的外键；&lt;/li&gt;
-&lt;li&gt;如果 “多” 的这个实体所包含的信息对于每个 “一” 的实体来说 &lt;strong&gt;是共用的&lt;/strong&gt; ，那么只需要在 “一” 的实体表中加一个包含 “多” 的主键字段，并且采用字符串拼接的方式存储。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;不过面对第二种情况，也就是 “多” 的实体对于每个 “一” 的实体是共用的时，我事后咨询了一下 GPT，他提示我说更加遵循标准的做法使用一个额外的关联表（或称为连接表、交叉表），该表存储 “一” 和 “多” 实体间的关系。&lt;/p&gt;
-&lt;p&gt;通常情况下，不推荐在 “一” 的实体表中通过字符串拼接方式存储 “多” 的主键。这种做法虽然看似简单，但会导致几个问题：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;查询效率低&lt;/strong&gt;：如果需要查询所有与某个 “多” 实体关联的 “一” 实体，需要解析每个 “一” 实体中的这个字段，这在大型数据库中效率非常低。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;数据完整性和一致性难以维护&lt;/strong&gt;：如果 “多” 实体的某些信息改变，需要更新所有相关联的 “一” 实体记录，这容易出错且效率低下。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;违反数据库范式原则&lt;/strong&gt;：这种设计通常违反了第一范式（1NF），因为字段值不是原子的。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;例如，如果有一个学生表和一个课程表，一个课程可能由多个学生共享，可以创建一个额外的表来存储学生 ID 和课程 ID 的关系。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;所以可能，我事后还得去修改一下我的数据库结构设计。。&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h4 id=&#34;多对多&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#多对多&#34;&gt;#&lt;/a&gt; 多对多&lt;/h4&gt;
-&lt;p&gt;再比如对于用户点赞操作，这个是完全属于功能类的表添加，其中不包含任何具体的信息，仅仅只是提供了关联了用户与文章两者的信息。因此点赞功能的数据库实现是不涉及实体的，涉及到的是中间表的操作。由于一篇文章能被多个用户点赞，一个用户能够点赞多篇文章，是一个多对多的关系，因此，点赞表的设计可以仅设置两个外键：article_id 和 user_id，分别关联 articles 表和 users 表。&lt;/p&gt;
-&lt;h4 id=&#34;一对一&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一对一&#34;&gt;#&lt;/a&gt; 一对一&lt;/h4&gt;
-&lt;p&gt;如果两个实体之间是一对一的关系，那么关联的外键可以根据自己的需求，选择加到哪一方。无论加到哪一方都可以正常的查询。&lt;/p&gt;
-&lt;h3 id=&#34;数据库模型&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#数据库模型&#34;&gt;#&lt;/a&gt; 数据库模型&lt;/h3&gt;
-&lt;p&gt;好的，说了这么多，对于我自己设计数据库表的思路也大概就是这样，还是相对比较清晰简单的。接下来我贴出我的 MySQL 数据库表的设计图：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B.png&#34; alt=&#34;数据库模型&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;可见这个项目相对比较单纯，涉及到的数据表较少。其中不乏两张孤立的、不和任何表关联的表，这几个表都是起到存储公用数据的作用的。&lt;/p&gt;
-&lt;h2 id=&#34;api-接口设计&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#api-接口设计&#34;&gt;#&lt;/a&gt; API 接口设计&lt;/h2&gt;
-&lt;p&gt;数据库设计完成之后，便可以根据需求着手开始设计 API 接口了。&lt;/p&gt;
-&lt;p&gt;在整体的设计过程中，我也是采用了着眼于 “数据实体” 的方法，对每一个实体需要实现的功能都进行相应的归类，并且以一个接口实现一个特定目的为基准进行设计。&lt;/p&gt;
-&lt;p&gt;总的而言，在这个项目中接口主要分四类： &lt;strong&gt;用户接口&lt;/strong&gt; 、 &lt;strong&gt;文章接口&lt;/strong&gt; 、 &lt;strong&gt;评论接口&lt;/strong&gt; 以及 &lt;strong&gt;消息接口&lt;/strong&gt; 。&lt;/p&gt;
-&lt;p&gt;具体每个接口的设计在这里不再详细的赘述（因为如果细讲的话估计还得专门写篇文章单独讲清楚），详情可访问下方的  &lt;code&gt;Apifox&lt;/code&gt;  接口文档地址 ↓&lt;/p&gt;
-&lt;p&gt;API 接口设计文档地址：&lt;a href=&#34;https://littlesharing.apifox.cn&#34;&gt;https://littlesharing.apifox.cn&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240105215536685.png&#34; alt=&#34;API文档截图&#34; /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;三-技术实现&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-技术实现&#34;&gt;#&lt;/a&gt; 三、技术实现&lt;/h1&gt;
-&lt;p&gt;在这个部分，我会着重于当前最新版本的技术栈来进行对项目本身目录结构的讲解，详情部分如果想要找寻参考，可以直接参考源代码。&lt;/p&gt;
-&lt;h2 id=&#34;前端方面&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前端方面&#34;&gt;#&lt;/a&gt; 前端方面&lt;/h2&gt;
-&lt;p&gt;最新版本的前端技术栈使用的是：Vue3 + TypeScript + Pinia + ElementPlus + Vite。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;frontend-vue3.0
-├─ .env
-├─ .env.development
-├─ .env.production
-├─ .eslintrc.cjs
-├─ .gitignore
-├─ .prettierrc.cjs
-├─ .stylelintrc.cjs
-├─ auto-imports.d.ts
-├─ components.d.ts
-├─ env.d.ts
-├─ index.html
-├─ package.json
-├─ pnpm-lock.yaml
-├─ public
-│  ├─ element-variables.scss
-│  └─ favicon.ico
-├─ README.md
-├─ src
-│  ├─ api
-│  │  ├─ article
-│  │  │  ├─ index.ts
-│  │  │  └─ types
-│  │  │     └─ index.ts
-│  │  ├─ comment
-│  │  │  ├─ index.ts
-│  │  │  └─ types
-│  │  │     └─ index.ts
-│  │  ├─ message
-│  │  │  ├─ index.ts
-│  │  │  └─ types
-│  │  │     └─ index.ts
-│  │  ├─ types
-│  │  │  └─ index.ts
-│  │  └─ user
-│  │     ├─ index.ts
-│  │     └─ types
-│  │        └─ index.ts
-│  ├─ App.vue
-│  ├─ assets
-│  │  ├─ imgs
-│  │  └─ svgs
-│  ├─ components
-│  │  ├─ Global
-│  │  │  ├─ CommonHeader.vue
-│  │  │  └─ NoList.vue
-│  │  ├─ Little
-│  │  │  ├─ Button
-│  │  │  │  ├─ CollectionBtn.vue
-│  │  │  │  ├─ CommentBtn.vue
-│  │  │  │  ├─ LikeBtn.vue
-│  │  │  │  └─ ShareBtn.vue
-│  │  │  ├─ Comment
-│  │  │  │  ├─ Comment.vue
-│  │  │  │  ├─ CommentContent.vue
-│  │  │  │  └─ CommentInput.vue
-│  │  │  ├─ Item
-│  │  │  │  ├─ ArticleHomeItem.vue
-│  │  │  │  ├─ ArticlePersonalCenterItem.vue
-│  │  │  │  ├─ FocusItem.vue
-│  │  │  │  ├─ LittleArticleItem.vue
-│  │  │  │  ├─ MessageCommonItem.vue
-│  │  │  │  ├─ MessageSystemItem.vue
-│  │  │  │  └─ NewHomeItem.vue
-│  │  │  └─ Tool
-│  │  │     ├─ FilterBar.vue
-│  │  │     └─ ImgCropper.vue
-│  │  ├─ ModelArticleHome
-│  │  │  ├─ ArticleHomeAuthor.vue
-│  │  │  ├─ ArticleHomeBookMark.vue
-│  │  │  ├─ ArticleHomeData.vue
-│  │  │  ├─ ArticleHomeMain.vue
-│  │  │  └─ ArticleHomeSimilar.vue
-│  │  ├─ ModelHome
-│  │  │  ├─ HomeNewsList.vue
-│  │  │  └─ HomeTrend.vue
-│  │  ├─ ModelLogin
-│  │  │  └─ LoginWindow.vue
-│  │  ├─ ModelMessages
-│  │  │  ├─ MessageCommon.vue
-│  │  │  ├─ MessageSideBar.vue
-│  │  │  ├─ MessageSystem.vue
-│  │  │  └─ MessageUsers.vue
-│  │  ├─ ModelPersonalCenter
-│  │  │  ├─ MyArticle
-│  │  │  │  └─ ArticlePost.vue
-│  │  │  ├─ MyCollection
-│  │  │  │  └─ ArticleCollection.vue
-│  │  │  ├─ MyData
-│  │  │  │  └─ GraphInfo.vue
-│  │  │  ├─ MyFocus
-│  │  │  │  ├─ FocusIndex.vue
-│  │  │  │  ├─ MyFansList.vue
-│  │  │  │  └─ MyFocusList.vue
-│  │  │  ├─ MyInfo
-│  │  │  │  └─ InfoMain.vue
-│  │  │  └─ PersonalHeader.vue
-│  │  └─ ModelPost
-│  │     └─ PostArticle.vue
-│  ├─ main.ts
-│  ├─ router
-│  │  └─ index.ts
-│  ├─ service
-│  │  ├─ index.ts
-│  │  └─ request
-│  │     ├─ index.ts
-│  │     └─ types.ts
-│  ├─ store
-│  │  ├─ index.ts
-│  │  └─ modules
-│  │     ├─ articleLabels.ts
-│  │     ├─ keywords.ts
-│  │     ├─ unreadCount.ts
-│  │     └─ user.ts
-│  ├─ styles
-│  │  └─ index.scss
-│  ├─ types
-│  │  └─ mojs.d.ts
-│  ├─ utils
-│  │  ├─ constants.ts
-│  │  └─ index.ts
-│  ├─ views
-│  │  ├─ articleHome
-│  │  │  └─ index.vue
-│  │  ├─ home
-│  │  │  └─ index.vue
-│  │  ├─ login
-│  │  │  └─ index.vue
-│  │  ├─ messages
-│  │  │  └─ index.vue
-│  │  ├─ personalCenter
-│  │  │  └─ index.vue
-│  │  ├─ post
-│  │  │  └─ index.vue
-│  │  └─ postFinished
-│  │     └─ index.vue
-│  └─ vite-env.d.ts
-├─ tsconfig.json
-├─ tsconfig.node.json
-├─ vercel.json
-└─ vite.config.ts
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;环境配置文件 (.env, .env.development, .env.production)&lt;/strong&gt;: 这些文件用于配置不同环境（开发、生产等）的环境变量。  &lt;code&gt;.env&lt;/code&gt;  是公用的环境变量配置，  &lt;code&gt;.env.devlopment&lt;/code&gt;  是开发环境变量配置，  &lt;code&gt;.env.production&lt;/code&gt;  是部署环境变量配置。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;配置文件 (.eslintrc.cjs, .prettierrc.cjs, .stylelintrc.cjs)&lt;/strong&gt;: 分别用于配置 ESLint、Prettier 和 StyleLint，这些是代码质量和格式化的工具。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TypeScript 定义文件 (auto-imports.d.ts, components.d.ts, env.d.ts, mojs.d.ts, vite-env.d.ts)&lt;/strong&gt;: 用于定义 TypeScript 类型。前两个是 element-plus 组件库的自动导入插件自动生成的，  &lt;code&gt;mojs.d.ts&lt;/code&gt;  是给  &lt;code&gt;mojs&lt;/code&gt;  这个动画库临时写的一个声明文件，因为这个库目前是还没有适配 TS 版本，得自己手动临时写一个。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;入口文件 (index.html)&lt;/strong&gt;: Vue 应用的 HTML 入口文件，里面配了一些公有的样式，比如滚动条。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;项目配置文件 (package.json, pnpm-lock.yaml, tsconfig.json, tsconfig.node.json, vercel.json, vite.config.ts)&lt;/strong&gt;: 包括包管理、TypeScript 配置、部署配置和 Vite 构建工具配置。这个项目采用的包管理工具为  &lt;code&gt;pnpm&lt;/code&gt;  ，部署的话是直接放到  &lt;code&gt;vercel&lt;/code&gt;  上面的，然后通过  &lt;code&gt;cloudflare&lt;/code&gt;  服务重定向到我自己买的域名，从而使得其可以在国内访问。  &lt;code&gt;vercel.json&lt;/code&gt;  是配置  &lt;code&gt;vercel&lt;/code&gt;  部署的文件，防止刷新后页面丢失。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;public 目录&lt;/strong&gt;：包含静态资源。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://README.md&#34;&gt;README.md&lt;/a&gt;&lt;/strong&gt;: 项目的文档说明。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;src 目录&lt;/strong&gt;：包含 Vue 应用的主要源代码。
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;api 目录&lt;/strong&gt;：包含与后端 API 交互的逻辑，分为不同模块，也就是文章、评论、消息、用户。并且每个模块为单独的一个目录，每个目录配有 types 目录，其中的 Index.ts 专门用于接口的类型定义，包括请求参数与返回数据体类型定义。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;assets 目录&lt;/strong&gt;：存放静态资源，主要是 SVG 文件。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;components 目录&lt;/strong&gt;：包含 Vue 组件，按功能分类（如全局组件、小组件、各种模块组件）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;main.ts&lt;/strong&gt;: Vue 应用的主入口文件。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;router 目录&lt;/strong&gt;：包含 Vue Router 的配置。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;service 目录&lt;/strong&gt;：包含应用服务逻辑，如 HTTP 请求。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;store 目录&lt;/strong&gt;：包含 Pinia 状态管理的相关文件。编写方式统一为 modules 下方根据不同的用途进行分类，通过最外侧的 index.ts 统一暴露。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;styles 目录&lt;/strong&gt;：包含全局样式文件。主要是修改 element-plus 的主题色的 scss 文件。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;types 目录&lt;/strong&gt;：存放自定义的 TypeScript 类型定义。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;utils 目录&lt;/strong&gt;：包含工具函数和一些常用常量定义。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;views 目录&lt;/strong&gt;：具体的按照页面类别来分的主要页面组件。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;后端方面&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#后端方面&#34;&gt;#&lt;/a&gt; 后端方面&lt;/h2&gt;
-&lt;p&gt;最新版本的后端技术栈使用的是：原生 Express + TypeScript + MySQL。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;backend-express
-├─ .eslintrc.cjs
-├─ .gitignore
-├─ app.ts
-├─ bin
-│  └─ server.ts
-├─ constant.ts
-├─ controller
-│  ├─ article
-│  │  ├─ actions.ts
-│  │  ├─ basic.ts
-│  │  ├─ otherData.ts
-│  │  └─ types
-│  │     └─ index.ts
-│  ├─ comment
-│  │  ├─ actions.ts
-│  │  ├─ basic.ts
-│  │  ├─ otherData.ts
-│  │  └─ types
-│  │     └─ index.ts
-│  ├─ message
-│  │  ├─ actions.ts
-│  │  ├─ basic.ts
-│  │  ├─ otherData.ts
-│  │  └─ types
-│  │     └─ index.ts
-│  └─ user
-│     ├─ actions.ts
-│     ├─ basic.ts
-│     ├─ otherData.ts
-│     └─ types
-│        └─ index.ts
-├─ copyStatic.ts
-├─ database
-│  ├─ db.config.ts
-│  └─ index.ts
-├─ middleware
-│  ├─ upload.middleware.ts
-│  └─ user.middleware.ts
-├─ package.json
-├─ README.md
-├─ routes
-│  ├─ article.ts
-│  ├─ comment.ts
-│  ├─ message.ts
-│  └─ user.ts
-├─ tsconfig.json
-├─ types
-│  └─ cos-nodejs-sdk-v5.d.ts
-├─ utils
-│  └─ index.ts
-└─ views
-   ├─ error.jade
-   ├─ index.jade
-   └─ layout.jade
-&lt;/code&gt;&lt;/pre&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;配置文件 (.eslintrc.cjs, .gitignore, tsconfig.json)&lt;/strong&gt;: 分别用于配置 ESLint（代码质量工具）、Git 忽略文件和 TypeScript 编译选项。最后将这个项目通过 pm2 来部署的时候就是通过 tsconfig.json 来编译为 js 文件后再部署的。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;入口文件 (app.ts, bin/server.ts)&lt;/strong&gt;:  &lt;code&gt;app.ts&lt;/code&gt;  是应用的主入口，定义 Express 应用的基本设置； &lt;code&gt;bin/server.ts&lt;/code&gt;  用于启动服务器。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;常量文件 (constant.ts)&lt;/strong&gt;: 定义整个应用使用的常量。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;controller 目录&lt;/strong&gt;：包含处理不同数据模型（如文章、评论、消息、用户）的控制器，通常负责处理请求和返回响应。
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;actions.ts&lt;/strong&gt;: 用于定义具体的业务逻辑操作，通常是这个实体的除了增删改查以外的衍生操作。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;basic.ts&lt;/strong&gt;: 包含最基本的逻辑，也就是 &lt;strong&gt;增删改查&lt;/strong&gt; 。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;otherData.ts&lt;/strong&gt;: 用于处理与主要数据模型相关但不是核心部分的数据。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;types/index.ts&lt;/strong&gt;: 为每个控制器定义 TypeScript 类型。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;静态文件复制脚本 (copyStatic.ts)&lt;/strong&gt;: 用于复制静态资源。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;数据库目录 (database)&lt;/strong&gt;: 包含数据库配置（db.config.ts）和数据库连接逻辑（index.ts）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;中间件目录 (middleware)&lt;/strong&gt;: 包含中间件，如文件上传（upload.middleware.ts）和用户验证（user.middleware.ts）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;package.json&lt;/strong&gt;: 定义项目的依赖和脚本。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;&lt;a href=&#34;http://README.md&#34;&gt;README.md&lt;/a&gt;&lt;/strong&gt;: 项目文档说明。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;路由目录 (routes)&lt;/strong&gt;: 包含定义 API 路由的文件，路由通常指向不同的控制器。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;类型定义文件 (types/cos-nodejs-sdk-v5.d.ts)&lt;/strong&gt;: 腾讯云 COS Node.js SDK 的 TypeScript 类型定义。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;工具函数目录 (utils)&lt;/strong&gt;: 包含一些辅助函数。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;视图目录 (views)&lt;/strong&gt;: 包含 Jade（现称 Pug）模板文件，用于生成一些特定的 HTML 页面，比如有时候用户直接通过网页 url 来访问后端接口，如果找不到就会直接在网页上显示 404 的错误信息，这就是由这个 Jade 来生成的。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h2 id=&#34;部署方面&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#部署方面&#34;&gt;#&lt;/a&gt; 部署方面&lt;/h2&gt;
-&lt;p&gt;这个项目的部署是分开来的，前端是通过  &lt;code&gt;vercel&lt;/code&gt;  来进行部署；后端是通过我自己的服务器的 pm2 Node.js 项目管理器来部署。&lt;/p&gt;
-&lt;h3 id=&#34;前端部署&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前端部署&#34;&gt;#&lt;/a&gt; 前端部署&lt;/h3&gt;
-&lt;p&gt;前端的部署相对简单，直接在  &lt;code&gt;vercel&lt;/code&gt;  的官网中登录自己的 github 账号，然后选择自己的项目仓库并选择对应的分支之后，配置好命令就可以一键部署了。可以直接一下子帮你做到 CI/CD，是十分方便的一款部署工具，非常适合个人的小项目。&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240105221409109.png&#34; alt=&#34;vercel部署&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;部署了之后，我也将其域名转为国内的自己的域名，能够使其在国内进行访问。具体的将  &lt;code&gt;vercel&lt;/code&gt;  部署应用变为在国内可访问的步骤，可以参考一下我之前做记录的文章：&lt;a href=&#34;https://zhuanlan.zhihu.com/p/666912903&#34;&gt;如何在国内访问 vercel 部署应用？&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;除了部署本身，部署这一行为还涉及到几个比较重量级的方面：打包优化以及 SEO（搜索引擎优化）。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;关于打包优化，主要是借助了  &lt;code&gt;viteCompression&lt;/code&gt;  插件对项目资源进行 Gzip 压缩、使用  &lt;code&gt;viteImagemin&lt;/code&gt;  插件对图片资源大小进行优化、使用 vite 内部的 build 选项来优化模块兼容性和实现代码分割。具体的代码可以去参看源代码。&lt;/li&gt;
-&lt;li&gt;关于 SEO，这个项目采用了  &lt;code&gt;vite-ssg&lt;/code&gt;  这款插件进行 SSG 打包，将原本的单页面通过读取  &lt;code&gt;vue-router&lt;/code&gt;  配置来生成多页面。具体的配置方法可以参考我之前写的一篇文章：&lt;a href=&#34;https://zhuanlan.zhihu.com/p/672238479&#34;&gt;怎么在使用 Vue3+Pinia+Vite+TS+ElementPlus 的应用中引入 Vite-SSG 打包&lt;/a&gt;，也可以直接对着我的代码进行参考。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;后端部署&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#后端部署&#34;&gt;#&lt;/a&gt; 后端部署&lt;/h3&gt;
-&lt;p&gt;后端部署使用的是 pm2 这个 Node.js 项目管理工具，部署在我自己的 AWS EC2 实例上。&lt;/p&gt;
-&lt;p&gt;由于在 pm2 上面跑的 Node.js 项目只支持 JavaScript，而我的 Express 应用是基于 TypeScript 的，因此在部署的时候就避免不了编译。具体的编译选项已经在 tsconfig.json 中开启，输出编译内容到根目录的 dist 文件夹下面。&lt;/p&gt;
-&lt;p&gt;同时，由于  &lt;code&gt;.env&lt;/code&gt;  环境变量文件、静态资源存储目录  &lt;code&gt;public&lt;/code&gt;  及其子目录的存在，如果这两个地方发生了变更，也需要亲自手动在服务端修改服务端需要的对应内容。比如环境变量可能本地开发和部署环境是不同的，那么得在远程终端中进行相应的修改。而  &lt;code&gt;public&lt;/code&gt;  目录，由于涉及到将文件保存在本地之后再进行 COS 上传的操作，因此对应的路径目录还是需要和本地开发保持一致。具体的结构如下图所示：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240105222924902.png&#34; alt=&#34;image-20240105222924902&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;所以一般在本地进行开发完毕，到服务端进行部署的流程一般为：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;本地开发完毕，提交变更到远程仓库；&lt;/li&gt;
-&lt;li&gt;登录远程服务器，在后端项目的存放目录中将新代码进行拉取，如果涉及到新的 npm 包的变更，需要重新进行 install。&lt;/li&gt;
-&lt;li&gt;如果本地开发修改了涉及到  &lt;code&gt;.gitignore&lt;/code&gt;  的部分，也就是上面所说的环境变量和静态文件存储目录等，需要在远程终端处进行对应的修改。&lt;/li&gt;
-&lt;li&gt;上面几步进行好后，在根目录处运行  &lt;code&gt;npm run build&lt;/code&gt;  ，进行 ts 转 js 的打包。最终打包完成后，会输出到 dist 目录。&lt;/li&gt;
-&lt;li&gt;如果之前已经有启动项目，需要先运行  &lt;code&gt;pm2 stop XXX&lt;/code&gt;  将项目停掉。确认项目未启动后，运行  &lt;code&gt;pm2 start XXX pm2 start ./dist/bin/server.js&lt;/code&gt;  。这边的  &lt;code&gt;XXX&lt;/code&gt;  就是这个后端项目的名称，你自行命名。运行完毕后，可以通过  &lt;code&gt;pm2 list&lt;/code&gt;  来查看 pm2 正在管理的 Node.js 项目。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;然后，给出本地开发的  &lt;code&gt;.env&lt;/code&gt;  文件的变量配置，各位如果想要自己在本地尝试运行的话可以参考：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;NODE_ENV = development // 如果是部署环境，改为production
-
-PORT = 4000
-
-JWT_SECRET = xxxxxx
-
-DB_HOST = xxx
-DB_NAME = xxx
-DB_USER = xxx
-DB_PWD = xxx
-
-AVATAR_PATH = http://localhost:4000/uploads/images/avatars
-BACKGROUND_PATH = http://localhost:4000/uploads/images/backgrounds
-ARTICLE_IMG_PATH = http://localhost:4000/uploads/images/article-imgs
-MD_PATH = public/uploads/markdowns
-
-// 下面是腾讯云COS相关的配置
-COS_SECRETID = xxx
-COS_SECRETKEY = xxx
-COS_BUCKET = xxx
-COS_DOMAIN = xxx
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;最后，我的这个 Express 后端应用是配置了 SSH 证书的，也就是可以通过 https + 域名的方式进行后端接口的访问。这点是通过环境变量的  &lt;code&gt;NODE_ENV&lt;/code&gt;  来确定的，如果是本地开发就不启用证书，在远程部署则调用存放在本地的 SSH 证书进行部署。具体的在 Express 项目上部署 SSH 证书的步骤，有需要的同学可以自行去搜索一下，这边我简单贴一下代码截图：&lt;/p&gt;
-&lt;p&gt;&lt;img data-src=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/image-20240105224813864.png&#34; alt=&#34;在Express应用配置HTTPS&#34; /&gt;&lt;/p&gt;
-&lt;h1 id=&#34;五-结语&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#五-结语&#34;&gt;#&lt;/a&gt; 五、结语&lt;/h1&gt;
-&lt;p&gt;以上就是全部的关于  &lt;code&gt;littleSharing&lt;/code&gt;  这个项目的介绍了，算是从最最最开始的设计到实现一步步说明过来，总结了我自己的一些开发经验。当然经验肯定不是一蹴而就的，也是经过了相对比较多的版本迭代了之后才慢慢总结出来的一些东西。&lt;/p&gt;
-&lt;p&gt;之后关于这个项目，也是想着进行前后端两方面的重构与优化。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;前端部分可能总体的大框架部分就不会再变更了，也就是技术栈不会发生太大的变更，不过之后会着重于移动端适配以及其他的一些代码部分优化。&lt;/li&gt;
-&lt;li&gt;后端部分考虑从原本的 Express 框架换成 Nest.js 框架。后者也是我最近在学习的一款非常优秀的 Node.js 框架，提供了非常完整清晰的开发目录以及流程。原生的 Express 虽然轻量，但同时也导致了其不易维护，难以实现标准化的构建，也就是最佳实践。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;最近也是在打算开一个新坑：  &lt;code&gt;Picals&lt;/code&gt;  ，一个模仿  &lt;code&gt;Pixiv&lt;/code&gt;  的插画收藏网站，使用 Nuxt3 + Nest.js 作为主要技术栈。可以看我的前几篇文章，基本都是用的我之前存的图图。由于我本人是一个存图怪，又有比较强的收藏欲，因此老早就想有这么一个属于自己的存图空间了，因此开始计划了这么一个项目。如果开发进行了，我也会专门写点东西来介绍一下开发的经验过程的。&lt;/p&gt;
-&lt;p&gt;那就先这样吧，感谢你能够读到这里。如果对这个项目感到满意或者受到了一些小小的借鉴启发，希望能够点个小小的 star！~&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
