@@ -1,0 +1,14 @@
+Bundled license information:
+
+@unlazy/core/dist/shared/core.ae5b1847.mjs:
+  /**
+   * Encodes an RGBA image to a PNG data URI. RGB should not be premultiplied by A.
+   *
+   * @remarks
+   * This is optimized for speed and simplicity and does not optimize for size
+   * at all. This doesn't do any compression (all values are stored uncompressed).
+   *
+   * @see https://github.com/evanw/thumbhash
+   * @author Evan Wallace
+   * @license MIT
+   */
