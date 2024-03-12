@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://nonhana.xyz/2024/03/12/common-study-notes/fetchEventSource%E4%BD%BF%E7%94%A8-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</loc>
+    <lastmod>2024-03-12</lastmod>
+  </url>
+  <url>
     <loc>https://nonhana.xyz/2024/03/09/nestjs-study-notes/Nest-js%E4%BB%8E%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E8%BF%94%E5%9B%9E%E5%93%8D%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/</loc>
     <lastmod>2024-03-09</lastmod>
   </url>
