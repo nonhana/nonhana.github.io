@@ -10,8 +10,8 @@
         </author>
         <description>不要为每一件事都赋予意义。</description>
         <language>zh-CN</language>
-        <pubDate>Tue, 12 Mar 2024 16:42:50 +0800</pubDate>
-        <lastBuildDate>Tue, 12 Mar 2024 16:42:50 +0800</lastBuildDate>
+        <pubDate>Tue, 12 Mar 2024 17:58:15 +0800</pubDate>
+        <lastBuildDate>Tue, 12 Mar 2024 17:58:15 +0800</lastBuildDate>
         <category term="Blog" />
         <category term="Frontend" />
         <category term="Developer" />
@@ -23,6 +23,51 @@
         <category term="Node" />
         <category term="Hexo" />
         <category term="ShokaX" />
+        <item>
+            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</guid>
+            <title>Picals项目概述</title>
+            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</link>
+            <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
+            <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
+            <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
+            <pubDate>Tue, 12 Mar 2024 17:58:15 +0800</pubDate>
+            <description><![CDATA[ &lt;h1 id=&#34;概览&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#概览&#34;&gt;#&lt;/a&gt; 概览&lt;/h1&gt;
+&lt;p&gt;Picals 是一个受 Pixiv 启发、由我本人自发创建与设计的一个插画收藏平台项目。它旨在为大家提供一个相较于 Pixiv 更方便、在国内浏览更快捷的找图、存图的方式，并且和论坛的功能相结合，营造和谐、舒适的国内插画讨论环境。&lt;/p&gt;
+&lt;h1 id=&#34;这个项目の起源&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这个项目の起源&#34;&gt;#&lt;/a&gt; 这个项目の起源&lt;/h1&gt;
+&lt;p&gt;由于我是一个爱好动漫和插画的人，平时在各大的插画网站（如 Pixiv）收藏了很多中意的画作。但是这样子仅仅只是将插画图片保存到电脑磁盘内部，我现在想要仿照 Pixiv 等插画网站，打造一个属于我自己的插画收藏空间，从而能够随时随地浏览到我自己的一些收藏，并且能够提供给他人进行访问，能够大概的知道我的品味如何。&lt;/p&gt;
+&lt;p&gt;除了这个个人的一些牢骚之外，我也实在感觉国内的插画平台几乎都是死气沉沉的没有一丝生气，并且对于没有渠道去获取插画的用户显得十分的不友好。我希望能够提供这么一个平台，虽然不知道后续的发展具体会如何，至少希望能够让大家的找图、存图的过程更加的顺利一点。&lt;/p&gt;
+&lt;p&gt;最后，也是我个人的一点私心 —— 我的这个项目打算 &lt;strong&gt;从零开始 100% 手写出来&lt;/strong&gt; ，无论是在开发的角度还是产品的角度对这个项目进行全方位的审视与功能的完善、迭代与更新，我相信这是一个比较重大的挑战， &lt;strong&gt;不过我也喜欢这些挑战，我喜欢写点乱七八糟的东西来提升自己 www&lt;/strong&gt; 。&lt;/p&gt;
+&lt;h1 id=&#34;这个项目后续会怎么样&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这个项目后续会怎么样&#34;&gt;#&lt;/a&gt; 这个项目后续会怎么样&lt;/h1&gt;
+&lt;p&gt;由于这是概述文档，而且这个项目目前实际上仍在处于文档编写、尚未开工的状态，因此在这边只能大概的描述一下之后的规划。&lt;/p&gt;
+&lt;p&gt;首先是将手上的部分设计文档在开发之前处理完，包括但不限于：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;项目概述（就是这个文档）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目功能分析&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目 UI 原型设计&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目技术栈设计&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目数据库设计&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;项目接口文档&lt;/li&gt;
+&lt;li&gt;项目部署方案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;其中，粗体的部分是在开发之前需要处理好的；最后两个文档需要在开发的过程中进行统筹设计并不断地进行调整。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;接口文档打算采用 Swagger 进行自动生成，并且使用 Apifox 这款 API 管理工具进行管理；&lt;/li&gt;
+&lt;li&gt;项目部署方案打算基于目前的技术栈设计去调研一些相对合理的部署方案。 &lt;strong&gt;最佳实践！！最佳实践！！最佳实践！！&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;项目的仓库地址&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#项目的仓库地址&#34;&gt;#&lt;/a&gt; 项目的仓库地址&lt;/h1&gt;
+&lt;p&gt;前端项目：&lt;a href=&#34;https://github.com/nonhana/Picals-Frontend-React&#34;&gt;https://github.com/nonhana/Picals-Frontend-React&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;后端项目：&lt;a href=&#34;https://github.com/nonhana/Picals-Backend-Nest&#34;&gt;https://github.com/nonhana/Picals-Backend-Nest&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;联系加入我们&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#联系加入我们&#34;&gt;#&lt;/a&gt; 联系 / 加入我们&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;因为我看别人的文档好像都有写这一块，我也模仿着写写吧...&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;如果您是无意间浏览到这个文档的，并且有兴趣参与这个项目，或者是要反馈 BUG、提出需求，或者想要单纯的了解我们、讨论交流，您都可以加入我们的哦！ &lt;strong&gt;对于我而言，大家一起做东西，在交流中一起进步、一起了解更多的前沿技术或者是解决一些困难的 bug，都是十分有意义的事情！&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;邮箱：&lt;a href=&#34;mailto:zhouxiang757@gmail.com&#34;&gt;zhouxiang757@gmail.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;QQ：1209220829&lt;/li&gt;
+&lt;/ul&gt;
+ ]]></description>
+        </item>
         <item>
             <guid isPermalink="true">https://nonhana.xyz/2024/03/12/common-study-notes/fetchEventSource%E4%BD%BF%E7%94%A8-%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/</guid>
             <title>fetchEventSource使用+源码解析</title>
@@ -43,7 +88,7 @@
 &lt;h2 id=&#34;安装&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#安装&#34;&gt;#&lt;/a&gt; 安装&lt;/h2&gt;
 &lt;p&gt;输入以下的命令即可安装：&lt;/p&gt;
 &lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; &lt;span class=&#34;token parameter variable&#34;&gt;--save&lt;/span&gt; @microsoft/fetch-event-source&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;h2 id=&#34;使用步骤&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#使用步骤&#34;&gt;#&lt;/a&gt; 使用步骤&lt;/h2&gt;
-&lt;p&gt;其实 fetch-event-source 的使用非常非常的简单纯粹，不过前提是你得有那种使用的场景。当然可以。使用  &lt;code&gt;@microsoft/fetch-event-source&lt;/code&gt;  的步骤可以这样拆分：&lt;/p&gt;
+&lt;p&gt;其实 fetch-event-source 的使用非常非常的简单纯粹，不过前提是你得有那种使用的场景。使用  &lt;code&gt;@microsoft/fetch-event-source&lt;/code&gt;  的步骤可以这样拆分：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;导入模块&lt;/strong&gt;：在编写 TS/JS 代码的部分导入  &lt;code&gt;fetchEventSource&lt;/code&gt;  函数，我是在 Vue3 中的 TS 环境使用的。&lt;/p&gt;
@@ -165,8 +210,8 @@
             <title>Nest.js从收到请求到返回响应的数据处理流程</title>
             <link>https://nonhana.xyz/2024/03/09/nestjs-study-notes/Nest-js%E4%BB%8E%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E8%BF%94%E5%9B%9E%E5%93%8D%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <category term="IOC/DI" scheme="https://nonhana.xyz/tags/IOC-DI/" />
@@ -395,11 +440,11 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://nonhana.xyz/2024/02/19/project-experiences/Picals%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/</guid>
+            <guid isPermalink="true">https://nonhana.xyz/2024/02/19/picals-about/Picals%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/</guid>
             <title>Picals项目设计文档</title>
-            <link>https://nonhana.xyz/2024/02/19/project-experiences/Picals%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/</link>
-            <category term="一些项目相关总结" scheme="https://nonhana.xyz/categories/project-experiences/" />
-            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
+            <link>https://nonhana.xyz/2024/02/19/picals-about/Picals%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/</link>
+            <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
+            <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
             <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
             <pubDate>Mon, 19 Feb 2024 14:51:10 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
@@ -1431,8 +1476,8 @@ const getMsg = (msg: string) =&amp;gt; &amp;#123;
             <title>学习Nest.js笔记（三）：TS中的装饰器（Decorator）</title>
             <link>https://nonhana.xyz/2024/01/31/nestjs-study-notes/TS%E4%B8%AD%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88Decorator%EF%BC%89/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <category term="Decorator(TypeScript)" scheme="https://nonhana.xyz/tags/Decorator-TypeScript/" />
@@ -1536,8 +1581,8 @@ const getMsg = (msg: string) =&amp;gt; &amp;#123;
             <title>学习Nest.js笔记（二）：控制反转和依赖注入</title>
             <link>https://nonhana.xyz/2024/01/31/nestjs-study-notes/%E6%8E%A7%E5%88%B6%E5%8F%8D%E8%BD%AC%E5%92%8C%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <category term="IOC/DI" scheme="https://nonhana.xyz/tags/IOC-DI/" />
@@ -1606,8 +1651,8 @@ const getMsg = (msg: string) =&amp;gt; &amp;#123;
             <title>学习Nest.js笔记（一）：Nest.js是什么</title>
             <link>https://nonhana.xyz/2024/01/31/nestjs-study-notes/Nest-js%E6%98%AF%E4%BB%80%E4%B9%88/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <pubDate>Wed, 31 Jan 2024 15:47:09 +0800</pubDate>
@@ -1679,158 +1724,6 @@ const getMsg = (msg: string) =&amp;gt; &amp;#123;
 &lt;p&gt;首先新建一个存放 Fastify 项目的空目录，用 IDE 打开后在里面安装相关的依赖：&lt;/p&gt;
 &lt;figure class=&#34;highlight bash&#34;&gt;&lt;figcaption data-lang=&#34;bash&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; fastify&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token function&#34;&gt;npm&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;install&lt;/span&gt; @types/node typescript ts-node --save-dev&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;接下来，创建一个名为  &lt;code&gt;server.ts&lt;/code&gt;  的文件，并写入以下代码：&lt;/p&gt;
 &lt;figure class=&#34;highlight typescript&#34;&gt;&lt;figcaption data-lang=&#34;typescript&#34;&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td data-num=&#34;1&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;import&lt;/span&gt; fastify &lt;span class=&#34;token keyword&#34;&gt;from&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;fastify&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;2&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;3&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token keyword&#34;&gt;const&lt;/span&gt; server &lt;span class=&#34;token operator&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;token function&#34;&gt;fastify&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;4&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;5&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;get&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;&#34;/&#34;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token keyword&#34;&gt;async&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;request&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; reply&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;6&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;return&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt; hello&lt;span class=&#34;token operator&#34;&gt;:&lt;/span&gt; &lt;span class=&#34;token string&#34;&gt;&#34;world&#34;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;7&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;8&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;9&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;listen&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;3000&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;,&lt;/span&gt; address&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token operator&#34;&gt;=&gt;&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;10&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token keyword&#34;&gt;if&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;token punctuation&#34;&gt;&amp;#123;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;11&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    server&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;log&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;error&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;err&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;12&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;    process&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;exit&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token number&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;13&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;14&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;  &lt;span class=&#34;token builtin&#34;&gt;console&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;token function&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;token template-string&#34;&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;span class=&#34;token string&#34;&gt;Server listening at &lt;/span&gt;&lt;span class=&#34;token interpolation&#34;&gt;&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;$&amp;#123;&lt;/span&gt;address&lt;span class=&#34;token interpolation-punctuation punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token template-punctuation string&#34;&gt;`&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td data-num=&#34;15&#34;&gt;&lt;/td&gt;&lt;td&gt;&lt;pre&gt;&lt;span class=&#34;token punctuation&#34;&gt;&amp;#125;&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;)&lt;/span&gt;&lt;span class=&#34;token punctuation&#34;&gt;;&lt;/span&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;p&gt;然后直接在控制台运行  &lt;code&gt;ts-node server.ts&lt;/code&gt;  就可以启动了。最终的效果和上述 Express 启动的服务类似。&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://nonhana.xyz/2024/01/31/interview-records/%E7%99%BE%E5%BA%94%E7%A7%91%E6%8A%80%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</guid>
-            <title>百应科技前端开发实习生一面面试记录</title>
-            <link>https://nonhana.xyz/2024/01/31/interview-records/%E7%99%BE%E5%BA%94%E7%A7%91%E6%8A%80%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/</link>
-            <category term="面试记录" scheme="https://nonhana.xyz/categories/interview-records/" />
-            <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
-            <category term="面试" scheme="https://nonhana.xyz/tags/%E9%9D%A2%E8%AF%95/" />
-            <pubDate>Wed, 31 Jan 2024 15:24:35 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
-&lt;p&gt;有一说一，这可以说是我近期最糟糕的面试体验。我本来就没什么经验，紧张的要死，面对面试官强迫着自己不要紧张堆出来笑脸，可我对面的我感觉不是个人坐在那里，就是一个无情的问题提出机。他问我一个问题，我叽里呱啦讲了半天，中途我不对的地方没有帮我指出，甚至一声不吭，对我的发言完全没有任何的反应，马上又给了我下一个问题，让我感觉他是不是赶着下班？是不是不太想面我？&lt;/p&gt;
-&lt;p&gt;总而言之，这次面试到后面连我自己都不耐烦起来了，对这样的一个面试官我的发挥自然也不能算好。&lt;/p&gt;
-&lt;p&gt;讲一下题吧，总共才 40min 左右，问了一堆：&lt;/p&gt;
-&lt;h1 id=&#34;二-题目列表&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#二-题目列表&#34;&gt;#&lt;/a&gt; 二、题目列表&lt;/h1&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;自我介绍&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;你平常是怎么学习前端的？&lt;/strong&gt; 说了平常用 GitHub 来浏览优秀开源项目，吸取、借鉴其优秀的地方；平常在技术社区浏览文章来积累自己；用 ChatGPT 来辅助我学习等。之后问我有没有看过什么书来学习前端 (?) 由于我前端技术基本纯靠网上的一些技术网站或者 B 站来找教程跟完，基本上没看过书，就老实说了。有没有懂的同学跟我说一下看书重不重要？&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;讲一下你从 GitHub 上面浏览的一个项目吧，并且说说你从中学到了什么。&lt;/strong&gt; 我答了一个模仿 B 站的一个 &lt;code&gt;Vue3+Vite+Pinia+TypeScript+ElementPlus&lt;/code&gt;  的项目，然后说自己学到了很多，比如组件化、工程化、模块化、规范化、目录结构设计、一些比较通用的组件或者工具的封装思路等。他也没评价。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;根据我简历提问，我简历写了我在青训营大项目还有上学期打的服务外包担任队长，问我是不是团队负责人，每个团队多少人，队内的各个队员的主要职责是怎么分工的，工程是怎么统筹推进的。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;讲一下浏览器搜索框输入 URL 会发生什么事情。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;浏览器渲染的过程讲一下。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;讲一下 http 中的缓存。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;讲讲 http 和 https 的区别。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;讲讲 CSS 中的盒模型。&lt;/strong&gt; 叽里呱啦的说完了四层，突然给我提了个 &lt;strong&gt;怪异盒模型&lt;/strong&gt; 的概念，问我知不知道。我之前说实话真的没听过，之后问我  &lt;code&gt;box-sizing&lt;/code&gt;  :  &lt;code&gt;border-box&lt;/code&gt;  这个属性是什么意思。我直接秒回不知道不浪费时间，他就跟我解释了一下。&lt;/p&gt;
-&lt;p&gt;事后我问了问 GPT，接下来贴一下它的回答：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&amp;quot;怪异盒模型&amp;quot;（Quirks Mode Box Model）是一个在早期的浏览器版本中使用的 CSS 盒模型。在这个模式下，元素的  &lt;code&gt;width&lt;/code&gt;  和  &lt;code&gt;height&lt;/code&gt;  属性不仅包括内容的尺寸，还包括了内边距（padding）和边框（border）。这与现代浏览器中默认使用的标准盒模型（W3C Box Model）是不同的。在标准盒模型中，  &lt;code&gt;width&lt;/code&gt;  和  &lt;code&gt;height&lt;/code&gt;  仅仅定义了内容区域的尺寸，而内边距和边框则是额外添加的。&lt;/p&gt;
-&lt;p&gt;怪异盒模型主要是为了向后兼容那些在早期浏览器规范成型之前就已经存在的网站。现代浏览器通常允许开发者通过设置文档类型（DOCTYPE）来选择使用哪种盒模型。&lt;/p&gt;
-&lt;p&gt;如果你在开发过程中遇到了怪异盒模型，你可以通过设置 CSS 的  &lt;code&gt;box-sizing&lt;/code&gt;  属性为  &lt;code&gt;border-box&lt;/code&gt;  或  &lt;code&gt;content-box&lt;/code&gt;  来明确指定使用哪种盒模型。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;border-box&lt;/code&gt;  ：这会使元素采用怪异盒模型的行为，其中  &lt;code&gt;width&lt;/code&gt;  和  &lt;code&gt;height&lt;/code&gt;  包括内容、内边距和边框。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;content-box&lt;/code&gt;  ：这会使元素采用标准盒模型的行为，其中  &lt;code&gt;width&lt;/code&gt;  和  &lt;code&gt;height&lt;/code&gt;  仅包括内容。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;看来确实是很古早的模型，他说现在这个属性很常见？我也不太清楚。&lt;/p&gt;
-&lt;ol start=&#34;10&#34;&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;讲讲 CSS 中可继承的属性有哪些。&lt;/strong&gt; 一开始题目都没听懂，问是不是 JS 的，结果跟我说是 CSS 的。我又一次完全没了解过的问题出现了，直接说不会。&lt;/p&gt;
-&lt;p&gt;问问 GPT 吧：&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在 CSS 中，有些属性是可继承的，而有些则不是。可继承的属性意味着子元素会继承其父元素的这些属性值，除非子元素自己有明确的设置。以下是一些常见的可继承的 CSS 属性：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;文本相关属性&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;color&lt;/code&gt; ：文本颜色&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;font&lt;/code&gt; ：字体设置（这包括  &lt;code&gt;font-family&lt;/code&gt;  、  &lt;code&gt;font-size&lt;/code&gt;  、  &lt;code&gt;font-weight&lt;/code&gt;  等）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;text-align&lt;/code&gt; ：文本对齐方式&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;text-indent&lt;/code&gt; ：文本缩进&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;line-height&lt;/code&gt; ：行高&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;letter-spacing&lt;/code&gt; ：字符间距&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;text-transform&lt;/code&gt; ：文本转换（如大写、小写等）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;white-space&lt;/code&gt; ：空白字符的处理方式&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;word-spacing&lt;/code&gt; ：单词间距&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;列表相关属性&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;list-style&lt;/code&gt; ：列表样式（这包括  &lt;code&gt;list-style-type&lt;/code&gt;  、  &lt;code&gt;list-style-position&lt;/code&gt;  等）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;表格相关属性&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;border-collapse&lt;/code&gt; ：边框合并设置&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;border-spacing&lt;/code&gt; ：边框间距&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;caption-side&lt;/code&gt; ：表格标题位置&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;empty-cells&lt;/code&gt; ：空单元格的显示方式&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt;其他&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;visibility&lt;/code&gt; ：可见性（注意：  &lt;code&gt;hidden&lt;/code&gt;  值不会被继承，但子元素会表现得像继承了）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;cursor&lt;/code&gt; ：光标样式&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;direction&lt;/code&gt; ：文本方向&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;这些只是一些常见的可继承属性，不是一个完整的列表。具体哪些属性是可继承的，还取决于浏览器的实现和 CSS 规范的版本。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;CSS 中有三个属性可以让某个 DOM 隐藏，分别是：  &lt;code&gt;display:none&lt;/code&gt;  、  &lt;code&gt;visable:hidden&lt;/code&gt;  、  &lt;code&gt;opacity:0&lt;/code&gt;  ，讲讲这三种方式彼此之间有什么区别？&lt;/strong&gt; 由于第二种用的不多，答得一般，没太分析出彼此的不同。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;在 CSS 中，  &lt;code&gt;display: none&lt;/code&gt;  、  &lt;code&gt;visibility: hidden&lt;/code&gt;  和  &lt;code&gt;opacity: 0&lt;/code&gt;  都可以用于隐藏 DOM 元素，但它们之间有一些重要的区别：&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; &lt;code&gt;display: none&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;渲染效果&lt;/strong&gt;：元素不会被渲染，即完全消失，不占用任何空间。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;文档流&lt;/strong&gt;：元素会从文档流中移除，就像它从未存在一样。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;可访问性&lt;/strong&gt;：对于屏幕阅读器等辅助技术，元素及其子元素也会被隐藏。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;性能&lt;/strong&gt;：如果频繁地切换该属性，可能会导致页面重新布局，影响性能。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;事件响应&lt;/strong&gt;：元素不会响应任何用户事件（如点击、悬停等）。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt; &lt;code&gt;visibility: hidden&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;渲染效果&lt;/strong&gt;：元素会被隐藏，但仍然占用空间。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;文档流&lt;/strong&gt;：元素仍然存在于文档流中。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;可访问性&lt;/strong&gt;：对于屏幕阅读器，元素（通常）也会被隐藏。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;性能&lt;/strong&gt;：性能开销相对较小，因为不需要重新布局。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;事件响应&lt;/strong&gt;：元素不会响应任何用户事件（如点击、悬停等）。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;&lt;strong&gt; &lt;code&gt;opacity: 0&lt;/code&gt; &lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;渲染效果&lt;/strong&gt;：元素会变得完全透明，但仍然可见（例如，你仍然可以看到其背后的内容）。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;文档流&lt;/strong&gt;：元素仍然存在于文档流中。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;可访问性&lt;/strong&gt;：元素对于屏幕阅读器是可见的。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;性能&lt;/strong&gt;：通常不会导致重新布局，但可能会影响绘制性能。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;事件响应&lt;/strong&gt;：元素仍然会响应用户事件（如点击、悬停等）。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;这些属性各有用途，选择哪一个取决于你想达到什么效果。例如，如果你想让元素消失但不影响布局， &lt;code&gt;visibility: hidden&lt;/code&gt;  是一个好选择。如果你想让元素完全消失并从文档流中移除， &lt;code&gt;display: none&lt;/code&gt;  更合适。如果你只是想让元素暂时不可见但仍能交互， &lt;code&gt;opacity: 0&lt;/code&gt;  是一个好选项。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;在 JS 当中，有两种判断类型的方法：  &lt;code&gt;typeof&lt;/code&gt;  和  &lt;code&gt;instanceOf&lt;/code&gt;  ，请问这两种方法有什么区别？&lt;/strong&gt; 基本上倒背如流了。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;讲讲原型、原型链、构造函数三者之间的关系。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;ES6 中有一个箭头函数，箭头函数可以用作构造函数吗？&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;之前有接触过  &lt;code&gt;React&lt;/code&gt;  吗？&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;讲讲你所了解过的 JS 设计模式吧。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;两道简单的算法题：&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;如何判断一棵树是平衡二叉树？（直接说不会二叉树的所有东西）&lt;/li&gt;
-&lt;li&gt;如何判断一个链表中有环？（直接双指针法秒了）&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;反问环节。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;三-后记&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#三-后记&#34;&gt;#&lt;/a&gt; 三、后记&lt;/h1&gt;
-&lt;p&gt;目前结果还没出，我很惊讶为什么这么执着于 CSS 的部分，问的还比较细，主要是对我擅长的 Vue 框架只字不提，我回答的怎么样也不给我回复，我只感觉挺无语的，面到后面我也没啥心情了，也才 40min 左右。慢慢等结果吧。&lt;/p&gt;
  ]]></description>
         </item>
     </channel>
