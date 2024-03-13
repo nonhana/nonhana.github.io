@@ -24,8 +24,109 @@
         <category term="Hexo" />
         <category term="ShokaX" />
         <item>
+            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</guid>
+            <title>Picals项目功能分析</title>
+            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</link>
+            <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
+            <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
+            <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
+            <pubDate>Tue, 12 Mar 2024 17:58:15 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;由于主要目的是参考 Pixiv 等插画网站设计制作一类似的插画交流网站，因此这个网站会具备一些用户之间沟通互动的属性，并且主要形式是以用户为单位。因此可以将这个项目的一些 &lt;strong&gt;主要功能&lt;/strong&gt; 罗列如下：&lt;/p&gt;
+&lt;h1 id=&#34;用户功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#用户功能&#34;&gt;#&lt;/a&gt; 用户功能&lt;/h1&gt;
+&lt;p&gt;关于用户的功能可以大致分为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;登录注册&lt;/p&gt;
+&lt;p&gt;登录注册是用户进入站点解锁全部功能所必须的，否则将无法进行用户之间的互动操作，比如评论、点赞、收藏等。只有登录之后用户才能够进行用户的互动操作。&lt;/p&gt;
+&lt;p&gt;主要考虑的注册方式是 &lt;strong&gt;邮箱 + 验证码注册&lt;/strong&gt; ，主要考虑的登录方式是 &lt;strong&gt;邮箱 + 密码登录&lt;/strong&gt; 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;个人中心&lt;/p&gt;
+&lt;p&gt;个人中心是用户管理自己作品、管理个人信息的主要空间。&lt;/p&gt;
+&lt;p&gt;在个人中心，用户能够设置自己的个人资料，也可以对自己已经上传的作品进行重新编辑或是删除等操作，同时也能够浏览自己作品的一些数据，比如我发布的作品的点赞量趋势折线图等等。&lt;/p&gt;
+&lt;p&gt;对于自己收藏插画的管理，需要提供一个类似于 B 站视频收藏管理的功能，用户可以新建收藏夹对自己收藏的内容进行分配。一般普通进行收藏的会直接放到默认收藏夹，待用户自己去分配。&lt;/p&gt;
+&lt;p&gt;同时，个人中心也分为自己的个人中心和其他用户的个人中心。两者之间需要在个人信息的管理以及对收藏、喜欢、发布的作品的管理功能上做出适配。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关注 / 被关注&lt;/p&gt;
+&lt;p&gt;对于一个偏论坛性质的插画分享平台来说，关注是获取自己喜欢风格的作品最佳的途径，被关注则可以激发用户上传作品的动力。在 Picals 中，关注用户后可以在 “我关注的用户” 中浏览到发布的相关作品。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;评论发表&lt;/p&gt;
+&lt;p&gt;在插画详情页的浏览中，用户可以发布相应的评论来与大家进行和谐、友善的交流，也可以回复他人的评论。如果自己的作品被他人评论，会以消息的形式发送给对应的用户；同时，如果自己的评论被别人回复，也会接收到对应的消息以作提示。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;插画上传功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画上传功能&#34;&gt;#&lt;/a&gt; 插画上传功能&lt;/h1&gt;
+&lt;p&gt;一幅完整的插画上传主要的内容包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;插画名称&lt;/li&gt;
+&lt;li&gt;插画简介&lt;/li&gt;
+&lt;li&gt;插画的标签（tags） &lt;strong&gt;（当用户上传了全新的标签的时候会自动将新标签添加到数据库）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;插画的原文件列表&lt;/li&gt;
+&lt;li&gt;是否是 AI 作品&lt;/li&gt;
+&lt;li&gt;是否开启作品评论功能&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;插画上传分两种主要形式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;转载作品&lt;/p&gt;
+&lt;p&gt;由于只是仿照 Pixiv 等现成网站所制作的比较小的插画收藏网站，因此这个站点更多的只是转载他人的作品。&lt;/p&gt;
+&lt;p&gt;转载他人的作品需要标明 &lt;strong&gt;作品原来的访问网址 url&lt;/strong&gt; 、 &lt;strong&gt;原作者的名称&lt;/strong&gt; 以及 &lt;strong&gt;这个作者的发布插画的主要个人主页&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;除了这些附加信息之外，还需要把上述最基本的信息补充完整。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;原创作品&lt;/p&gt;
+&lt;p&gt;对于原创作品而言，则无需补充附加信息，只用补充插画的基本信息即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;上传作品之后，后端会对这个作品分两部分进行保存：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;作品的压缩缩略图，主要在一些插画 item 中进行一般展示。&lt;/li&gt;
+&lt;li&gt;作品的原文件，主要在插画详情界面进行展示或者下载。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：插画的上传必须遵守相关的发布规定，否则将予以剔除。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;插画推荐功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画推荐功能&#34;&gt;#&lt;/a&gt; 插画推荐功能&lt;/h1&gt;
+&lt;p&gt;插画的推荐功能主要分为 &lt;strong&gt;首页推荐&lt;/strong&gt; 和 &lt;strong&gt;作品底下推荐&lt;/strong&gt; 。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首页推荐&lt;/p&gt;
+&lt;p&gt;用户刚打开网站后，进入的就是网站的主页。主页需要提供插画推荐功能，自动推送用户感兴趣的插画。&lt;/p&gt;
+&lt;p&gt;如何体现感兴趣？ &lt;strong&gt;主要是通过统计这个用户最近收藏的插画的标签。&lt;/strong&gt; 用户最近收藏的插画的哪个标签数越多，包含有那个标签的插画就会被推送的越多。 &lt;strong&gt;已经被用户加到收藏的插画不会再在首页的推荐中出现。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作品底下推荐&lt;/p&gt;
+&lt;p&gt;在 Pixiv 的插画详情界面，如果用户划到最底下，会自动弹出来 &lt;strong&gt;与当前插画的标签类似或者相拟合的插画&lt;/strong&gt; 。当然也不全是必须都符合，用户不断的往下划会有一个分页的形式，与当前插画相类似的只会推荐一两页，之后还是会按照首页推荐的逻辑进行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;插画作者推荐功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画作者推荐功能&#34;&gt;#&lt;/a&gt; 插画作者推荐功能&lt;/h1&gt;
+&lt;p&gt;作者推荐功能和插画推荐功能是类似的，不过是根据 &lt;strong&gt;对这个作者本身投稿的作品包含的全部 tag 统计&lt;/strong&gt; 和 &lt;strong&gt;用户自身最近浏览的作品的 tags&lt;/strong&gt; 的拟合程度来进行的，放在首页插画推荐的下方。&lt;/p&gt;
+&lt;p&gt;这个具体的拟合算法还有待商榷，考虑一些烂大街的拟合算法。&lt;/p&gt;
+&lt;h1 id=&#34;详细作品浏览功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#详细作品浏览功能&#34;&gt;#&lt;/a&gt; 详细作品浏览功能&lt;/h1&gt;
+&lt;p&gt;对于喜欢收藏插画的人而言，什么才是最重要的？就是这个插画本身的 &lt;strong&gt;画质一定要高，文件一定要大！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当用户以各种的手段进入到插画详情界面之后，用户可以浏览到插画的高清大图（就是用户自己上传的原文件）以及之前用户上传插画的时候所填写的各种信息字段。&lt;/p&gt;
+&lt;p&gt;除了对插画的浏览，也提供了插画的保存功能，用户点击插画下方的下载按钮就可以进行保存原文件。&lt;/p&gt;
+&lt;h1 id=&#34;搜索功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#搜索功能&#34;&gt;#&lt;/a&gt; 搜索功能&lt;/h1&gt;
+&lt;p&gt;推荐不可能会把我们想找的作品直接推到我们眼前，这时候就需要搜索功能。&lt;/p&gt;
+&lt;p&gt;参考 Pixiv 的搜索功能，可以将插画网站的搜索主要分为三种类型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;作品名称搜索&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;作品标签搜索&lt;/strong&gt; （最常用最实用）&lt;/li&gt;
+&lt;li&gt;作者名称搜索&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于搜索结果，自然也得分别提供三种不同的搜索结果页面来显示。&lt;/p&gt;
+&lt;p&gt;对于作品名称搜索，单纯的展示模糊搜索能够查询到的作品，然后以一个个 item 的形式进行展示即可。&lt;/p&gt;
+&lt;p&gt;对于作品标签搜索，需要以 &lt;strong&gt;#&lt;/strong&gt; 开头，后接标签名来搜索。在搜索结果页需要展示携带这个标签的作品数、这个标签的图标（初步拟定为随便取一个这个 tag 比较火的作品作为 logo）以体现这个标签的火爆程度。下面也是接着展示作品的列表。&lt;/p&gt;
+&lt;p&gt;对于作者名称搜索，直接切换至作者搜索的 tag 然后键入作者名进行搜索即可。搜索结果页展示的是跟推荐作者展示的 item 一样的作者信息。&lt;/p&gt;
+&lt;h1 id=&#34;作品浏览队列维护功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#作品浏览队列维护功能&#34;&gt;#&lt;/a&gt; 作品浏览队列维护功能&lt;/h1&gt;
+&lt;p&gt;这个是我临时想到的一个功能点。在 Pixiv 当中，无论你是从哪里点开的作品，当你按下左右键盘按键进行切换时， &lt;strong&gt;永远只会在对应作者发布的作品列表中进行切换&lt;/strong&gt; ，这也就意味着我们如果是从 “关注的作者” 的队列点击进入的时候，我们想切换到关注的作者的作品队列进行无缝浏览，只能退出之后重新点击作品。&lt;/p&gt;
+&lt;p&gt;现在有一个设想，当用户从对应的作品列表 —— 无论是关注作者还是推荐作品 —— 点击 Item 进入详情页的时候，会出现 Message 提示，默认是按照当前点击进入的作品队列顺序进行浏览，同时可以点击上方的切换队列按钮切换至作者发布作品列表进行浏览。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
             <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/</guid>
-            <title>Picals项目概述</title>
+            <title>Picals项目UI原型设计</title>
             <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/</link>
             <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
             <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
@@ -211,110 +312,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</guid>
+            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</guid>
             <title>Picals项目概述</title>
-            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</link>
-            <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
-            <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
-            <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
-            <pubDate>Tue, 12 Mar 2024 17:58:15 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;由于主要目的是参考 Pixiv 等插画网站设计制作一类似的插画交流网站，因此这个网站会具备一些用户之间沟通互动的属性，并且主要形式是以用户为单位。因此可以将这个项目的一些 &lt;strong&gt;主要功能&lt;/strong&gt; 罗列如下：&lt;/p&gt;
-&lt;h1 id=&#34;用户功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#用户功能&#34;&gt;#&lt;/a&gt; 用户功能&lt;/h1&gt;
-&lt;p&gt;关于用户的功能可以大致分为：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;登录注册&lt;/p&gt;
-&lt;p&gt;登录注册是用户进入站点解锁全部功能所必须的，否则将无法进行用户之间的互动操作，比如评论、点赞、收藏等。只有登录之后用户才能够进行用户的互动操作。&lt;/p&gt;
-&lt;p&gt;主要考虑的注册方式是 &lt;strong&gt;邮箱 + 验证码注册&lt;/strong&gt; ，主要考虑的登录方式是 &lt;strong&gt;邮箱 + 密码登录&lt;/strong&gt; 。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;个人中心&lt;/p&gt;
-&lt;p&gt;个人中心是用户管理自己作品、管理个人信息的主要空间。&lt;/p&gt;
-&lt;p&gt;在个人中心，用户能够设置自己的个人资料，也可以对自己已经上传的作品进行重新编辑或是删除等操作，同时也能够浏览自己作品的一些数据，比如我发布的作品的点赞量趋势折线图等等。&lt;/p&gt;
-&lt;p&gt;对于自己收藏插画的管理，需要提供一个类似于 B 站视频收藏管理的功能，用户可以新建收藏夹对自己收藏的内容进行分配。一般普通进行收藏的会直接放到默认收藏夹，待用户自己去分配。&lt;/p&gt;
-&lt;p&gt;同时，个人中心也分为自己的个人中心和其他用户的个人中心。两者之间需要在个人信息的管理以及对收藏、喜欢、发布的作品的管理功能上做出适配。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;关注 / 被关注&lt;/p&gt;
-&lt;p&gt;对于一个偏论坛性质的插画分享平台来说，关注是获取自己喜欢风格的作品最佳的途径，被关注则可以激发用户上传作品的动力。在 Picals 中，关注用户后可以在 “我关注的用户” 中浏览到发布的相关作品。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;评论发表&lt;/p&gt;
-&lt;p&gt;在插画详情页的浏览中，用户可以发布相应的评论来与大家进行和谐、友善的交流，也可以回复他人的评论。如果自己的作品被他人评论，会以消息的形式发送给对应的用户；同时，如果自己的评论被别人回复，也会接收到对应的消息以作提示。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;插画上传功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画上传功能&#34;&gt;#&lt;/a&gt; 插画上传功能&lt;/h1&gt;
-&lt;p&gt;一幅完整的插画上传主要的内容包括：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;插画名称&lt;/li&gt;
-&lt;li&gt;插画简介&lt;/li&gt;
-&lt;li&gt;插画的标签（tags） &lt;strong&gt;（当用户上传了全新的标签的时候会自动将新标签添加到数据库）&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;插画的原文件列表&lt;/li&gt;
-&lt;li&gt;是否是 AI 作品&lt;/li&gt;
-&lt;li&gt;是否开启作品评论功能&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;插画上传分两种主要形式：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;转载作品&lt;/p&gt;
-&lt;p&gt;由于只是仿照 Pixiv 等现成网站所制作的比较小的插画收藏网站，因此这个站点更多的只是转载他人的作品。&lt;/p&gt;
-&lt;p&gt;转载他人的作品需要标明 &lt;strong&gt;作品原来的访问网址 url&lt;/strong&gt; 、 &lt;strong&gt;原作者的名称&lt;/strong&gt; 以及 &lt;strong&gt;这个作者的发布插画的主要个人主页&lt;/strong&gt; 。&lt;/p&gt;
-&lt;p&gt;除了这些附加信息之外，还需要把上述最基本的信息补充完整。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;原创作品&lt;/p&gt;
-&lt;p&gt;对于原创作品而言，则无需补充附加信息，只用补充插画的基本信息即可。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;上传作品之后，后端会对这个作品分两部分进行保存：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;作品的压缩缩略图，主要在一些插画 item 中进行一般展示。&lt;/li&gt;
-&lt;li&gt;作品的原文件，主要在插画详情界面进行展示或者下载。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注：插画的上传必须遵守相关的发布规定，否则将予以剔除。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;插画推荐功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画推荐功能&#34;&gt;#&lt;/a&gt; 插画推荐功能&lt;/h1&gt;
-&lt;p&gt;插画的推荐功能主要分为 &lt;strong&gt;首页推荐&lt;/strong&gt; 和 &lt;strong&gt;作品底下推荐&lt;/strong&gt; 。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;首页推荐&lt;/p&gt;
-&lt;p&gt;用户刚打开网站后，进入的就是网站的主页。主页需要提供插画推荐功能，自动推送用户感兴趣的插画。&lt;/p&gt;
-&lt;p&gt;如何体现感兴趣？ &lt;strong&gt;主要是通过统计这个用户最近收藏的插画的标签。&lt;/strong&gt; 用户最近收藏的插画的哪个标签数越多，包含有那个标签的插画就会被推送的越多。 &lt;strong&gt;已经被用户加到收藏的插画不会再在首页的推荐中出现。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;作品底下推荐&lt;/p&gt;
-&lt;p&gt;在 Pixiv 的插画详情界面，如果用户划到最底下，会自动弹出来 &lt;strong&gt;与当前插画的标签类似或者相拟合的插画&lt;/strong&gt; 。当然也不全是必须都符合，用户不断的往下划会有一个分页的形式，与当前插画相类似的只会推荐一两页，之后还是会按照首页推荐的逻辑进行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;插画作者推荐功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画作者推荐功能&#34;&gt;#&lt;/a&gt; 插画作者推荐功能&lt;/h1&gt;
-&lt;p&gt;作者推荐功能和插画推荐功能是类似的，不过是根据 &lt;strong&gt;对这个作者本身投稿的作品包含的全部 tag 统计&lt;/strong&gt; 和 &lt;strong&gt;用户自身最近浏览的作品的 tags&lt;/strong&gt; 的拟合程度来进行的，放在首页插画推荐的下方。&lt;/p&gt;
-&lt;p&gt;这个具体的拟合算法还有待商榷，考虑一些烂大街的拟合算法。&lt;/p&gt;
-&lt;h1 id=&#34;详细作品浏览功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#详细作品浏览功能&#34;&gt;#&lt;/a&gt; 详细作品浏览功能&lt;/h1&gt;
-&lt;p&gt;对于喜欢收藏插画的人而言，什么才是最重要的？就是这个插画本身的 &lt;strong&gt;画质一定要高，文件一定要大！&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;当用户以各种的手段进入到插画详情界面之后，用户可以浏览到插画的高清大图（就是用户自己上传的原文件）以及之前用户上传插画的时候所填写的各种信息字段。&lt;/p&gt;
-&lt;p&gt;除了对插画的浏览，也提供了插画的保存功能，用户点击插画下方的下载按钮就可以进行保存原文件。&lt;/p&gt;
-&lt;h1 id=&#34;搜索功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#搜索功能&#34;&gt;#&lt;/a&gt; 搜索功能&lt;/h1&gt;
-&lt;p&gt;推荐不可能会把我们想找的作品直接推到我们眼前，这时候就需要搜索功能。&lt;/p&gt;
-&lt;p&gt;参考 Pixiv 的搜索功能，可以将插画网站的搜索主要分为三种类型：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;作品名称搜索&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;作品标签搜索&lt;/strong&gt; （最常用最实用）&lt;/li&gt;
-&lt;li&gt;作者名称搜索&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;对于搜索结果，自然也得分别提供三种不同的搜索结果页面来显示。&lt;/p&gt;
-&lt;p&gt;对于作品名称搜索，单纯的展示模糊搜索能够查询到的作品，然后以一个个 item 的形式进行展示即可。&lt;/p&gt;
-&lt;p&gt;对于作品标签搜索，需要以 &lt;strong&gt;#&lt;/strong&gt; 开头，后接标签名来搜索。在搜索结果页需要展示携带这个标签的作品数、这个标签的图标（初步拟定为随便取一个这个 tag 比较火的作品作为 logo）以体现这个标签的火爆程度。下面也是接着展示作品的列表。&lt;/p&gt;
-&lt;p&gt;对于作者名称搜索，直接切换至作者搜索的 tag 然后键入作者名进行搜索即可。搜索结果页展示的是跟推荐作者展示的 item 一样的作者信息。&lt;/p&gt;
-&lt;h1 id=&#34;作品浏览队列维护功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#作品浏览队列维护功能&#34;&gt;#&lt;/a&gt; 作品浏览队列维护功能&lt;/h1&gt;
-&lt;p&gt;这个是我临时想到的一个功能点。在 Pixiv 当中，无论你是从哪里点开的作品，当你按下左右键盘按键进行切换时， &lt;strong&gt;永远只会在对应作者发布的作品列表中进行切换&lt;/strong&gt; ，这也就意味着我们如果是从 “关注的作者” 的队列点击进入的时候，我们想切换到关注的作者的作品队列进行无缝浏览，只能退出之后重新点击作品。&lt;/p&gt;
-&lt;p&gt;现在有一个设想，当用户从对应的作品列表 —— 无论是关注作者还是推荐作品 —— 点击 Item 进入详情页的时候，会出现 Message 提示，默认是按照当前点击进入的作品队列顺序进行浏览，同时可以点击上方的切换队列按钮切换至作者发布作品列表进行浏览。&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
-            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/</guid>
-            <title>Picals项目概述</title>
-            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/</link>
+            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</link>
             <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
             <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
             <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
@@ -330,9 +330,9 @@
 &lt;p&gt;首先是将手上的部分设计文档在开发之前处理完，包括但不限于：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;项目概述（就是这个文档）&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;项目功能分析&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;项目 UI 原型设计&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;项目技术栈设计&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/&#34;&gt;&lt;strong&gt;项目功能分析&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/&#34;&gt;&lt;strong&gt;项目 UI 原型设计&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/&#34;&gt;&lt;strong&gt;项目技术栈设计&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;项目数据库设计&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;项目接口文档&lt;/li&gt;
 &lt;li&gt;项目部署方案&lt;/li&gt;
@@ -357,9 +357,9 @@
  ]]></description>
         </item>
         <item>
-            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</guid>
-            <title>Picals项目概述</title>
-            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</link>
+            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/</guid>
+            <title>Picals项目技术栈设计</title>
+            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/</link>
             <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
             <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
             <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
@@ -543,10 +543,10 @@
             <title>Nest.js从收到请求到返回响应的数据处理流程</title>
             <link>https://nonhana.xyz/2024/03/09/nestjs-study-notes/Nest-js%E4%BB%8E%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E8%BF%94%E5%9B%9E%E5%93%8D%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
+            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
-            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="IOC/DI" scheme="https://nonhana.xyz/tags/IOC-DI/" />
             <pubDate>Sat, 09 Mar 2024 18:23:32 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
@@ -611,8 +611,8 @@
             <title>关于n数之和问题的通用解决方法</title>
             <link>https://nonhana.xyz/2024/03/09/algorithm-exercises/%E5%85%B3%E4%BA%8En%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98%E7%9A%84%E9%80%9A%E7%94%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
             <category term="算法练习" scheme="https://nonhana.xyz/categories/algorithm-exercises/" />
-            <category term="算法" scheme="https://nonhana.xyz/tags/%E7%AE%97%E6%B3%95/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+            <category term="算法" scheme="https://nonhana.xyz/tags/%E7%AE%97%E6%B3%95/" />
             <category term="哈希表" scheme="https://nonhana.xyz/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" />
             <pubDate>Sat, 09 Mar 2024 13:04:19 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
@@ -1537,10 +1537,10 @@ const getMsg = (msg: string) =&amp;gt; &amp;#123;
             <title>学习Nest.js笔记（三）：TS中的装饰器（Decorator）</title>
             <link>https://nonhana.xyz/2024/01/31/nestjs-study-notes/TS%E4%B8%AD%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88Decorator%EF%BC%89/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
+            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
-            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="Decorator(TypeScript)" scheme="https://nonhana.xyz/tags/Decorator-TypeScript/" />
             <pubDate>Wed, 31 Jan 2024 15:50:23 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;一-前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#一-前言&#34;&gt;#&lt;/a&gt; 一、前言&lt;/h1&gt;
