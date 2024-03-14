@@ -24,107 +24,6 @@
         <category term="Hexo" />
         <category term="ShokaX" />
         <item>
-            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</guid>
-            <title>Picals项目功能分析</title>
-            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</link>
-            <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
-            <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
-            <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
-            <pubDate>Tue, 12 Mar 2024 17:58:15 +0800</pubDate>
-            <description><![CDATA[ &lt;p&gt;由于主要目的是参考 Pixiv 等插画网站设计制作一类似的插画交流网站，因此这个网站会具备一些用户之间沟通互动的属性，并且主要形式是以用户为单位。因此可以将这个项目的一些 &lt;strong&gt;主要功能&lt;/strong&gt; 罗列如下：&lt;/p&gt;
-&lt;h1 id=&#34;用户功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#用户功能&#34;&gt;#&lt;/a&gt; 用户功能&lt;/h1&gt;
-&lt;p&gt;关于用户的功能可以大致分为：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;登录注册&lt;/p&gt;
-&lt;p&gt;登录注册是用户进入站点解锁全部功能所必须的，否则将无法进行用户之间的互动操作，比如评论、点赞、收藏等。只有登录之后用户才能够进行用户的互动操作。&lt;/p&gt;
-&lt;p&gt;主要考虑的注册方式是 &lt;strong&gt;邮箱 + 验证码注册&lt;/strong&gt; ，主要考虑的登录方式是 &lt;strong&gt;邮箱 + 密码登录&lt;/strong&gt; 。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;个人中心&lt;/p&gt;
-&lt;p&gt;个人中心是用户管理自己作品、管理个人信息的主要空间。&lt;/p&gt;
-&lt;p&gt;在个人中心，用户能够设置自己的个人资料，也可以对自己已经上传的作品进行重新编辑或是删除等操作，同时也能够浏览自己作品的一些数据，比如我发布的作品的点赞量趋势折线图等等。&lt;/p&gt;
-&lt;p&gt;对于自己收藏插画的管理，需要提供一个类似于 B 站视频收藏管理的功能，用户可以新建收藏夹对自己收藏的内容进行分配。一般普通进行收藏的会直接放到默认收藏夹，待用户自己去分配。&lt;/p&gt;
-&lt;p&gt;同时，个人中心也分为自己的个人中心和其他用户的个人中心。两者之间需要在个人信息的管理以及对收藏、喜欢、发布的作品的管理功能上做出适配。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;关注 / 被关注&lt;/p&gt;
-&lt;p&gt;对于一个偏论坛性质的插画分享平台来说，关注是获取自己喜欢风格的作品最佳的途径，被关注则可以激发用户上传作品的动力。在 Picals 中，关注用户后可以在 “我关注的用户” 中浏览到发布的相关作品。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;评论发表&lt;/p&gt;
-&lt;p&gt;在插画详情页的浏览中，用户可以发布相应的评论来与大家进行和谐、友善的交流，也可以回复他人的评论。如果自己的作品被他人评论，会以消息的形式发送给对应的用户；同时，如果自己的评论被别人回复，也会接收到对应的消息以作提示。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;插画上传功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画上传功能&#34;&gt;#&lt;/a&gt; 插画上传功能&lt;/h1&gt;
-&lt;p&gt;一幅完整的插画上传主要的内容包括：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;插画名称&lt;/li&gt;
-&lt;li&gt;插画简介&lt;/li&gt;
-&lt;li&gt;插画的标签（tags） &lt;strong&gt;（当用户上传了全新的标签的时候会自动将新标签添加到数据库）&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;插画的原文件列表&lt;/li&gt;
-&lt;li&gt;是否是 AI 作品&lt;/li&gt;
-&lt;li&gt;是否开启作品评论功能&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;插画上传分两种主要形式：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;转载作品&lt;/p&gt;
-&lt;p&gt;由于只是仿照 Pixiv 等现成网站所制作的比较小的插画收藏网站，因此这个站点更多的只是转载他人的作品。&lt;/p&gt;
-&lt;p&gt;转载他人的作品需要标明 &lt;strong&gt;作品原来的访问网址 url&lt;/strong&gt; 、 &lt;strong&gt;原作者的名称&lt;/strong&gt; 以及 &lt;strong&gt;这个作者的发布插画的主要个人主页&lt;/strong&gt; 。&lt;/p&gt;
-&lt;p&gt;除了这些附加信息之外，还需要把上述最基本的信息补充完整。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;原创作品&lt;/p&gt;
-&lt;p&gt;对于原创作品而言，则无需补充附加信息，只用补充插画的基本信息即可。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;上传作品之后，后端会对这个作品分两部分进行保存：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;作品的压缩缩略图，主要在一些插画 item 中进行一般展示。&lt;/li&gt;
-&lt;li&gt;作品的原文件，主要在插画详情界面进行展示或者下载。&lt;/li&gt;
-&lt;/ol&gt;
-&lt;blockquote&gt;
-&lt;p&gt;注：插画的上传必须遵守相关的发布规定，否则将予以剔除。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;插画推荐功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画推荐功能&#34;&gt;#&lt;/a&gt; 插画推荐功能&lt;/h1&gt;
-&lt;p&gt;插画的推荐功能主要分为 &lt;strong&gt;首页推荐&lt;/strong&gt; 和 &lt;strong&gt;作品底下推荐&lt;/strong&gt; 。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;首页推荐&lt;/p&gt;
-&lt;p&gt;用户刚打开网站后，进入的就是网站的主页。主页需要提供插画推荐功能，自动推送用户感兴趣的插画。&lt;/p&gt;
-&lt;p&gt;如何体现感兴趣？ &lt;strong&gt;主要是通过统计这个用户最近收藏的插画的标签。&lt;/strong&gt; 用户最近收藏的插画的哪个标签数越多，包含有那个标签的插画就会被推送的越多。 &lt;strong&gt;已经被用户加到收藏的插画不会再在首页的推荐中出现。&lt;/strong&gt;&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;作品底下推荐&lt;/p&gt;
-&lt;p&gt;在 Pixiv 的插画详情界面，如果用户划到最底下，会自动弹出来 &lt;strong&gt;与当前插画的标签类似或者相拟合的插画&lt;/strong&gt; 。当然也不全是必须都符合，用户不断的往下划会有一个分页的形式，与当前插画相类似的只会推荐一两页，之后还是会按照首页推荐的逻辑进行。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;插画作者推荐功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画作者推荐功能&#34;&gt;#&lt;/a&gt; 插画作者推荐功能&lt;/h1&gt;
-&lt;p&gt;作者推荐功能和插画推荐功能是类似的，不过是根据 &lt;strong&gt;对这个作者本身投稿的作品包含的全部 tag 统计&lt;/strong&gt; 和 &lt;strong&gt;用户自身最近浏览的作品的 tags&lt;/strong&gt; 的拟合程度来进行的，放在首页插画推荐的下方。&lt;/p&gt;
-&lt;p&gt;这个具体的拟合算法还有待商榷，考虑一些烂大街的拟合算法。&lt;/p&gt;
-&lt;h1 id=&#34;详细作品浏览功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#详细作品浏览功能&#34;&gt;#&lt;/a&gt; 详细作品浏览功能&lt;/h1&gt;
-&lt;p&gt;对于喜欢收藏插画的人而言，什么才是最重要的？就是这个插画本身的 &lt;strong&gt;画质一定要高，文件一定要大！&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;当用户以各种的手段进入到插画详情界面之后，用户可以浏览到插画的高清大图（就是用户自己上传的原文件）以及之前用户上传插画的时候所填写的各种信息字段。&lt;/p&gt;
-&lt;p&gt;除了对插画的浏览，也提供了插画的保存功能，用户点击插画下方的下载按钮就可以进行保存原文件。&lt;/p&gt;
-&lt;h1 id=&#34;搜索功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#搜索功能&#34;&gt;#&lt;/a&gt; 搜索功能&lt;/h1&gt;
-&lt;p&gt;推荐不可能会把我们想找的作品直接推到我们眼前，这时候就需要搜索功能。&lt;/p&gt;
-&lt;p&gt;参考 Pixiv 的搜索功能，可以将插画网站的搜索主要分为三种类型：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;作品名称搜索&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;作品标签搜索&lt;/strong&gt; （最常用最实用）&lt;/li&gt;
-&lt;li&gt;作者名称搜索&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;对于搜索结果，自然也得分别提供三种不同的搜索结果页面来显示。&lt;/p&gt;
-&lt;p&gt;对于作品名称搜索，单纯的展示模糊搜索能够查询到的作品，然后以一个个 item 的形式进行展示即可。&lt;/p&gt;
-&lt;p&gt;对于作品标签搜索，需要以 &lt;strong&gt;#&lt;/strong&gt; 开头，后接标签名来搜索。在搜索结果页需要展示携带这个标签的作品数、这个标签的图标（初步拟定为随便取一个这个 tag 比较火的作品作为 logo）以体现这个标签的火爆程度。下面也是接着展示作品的列表。&lt;/p&gt;
-&lt;p&gt;对于作者名称搜索，直接切换至作者搜索的 tag 然后键入作者名进行搜索即可。搜索结果页展示的是跟推荐作者展示的 item 一样的作者信息。&lt;/p&gt;
-&lt;h1 id=&#34;作品浏览队列维护功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#作品浏览队列维护功能&#34;&gt;#&lt;/a&gt; 作品浏览队列维护功能&lt;/h1&gt;
-&lt;p&gt;这个是我临时想到的一个功能点。在 Pixiv 当中，无论你是从哪里点开的作品，当你按下左右键盘按键进行切换时， &lt;strong&gt;永远只会在对应作者发布的作品列表中进行切换&lt;/strong&gt; ，这也就意味着我们如果是从 “关注的作者” 的队列点击进入的时候，我们想切换到关注的作者的作品队列进行无缝浏览，只能退出之后重新点击作品。&lt;/p&gt;
-&lt;p&gt;现在有一个设想，当用户从对应的作品列表 —— 无论是关注作者还是推荐作品 —— 点击 Item 进入详情页的时候，会出现 Message 提示，默认是按照当前点击进入的作品队列顺序进行浏览，同时可以点击上方的切换队列按钮切换至作者发布作品列表进行浏览。&lt;/p&gt;
- ]]></description>
-        </item>
-        <item>
             <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/</guid>
             <title>Picals项目UI原型设计</title>
             <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/</link>
@@ -312,6 +211,107 @@
  ]]></description>
         </item>
         <item>
+            <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</guid>
+            <title>Picals项目功能分析</title>
+            <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</link>
+            <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
+            <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
+            <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
+            <pubDate>Tue, 12 Mar 2024 17:58:15 +0800</pubDate>
+            <description><![CDATA[ &lt;p&gt;由于主要目的是参考 Pixiv 等插画网站设计制作一类似的插画交流网站，因此这个网站会具备一些用户之间沟通互动的属性，并且主要形式是以用户为单位。因此可以将这个项目的一些 &lt;strong&gt;主要功能&lt;/strong&gt; 罗列如下：&lt;/p&gt;
+&lt;h1 id=&#34;用户功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#用户功能&#34;&gt;#&lt;/a&gt; 用户功能&lt;/h1&gt;
+&lt;p&gt;关于用户的功能可以大致分为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;登录注册&lt;/p&gt;
+&lt;p&gt;登录注册是用户进入站点解锁全部功能所必须的，否则将无法进行用户之间的互动操作，比如评论、点赞、收藏等。只有登录之后用户才能够进行用户的互动操作。&lt;/p&gt;
+&lt;p&gt;主要考虑的注册方式是 &lt;strong&gt;邮箱 + 验证码注册&lt;/strong&gt; ，主要考虑的登录方式是 &lt;strong&gt;邮箱 + 密码登录&lt;/strong&gt; 。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;个人中心&lt;/p&gt;
+&lt;p&gt;个人中心是用户管理自己作品、管理个人信息的主要空间。&lt;/p&gt;
+&lt;p&gt;在个人中心，用户能够设置自己的个人资料，也可以对自己已经上传的作品进行重新编辑或是删除等操作，同时也能够浏览自己作品的一些数据，比如我发布的作品的点赞量趋势折线图等等。&lt;/p&gt;
+&lt;p&gt;对于自己收藏插画的管理，需要提供一个类似于 B 站视频收藏管理的功能，用户可以新建收藏夹对自己收藏的内容进行分配。一般普通进行收藏的会直接放到默认收藏夹，待用户自己去分配。&lt;/p&gt;
+&lt;p&gt;同时，个人中心也分为自己的个人中心和其他用户的个人中心。两者之间需要在个人信息的管理以及对收藏、喜欢、发布的作品的管理功能上做出适配。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;关注 / 被关注&lt;/p&gt;
+&lt;p&gt;对于一个偏论坛性质的插画分享平台来说，关注是获取自己喜欢风格的作品最佳的途径，被关注则可以激发用户上传作品的动力。在 Picals 中，关注用户后可以在 “我关注的用户” 中浏览到发布的相关作品。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;评论发表&lt;/p&gt;
+&lt;p&gt;在插画详情页的浏览中，用户可以发布相应的评论来与大家进行和谐、友善的交流，也可以回复他人的评论。如果自己的作品被他人评论，会以消息的形式发送给对应的用户；同时，如果自己的评论被别人回复，也会接收到对应的消息以作提示。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;插画上传功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画上传功能&#34;&gt;#&lt;/a&gt; 插画上传功能&lt;/h1&gt;
+&lt;p&gt;一幅完整的插画上传主要的内容包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;插画名称&lt;/li&gt;
+&lt;li&gt;插画简介&lt;/li&gt;
+&lt;li&gt;插画的标签（tags） &lt;strong&gt;（当用户上传了全新的标签的时候会自动将新标签添加到数据库）&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;插画的原文件列表&lt;/li&gt;
+&lt;li&gt;是否是 AI 作品&lt;/li&gt;
+&lt;li&gt;是否开启作品评论功能&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;插画上传分两种主要形式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;转载作品&lt;/p&gt;
+&lt;p&gt;由于只是仿照 Pixiv 等现成网站所制作的比较小的插画收藏网站，因此这个站点更多的只是转载他人的作品。&lt;/p&gt;
+&lt;p&gt;转载他人的作品需要标明 &lt;strong&gt;作品原来的访问网址 url&lt;/strong&gt; 、 &lt;strong&gt;原作者的名称&lt;/strong&gt; 以及 &lt;strong&gt;这个作者的发布插画的主要个人主页&lt;/strong&gt; 。&lt;/p&gt;
+&lt;p&gt;除了这些附加信息之外，还需要把上述最基本的信息补充完整。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;原创作品&lt;/p&gt;
+&lt;p&gt;对于原创作品而言，则无需补充附加信息，只用补充插画的基本信息即可。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;上传作品之后，后端会对这个作品分两部分进行保存：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;作品的压缩缩略图，主要在一些插画 item 中进行一般展示。&lt;/li&gt;
+&lt;li&gt;作品的原文件，主要在插画详情界面进行展示或者下载。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;p&gt;注：插画的上传必须遵守相关的发布规定，否则将予以剔除。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;插画推荐功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画推荐功能&#34;&gt;#&lt;/a&gt; 插画推荐功能&lt;/h1&gt;
+&lt;p&gt;插画的推荐功能主要分为 &lt;strong&gt;首页推荐&lt;/strong&gt; 和 &lt;strong&gt;作品底下推荐&lt;/strong&gt; 。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;首页推荐&lt;/p&gt;
+&lt;p&gt;用户刚打开网站后，进入的就是网站的主页。主页需要提供插画推荐功能，自动推送用户感兴趣的插画。&lt;/p&gt;
+&lt;p&gt;如何体现感兴趣？ &lt;strong&gt;主要是通过统计这个用户最近收藏的插画的标签。&lt;/strong&gt; 用户最近收藏的插画的哪个标签数越多，包含有那个标签的插画就会被推送的越多。 &lt;strong&gt;已经被用户加到收藏的插画不会再在首页的推荐中出现。&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;作品底下推荐&lt;/p&gt;
+&lt;p&gt;在 Pixiv 的插画详情界面，如果用户划到最底下，会自动弹出来 &lt;strong&gt;与当前插画的标签类似或者相拟合的插画&lt;/strong&gt; 。当然也不全是必须都符合，用户不断的往下划会有一个分页的形式，与当前插画相类似的只会推荐一两页，之后还是会按照首页推荐的逻辑进行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;插画作者推荐功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#插画作者推荐功能&#34;&gt;#&lt;/a&gt; 插画作者推荐功能&lt;/h1&gt;
+&lt;p&gt;作者推荐功能和插画推荐功能是类似的，不过是根据 &lt;strong&gt;对这个作者本身投稿的作品包含的全部 tag 统计&lt;/strong&gt; 和 &lt;strong&gt;用户自身最近浏览的作品的 tags&lt;/strong&gt; 的拟合程度来进行的，放在首页插画推荐的下方。&lt;/p&gt;
+&lt;p&gt;这个具体的拟合算法还有待商榷，考虑一些烂大街的拟合算法。&lt;/p&gt;
+&lt;h1 id=&#34;详细作品浏览功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#详细作品浏览功能&#34;&gt;#&lt;/a&gt; 详细作品浏览功能&lt;/h1&gt;
+&lt;p&gt;对于喜欢收藏插画的人而言，什么才是最重要的？就是这个插画本身的 &lt;strong&gt;画质一定要高，文件一定要大！&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;当用户以各种的手段进入到插画详情界面之后，用户可以浏览到插画的高清大图（就是用户自己上传的原文件）以及之前用户上传插画的时候所填写的各种信息字段。&lt;/p&gt;
+&lt;p&gt;除了对插画的浏览，也提供了插画的保存功能，用户点击插画下方的下载按钮就可以进行保存原文件。&lt;/p&gt;
+&lt;h1 id=&#34;搜索功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#搜索功能&#34;&gt;#&lt;/a&gt; 搜索功能&lt;/h1&gt;
+&lt;p&gt;推荐不可能会把我们想找的作品直接推到我们眼前，这时候就需要搜索功能。&lt;/p&gt;
+&lt;p&gt;参考 Pixiv 的搜索功能，可以将插画网站的搜索主要分为三种类型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;作品名称搜索&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;作品标签搜索&lt;/strong&gt; （最常用最实用）&lt;/li&gt;
+&lt;li&gt;作者名称搜索&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;对于搜索结果，自然也得分别提供三种不同的搜索结果页面来显示。&lt;/p&gt;
+&lt;p&gt;对于作品名称搜索，单纯的展示模糊搜索能够查询到的作品，然后以一个个 item 的形式进行展示即可。&lt;/p&gt;
+&lt;p&gt;对于作品标签搜索，需要以 &lt;strong&gt;#&lt;/strong&gt; 开头，后接标签名来搜索。在搜索结果页需要展示携带这个标签的作品数、这个标签的图标（初步拟定为随便取一个这个 tag 比较火的作品作为 logo）以体现这个标签的火爆程度。下面也是接着展示作品的列表。&lt;/p&gt;
+&lt;p&gt;对于作者名称搜索，直接切换至作者搜索的 tag 然后键入作者名进行搜索即可。搜索结果页展示的是跟推荐作者展示的 item 一样的作者信息。&lt;/p&gt;
+&lt;h1 id=&#34;作品浏览队列维护功能&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#作品浏览队列维护功能&#34;&gt;#&lt;/a&gt; 作品浏览队列维护功能&lt;/h1&gt;
+&lt;p&gt;这个是我临时想到的一个功能点。在 Pixiv 当中，无论你是从哪里点开的作品，当你按下左右键盘按键进行切换时， &lt;strong&gt;永远只会在对应作者发布的作品列表中进行切换&lt;/strong&gt; ，这也就意味着我们如果是从 “关注的作者” 的队列点击进入的时候，我们想切换到关注的作者的作品队列进行无缝浏览，只能退出之后重新点击作品。&lt;/p&gt;
+&lt;p&gt;现在有一个设想，当用户从对应的作品列表 —— 无论是关注作者还是推荐作品 —— 点击 Item 进入详情页的时候，会出现 Message 提示，默认是按照当前点击进入的作品队列顺序进行浏览，同时可以点击上方的切换队列按钮切换至作者发布作品列表进行浏览。&lt;/p&gt;
+ ]]></description>
+        </item>
+        <item>
             <guid isPermalink="true">https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</guid>
             <title>Picals项目概述</title>
             <link>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</link>
@@ -319,7 +319,13 @@
             <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
             <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
             <pubDate>Tue, 12 Mar 2024 17:58:15 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;概览&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#概览&#34;&gt;#&lt;/a&gt; 概览&lt;/h1&gt;
+            <description><![CDATA[ &lt;p&gt;&amp;lt;div align=&amp;quot;center&amp;quot;&amp;gt;&lt;br /&gt;
+&amp;lt;img src=&amp;quot;&lt;a href=&#34;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/116395452.jpg&#34;&gt;https://common-1319721118.cos.ap-shanghai.myqcloud.com/picgo/116395452.jpg&lt;/a&gt;&amp;quot; alt=&amp;quot;116395452&amp;quot; style=&amp;quot;zoom:40%;&amp;quot; /&amp;gt;&lt;br /&gt;
+&amp;lt;/div&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;小小普拉娜镇楼！！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;概览&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#概览&#34;&gt;#&lt;/a&gt; 概览&lt;/h1&gt;
 &lt;p&gt;Picals 是一个受 Pixiv 启发、由我本人自发创建与设计的一个插画收藏平台项目。它旨在为大家提供一个相较于 Pixiv 更方便、在国内浏览更快捷的找图、存图的方式，并且和论坛的功能相结合，营造和谐、舒适的国内插画讨论环境。&lt;/p&gt;
 &lt;h1 id=&#34;这个项目の起源&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这个项目の起源&#34;&gt;#&lt;/a&gt; 这个项目の起源&lt;/h1&gt;
 &lt;p&gt;由于我是一个爱好动漫和插画的人，平时在各大的插画网站（如 Pixiv）收藏了很多中意的画作。但是这样子仅仅只是将插画图片保存到电脑磁盘内部，我现在想要仿照 Pixiv 等插画网站，打造一个属于我自己的插画收藏空间，从而能够随时随地浏览到我自己的一些收藏，并且能够提供给他人进行访问，能够大概的知道我的品味如何。&lt;/p&gt;
@@ -364,41 +370,96 @@
             <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
             <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
             <pubDate>Tue, 12 Mar 2024 17:58:15 +0800</pubDate>
-            <description><![CDATA[ &lt;h1 id=&#34;概览&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#概览&#34;&gt;#&lt;/a&gt; 概览&lt;/h1&gt;
-&lt;p&gt;Picals 是一个受 Pixiv 启发、由我本人自发创建与设计的一个插画收藏平台项目。它旨在为大家提供一个相较于 Pixiv 更方便、在国内浏览更快捷的找图、存图的方式，并且和论坛的功能相结合，营造和谐、舒适的国内插画讨论环境。&lt;/p&gt;
-&lt;h1 id=&#34;这个项目の起源&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这个项目の起源&#34;&gt;#&lt;/a&gt; 这个项目の起源&lt;/h1&gt;
-&lt;p&gt;由于我是一个爱好动漫和插画的人，平时在各大的插画网站（如 Pixiv）收藏了很多中意的画作。但是这样子仅仅只是将插画图片保存到电脑磁盘内部，我现在想要仿照 Pixiv 等插画网站，打造一个属于我自己的插画收藏空间，从而能够随时随地浏览到我自己的一些收藏，并且能够提供给他人进行访问，能够大概的知道我的品味如何。&lt;/p&gt;
-&lt;p&gt;除了这个个人的一些牢骚之外，我也实在感觉国内的插画平台几乎都是死气沉沉的没有一丝生气，并且对于没有渠道去获取插画的用户显得十分的不友好。我希望能够提供这么一个平台，虽然不知道后续的发展具体会如何，至少希望能够让大家的找图、存图的过程更加的顺利一点。&lt;/p&gt;
-&lt;p&gt;最后，也是我个人的一点私心 —— 我的这个项目打算 &lt;strong&gt;从零开始 100% 手写出来&lt;/strong&gt; ，无论是在开发的角度还是产品的角度对这个项目进行全方位的审视与功能的完善、迭代与更新，我相信这是一个比较重大的挑战， &lt;strong&gt;不过我也喜欢这些挑战，我喜欢写点乱七八糟的东西来提升自己 www&lt;/strong&gt; 。&lt;/p&gt;
-&lt;h1 id=&#34;这个项目后续会怎么样&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#这个项目后续会怎么样&#34;&gt;#&lt;/a&gt; 这个项目后续会怎么样&lt;/h1&gt;
-&lt;p&gt;由于这是概述文档，而且这个项目目前实际上仍在处于文档编写、尚未开工的状态，因此在这边只能大概的描述一下之后的规划。&lt;/p&gt;
-&lt;p&gt;首先是将手上的部分设计文档在开发之前处理完，包括但不限于：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;项目概述（就是这个文档）&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;项目功能分析&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;项目 UI 原型设计&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;项目技术栈设计&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;项目数据库设计&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;项目接口文档&lt;/li&gt;
-&lt;li&gt;项目部署方案&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;其中，粗体的部分是在开发之前需要处理好的；最后两个文档需要在开发的过程中进行统筹设计并不断地进行调整。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;接口文档打算采用 Swagger 进行自动生成，并且使用 Apifox 这款 API 管理工具进行管理；&lt;/li&gt;
-&lt;li&gt;项目部署方案打算基于目前的技术栈设计去调研一些相对合理的部署方案。 &lt;strong&gt;最佳实践！！最佳实践！！最佳实践！！&lt;/strong&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&#34;项目的仓库地址&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#项目的仓库地址&#34;&gt;#&lt;/a&gt; 项目的仓库地址&lt;/h1&gt;
-&lt;p&gt;前端项目：&lt;a href=&#34;https://github.com/nonhana/Picals-Frontend-React&#34;&gt;https://github.com/nonhana/Picals-Frontend-React&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;后端项目：&lt;a href=&#34;https://github.com/nonhana/Picals-Backend-Nest&#34;&gt;https://github.com/nonhana/Picals-Backend-Nest&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;联系加入我们&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#联系加入我们&#34;&gt;#&lt;/a&gt; 联系 / 加入我们&lt;/h1&gt;
+            <description><![CDATA[ &lt;p&gt;说起技术栈，其实思来想去也是考虑了蛮多东西的。因为我自己是前端出身，也是沾了 Node.js 的光才慢慢摸索到后端相关的知识之后进行系统性的学习。 &lt;strong&gt;而这个项目创立的初衷之一，也是为了巩固我目前所学到的技术，并且期望遇到一些技术难点并加以解决。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;因此，在这个项目中我打算采用目前比较流行的、目前我正在学习的技术栈，分为前端、后端、部署三部分进行设计。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;因为我看别人的文档好像都有写这一块，我也模仿着写写吧...&lt;/p&gt;
+&lt;p&gt;前端代码仓库：&lt;a href=&#34;https://github.com/nonhana/Picals-Frontend-React&#34;&gt;https://github.com/nonhana/Picals-Frontend-React&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;后端代码仓库：&lt;a href=&#34;https://github.com/nonhana/Picals-Backend-Nest&#34;&gt;https://github.com/nonhana/Picals-Backend-Nest&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;如果您是无意间浏览到这个文档的，并且有兴趣参与这个项目，或者是要反馈 BUG、提出需求，或者想要单纯的了解我们、讨论交流，您都可以加入我们的哦！ &lt;strong&gt;对于我而言，大家一起做东西，在交流中一起进步、一起了解更多的前沿技术或者是解决一些困难的 bug，都是十分有意义的事情！&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&#34;前端技术栈&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前端技术栈&#34;&gt;#&lt;/a&gt; 前端技术栈&lt;/h1&gt;
+&lt;p&gt;前端部分，主要考虑采用的技术栈为：  &lt;code&gt;React + TypeScript + Redux + Vite + Unocss&lt;/code&gt;  。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;React&lt;/strong&gt;: React 是一个用于构建用户界面的 JavaScript 库，由 Facebook 开发。它的主要特点包括：&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;邮箱：&lt;a href=&#34;mailto:zhouxiang757@gmail.com&#34;&gt;zhouxiang757@gmail.com&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;QQ：1209220829&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;组件化&lt;/strong&gt;：React 鼓励将界面拆分成可重用的组件，这有助于提高开发效率和代码质量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;声明式编程&lt;/strong&gt;：React 采用声明式编程范式，使代码更容易理解和维护。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;虚拟 DOM&lt;/strong&gt;：React 使用虚拟 DOM 来提高应用的性能，只对发生变化的部分进行实际的 DOM 更新。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TypeScript&lt;/strong&gt;: TypeScript 是 JavaScript 的一个超集，它为 JavaScript 添加了静态类型检查的功能。其优点包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;类型安全&lt;/strong&gt;：静态类型检查可以在编译时发现潜在的问题，减少运行时错误。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;代码质量&lt;/strong&gt;：类型系统有助于维护大型代码库，提高代码的可读性和可维护性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IDE 支持&lt;/strong&gt;：TypeScript 提供了更好的 IDE 支持，包括自动完成、接口文档查看等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redux&lt;/strong&gt;: Redux 是一个用于 JavaScript 应用的状态管理库，常与 React 一起使用。其特点包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;可预测性&lt;/strong&gt;：Redux 通过单一数据源（store）和纯函数（reducer）来管理状态，使得状态的变化可预测和追踪。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中间件&lt;/strong&gt;：Redux 支持中间件，使得在处理复杂异步逻辑时更加灵活。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开发工具&lt;/strong&gt;：Redux 提供了强大的开发工具，如 Redux DevTools，可以帮助开发者更好地理解和调试应用状态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Vite&lt;/strong&gt;: Vite 是一个现代前端构建工具，它具有以下优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;快速启动&lt;/strong&gt;：Vite 利用 ES 模块导入，在开发时不需要打包操作，可以实现快速的服务器启动和热重载。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;按需编译&lt;/strong&gt;：只有当模块被请求时才会进行编译，提高了开发效率。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优化的构建&lt;/strong&gt;：Vite 在生产环境下使用 Rollup 进行打包，提供优化后的高效代码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;UnoCSS&lt;/strong&gt;: UnoCSS 是一个原子化 CSS 框架，其特点包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;按需生成&lt;/strong&gt;：只为你实际使用的样式生成对应的 CSS，减少最终包的大小。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高性能&lt;/strong&gt;：UnoCSS 的设计注重性能，确保即使在大型项目中也能快速运行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可定制&lt;/strong&gt;：支持高度定制，你可以根据项目需求定制生成的 CSS 规则。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;后端技术栈&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#后端技术栈&#34;&gt;#&lt;/a&gt; 后端技术栈&lt;/h1&gt;
+&lt;p&gt;后端部分主要考虑的开发技术栈为：  &lt;code&gt;Nest.js + TypeScript + Redis + MySQL + Jwt + Webpack&lt;/code&gt; 。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Nest.js&lt;/strong&gt;: Nest.js 是一个高效、可扩展的 Node.js 框架，用于构建服务器端应用程序。它的特点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;架构&lt;/strong&gt;：Nest.js 使用模块化的方式组织代码，支持控制器、服务和模块等概念，有助于维护大型项目。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TypeScript 支持&lt;/strong&gt;：Nest.js 天生支持 TypeScript，让开发者能够享受到类型安全带来的好处。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;依赖注入&lt;/strong&gt;：Nest.js 实现了依赖注入容器，简化了模块和服务之间的依赖管理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TypeScript&lt;/strong&gt;: 在后端使用 TypeScript 可以带来与前端相同的优点，如类型安全、更好的 IDE 支持和更易于维护和理解的代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;: Redis 是一个开源的内存中的数据结构存储系统，可以用作数据库、缓存和消息代理。其特点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;速度快&lt;/strong&gt;：由于数据存储在内存中，Redis 提供极快的读写速度，适合需要高速读写的场景。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;支持多种数据结构&lt;/strong&gt;：Redis 支持字符串、列表、集合、哈希、有序集合等数据结构，适用于各种场景。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;持久化&lt;/strong&gt;：Redis 支持 RDB 和 AOF 两种持久化机制，可以根据需求选择合适的方式确保数据安全。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MySQL&lt;/strong&gt;: MySQL 是一个广泛使用的关系数据库管理系统，适用于存储结构化数据。它的优点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;成熟稳定&lt;/strong&gt;：MySQL 被广泛使用多年，拥有大量的用户和丰富的文档。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;灵活&lt;/strong&gt;：MySQL 支持多种存储引擎，可以根据需要选择最适合的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;社区支持&lt;/strong&gt;：有一个庞大的社区支持 MySQL，遇到问题时可以容易地找到解决方案。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JWT (JSON Web Tokens)&lt;/strong&gt;: JWT 用于在网络应用环境间传递声明的一种紧凑的、自包含的方式。它的优点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;无状态认证&lt;/strong&gt;：JWT 是自包含的，包含了所有用户认证所需的信息，适合分布式微服务架构。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨语言支持&lt;/strong&gt;：作为一个开放标准，JWT 支持各种编程语言。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全性&lt;/strong&gt;：JWT 可以使用密钥进行签名，保证了传输过程中的安全性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Webpack&lt;/strong&gt;: 虽然 Webpack 通常用于前端资源打包，但它也可以用在 Node.js 后端应用，优化应用的加载和执行。Webpack 的优点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模块打包&lt;/strong&gt;：Webpack 可以将多个模块打包成一个或多个 bundle，减少服务器加载资源的数量和大小。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;灵活配置&lt;/strong&gt;：Webpack 提供丰富的配置选项，支持各种插件和 loader，满足不同的打包需求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;环境优化&lt;/strong&gt;：Webpack 可以根据开发环境和生产环境提供不同的打包策略，优化应用性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
  ]]></description>
         </item>
         <item>
@@ -543,9 +604,9 @@
             <title>Nest.js从收到请求到返回响应的数据处理流程</title>
             <link>https://nonhana.xyz/2024/03/09/nestjs-study-notes/Nest-js%E4%BB%8E%E6%94%B6%E5%88%B0%E8%AF%B7%E6%B1%82%E5%88%B0%E8%BF%94%E5%9B%9E%E5%93%8D%E5%BA%94%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
+            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <category term="IOC/DI" scheme="https://nonhana.xyz/tags/IOC-DI/" />
             <pubDate>Sat, 09 Mar 2024 18:23:32 +0800</pubDate>
@@ -611,8 +672,8 @@
             <title>关于n数之和问题的通用解决方法</title>
             <link>https://nonhana.xyz/2024/03/09/algorithm-exercises/%E5%85%B3%E4%BA%8En%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98%E7%9A%84%E9%80%9A%E7%94%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
             <category term="算法练习" scheme="https://nonhana.xyz/categories/algorithm-exercises/" />
-            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="算法" scheme="https://nonhana.xyz/tags/%E7%AE%97%E6%B3%95/" />
+            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="哈希表" scheme="https://nonhana.xyz/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" />
             <pubDate>Sat, 09 Mar 2024 13:04:19 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
@@ -1537,9 +1598,9 @@ const getMsg = (msg: string) =&amp;gt; &amp;#123;
             <title>学习Nest.js笔记（三）：TS中的装饰器（Decorator）</title>
             <link>https://nonhana.xyz/2024/01/31/nestjs-study-notes/TS%E4%B8%AD%E7%9A%84%E8%A3%85%E9%A5%B0%E5%99%A8%EF%BC%88Decorator%EF%BC%89/</link>
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
+            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
             <category term="Decorator(TypeScript)" scheme="https://nonhana.xyz/tags/Decorator-TypeScript/" />
             <pubDate>Wed, 31 Jan 2024 15:50:23 +0800</pubDate>
