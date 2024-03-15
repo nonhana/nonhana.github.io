@@ -1,0 +1,569 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"/><meta name="theme-color" content="#222"/><meta http-equiv="X-UA-COMPATIBLE" content="IE=edge,chrome=1"/><meta name="renderer" content="webkit"/><link rel="icon" type="image/ico" sizes="32x32" href="/assets/favicon.ico"/><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png"/><link rel="alternate" href="/rss.xml" title="GreyFlowers" type="application/rss+xml"><link rel="alternate" href="/atom.xml" title="GreyFlowers" type="application/atom+xml"><link rel="alternate" type="application/json" title="GreyFlowers" href="https://nonhana.xyz/feed.json"/><link rel="preconnect" href="https://lf9-cdn-tos.bytecdntp.com"/><link rel="preconnect" href="https://at.alicdn.com"/><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"/><link rel="dns-prefetch" href="https://unpkg.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mulish:400,400italic,700,700italic%7CFredericka%20the%20Great:400,400italic,700,700italic%7CNoto%20Serif%20JP:400,400italic,700,700italic%7CNoto%20Serif%20SC:400,400italic,700,700italic%7CInconsolata:400,400italic,700,700italic&display=swap&subset=latin,latin-ext" media="none" onload="this.media&#x3D;&#39;all&#39;"><link rel="stylesheet" href="/css/app.css?v=0.4.2"><link rel="modulepreload" href="/js/chunk-37XDXMQ7.js"></link><link rel="modulepreload" href="/js/chunk-E2RAJT5J.js"></link><link rel="modulepreload" href="/js/chunk-FSOXZJUQ.js"></link><link rel="modulepreload" href="/js/chunk-PKHE36WN.js"></link><link rel="modulepreload" href="/js/chunk-RHYUTNCT.js"></link><link rel="modulepreload" href="/js/comments-VUKPZL7T.js"></link><link rel="modulepreload" href="/js/index.esm-PC33ABIW.js"></link><link rel="modulepreload" href="/js/post-7JRUXANM.js"></link><link rel="modulepreload" href="/js/quicklink-LIBKR4R3.js"></link><link rel="modulepreload" href="/js/search-L4SHH42A.js"></link><link rel="modulepreload" href="/js/siteInit.js"></link><link rel="stylesheet" href="https://npm.webcache.cn/@waline/client@3.0.0-alpha.11/dist/waline.css" media="none" onload="this.media='all'"/><link rel="preload" href="https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/107778304.jpg" as="image" fetchpriority="high"><link rel="preload" href="https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/1%20%287%29.png" as="image" fetchpriority="high"><link rel="preload" href="https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/105326860.jpg" as="image" fetchpriority="high"><link rel="preload" href="https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/103477739.png" as="image" fetchpriority="high"><link rel="preload" href="https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/110631896.jpg" as="image" fetchpriority="high"><link rel="preload" href="https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/1%20%281%29.png" as="image" fetchpriority="high"><meta name="keywords" content="Picals,数据库"/><meta name="description" content="不要为每一件事都赋予意义。"/><link rel="canonical" href="https://nonhana.xyz/2024/03/15/picals-about/Picals%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/"><title>Picals数据库设计文档</title><meta name="generator" content="Hexo 7.0.0"></head><body itemscope itemtype="http://schema.org/WebPage"><div id="loading"><div class="cat"><div class="body"></div><div class="head"><div class="face"></div></div><div class="foot"><div class="tummy-end"></div><div class="bottom"></div><div class="legs left"></div><div class="legs right"></div></div><div class="paw"><div class="hands left"></div><div class="hands right"></div></div></div></div><div id="container"><header id="header" itemscope itemtype="http://schema.org/WPHeader"><div class="inner"><div id="brand"><div class="pjax"><h1 itemprop="name headline">Picals数据库设计文档</h1><div class="meta"><span class="item" title="创建时间：2024-03-15 11:52:46"><span class="icon"><i class="ic i-calendar"></i></span><span class="text">发表于</span><time itemprop="dateCreated datePublished" datetime="2024-03-15T11:52:46+08:00">2024-03-15</time></span><span class="item" title="本文字数"><span class="icon"><i class="ic i-pen"></i></span><span class="text">本文字数</span><span>7k</span><span class="text">字</span></span><span class="item" title="阅读时长"><span class="icon"><i class="ic i-clock"></i></span><span class="text">阅读时长</span><span>6 分钟</span></span></div></div></div><nav id="nav"><div class="inner"><div class="toggle"><div class="lines" aria-label="切换导航栏"><span class="line"></span><span class="line"></span><span class="line"></span></div></div><ul class="menu"><li class="item title"><a href="/" rel="start">hana's blog</a></li></ul><ul class="right" id="rightNav"><li class="item theme"><i class="ic i-sun"></i></li><li class="item search"><i class="ic i-search"></i></li></ul></div></nav></div><div class="pjax" id="imgs"><ul><li class="item" style="background-image: url(&quot;https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/107778304.jpg&quot;);"></li><li class="item" style="background-image: url(&quot;https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/1%20%287%29.png&quot;);"></li><li class="item" style="background-image: url(&quot;https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/105326860.jpg&quot;);"></li><li class="item" style="background-image: url(&quot;https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/103477739.png&quot;);"></li><li class="item" style="background-image: url(&quot;https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/110631896.jpg&quot;);"></li><li class="item" style="background-image: url(&quot;https://common-1319721118.cos.ap-shanghai.myqcloud.com/grey-flowers/1%20%281%29.png&quot;);"></li></ul></div></header><div id="waves"><svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"></path></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0"></use><use xlink:href="#gentle-wave" x="48" y="3"></use><use xlink:href="#gentle-wave" x="48" y="5"></use><use xlink:href="#gentle-wave" x="48" y="7"></use></g></svg></div><main><div class="inner"><div class="pjax" id="main"><div class="article wrap"><div class="breadcrumb" itemListElement itemscope itemtype="https://schema.org/BreadcrumbList"><i class="ic i-home"></i><span><a href="/">首页</a></span><i class="ic i-angle-right"></i><span class="current" itemprop="itemListElement" itemscope="itemscope" itemtype="https://schema.org/ListItem"><a href="/categories/picals-about/" itemprop="item" rel="index" title="分类于Picals相关文档"><span itemprop="name">Picals相关文档<meta itemprop="position" content="0"/></span></a></span></div><article class="post block" itemscope="itemscope" itemtype="http://schema.org/Article" lang="zh-CN"><link itemprop="mainEntityOfPage" href="https://nonhana.xyz/2024/03/15/picals-about/Picals%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/"/><span hidden="hidden" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><meta itemprop="image" content="/assets/avatar.jpg"/><meta itemprop="name" content="non_hana"/><meta itemprop="description" content="『灰色的花终会绽放。』, 不要为每一件事都赋予意义。"/></span><span hidden="hidden" itemprop="publisher" itemscope="itemscope" itemtype="http://schema.org/Organization"><meta itemprop="name" content="GreyFlowers"/></span><div class="body md" itemprop="articleBody"><p>说起数据库设计，这边就暂且按照我的个人习惯进行，即：</p>
+<ol>
+<li>先分析需要多少个实体</li>
+<li>再分析这几个实体之间的关系</li>
+<li>写出所有的表及其字段</li>
+<li>分析是否要加触发器以及存储过程</li>
+</ol>
+<p><strong>此处的设计是基于 TypeORM 的生成逻辑基础进行分析的</strong></p>
+<h1 id="数据实体分析"><a class="anchor" href="#数据实体分析">#</a> 数据实体分析</h1>
+<p>按照前面所作的功能设计以及原型图绘制，可以将本项目所需的数据实体分析罗列如下：</p>
+<ol>
+<li>用户（User）</li>
+<li>转载的插画家（Illustrator）</li>
+<li>收藏夹（Favorite）</li>
+<li>插画（Illustration）</li>
+<li>插画标签（Label）</li>
+<li>评论（Comment）</li>
+<li>浏览记录（History）</li>
+<li>搜索历史（Search History）</li>
+</ol>
+<h1 id="实体间关系分析"><a class="anchor" href="#实体间关系分析">#</a> 实体间关系分析</h1>
+<h2 id="一对一"><a class="anchor" href="#一对一">#</a> 一对一</h2>
+<p>暂无发现一对一的情景</p>
+<h2 id="一对多"><a class="anchor" href="#一对多">#</a> 一对多</h2>
+<ol>
+<li>
+<p>一个用户可以有多个收藏夹，一个收藏夹只能属于一个用户</p>
+<p>需要在收藏夹表当中添加用户 id 的外键关联用户表</p>
+<p>更新和删除都是 <strong>cascade</strong></p>
+</li>
+<li>
+<p>一个用户可以发布多个插画，一个插画只能属于一个用户</p>
+<p>需要在插画表当中添加用户 id 的外键关联用户表</p>
+<p>更新和删除都是 <strong>cascade</strong></p>
+</li>
+<li>
+<p>一个用户可以发布多个评论，一个评论只能由一个用户发布</p>
+<p>需要在评论表中添加用户 id 的外键关联用户表、</p>
+<p>更新和删除都是 <strong>cascade</strong></p>
+</li>
+<li>
+<p>一个用户可以有多个浏览的历史记录，一个历史记录只能属于一个用户</p>
+<p>需要在历史记录表当中添加用户 id 的外键关联用户表</p>
+<p>更新和删除都是 <strong>cascade</strong></p>
+</li>
+<li>
+<p>一个用户可以有多个搜索的历史记录，一个搜索记录只能属于一个用户</p>
+<p>需要在搜索记录表当中添加用户 id 的外键关联用户表</p>
+<p>更新和删除都是 <strong>cascade</strong></p>
+</li>
+<li>
+<p>一个插画家可以对应多个转载的作品，一个转载的作品只能对应一个插画家</p>
+<p>需要在插画表当中添加插画家 id 的外键关联插画家表。 <strong>如果不是转载作品，该字段应被允许为空</strong></p>
+<p>更新和删除都是 <strong>set null</strong></p>
+</li>
+<li>
+<p>一个插画可以包含多个评论，一个评论只能属于一个插画</p>
+<p>需要在评论表当中添加插画 id 的外键关联插画表。</p>
+<p>更新和删除都是 <strong>cascade</strong></p>
+</li>
+<li>
+<p>一个插画可以被多个浏览记录包含，一个浏览记录只能包含一个插画</p>
+<p>需要在浏览记录表当中添加插画 id 的外键关联插画表</p>
+<p>更新和删除都是 <strong>set null</strong></p>
+</li>
+</ol>
+<h2 id="多对多"><a class="anchor" href="#多对多">#</a> 多对多</h2>
+<ol>
+<li>
+<p>一个用户可以关注多个用户，多个用户也可以关注一个用户</p>
+<p>需要建立一张表用于映射 <strong>用户关注之间的多对多关系</strong></p>
+</li>
+<li>
+<p>一个用户可以喜欢多个插画标签，多个用户也可以喜欢同一个插画标签</p>
+<p>需要建立一张表用于映射 <strong>用户和标签之间的多对多关系</strong></p>
+</li>
+<li>
+<p>一个收藏夹可以包含多个作品，多个收藏夹也能够包含同一个作品</p>
+<p>需要建立一张表用于映射 <strong>收藏夹和作品的多对多关系</strong></p>
+</li>
+<li>
+<p>一个插画可以包含多个插画标签，多个插画可以共用一个插画标签</p>
+<p>需要建立一张表用于映射 <strong>插画和插画标签的多对多关系</strong></p>
+</li>
+<li>
+<p>一个用户可以喜欢多个插画，多个用户也可以喜欢同一个插画</p>
+<p>需要建立一张表用于映射 <strong>用户和插画之间的多对多关系</strong></p>
+</li>
+</ol>
+<h1 id="所有涉及的表及其字段"><a class="anchor" href="#所有涉及的表及其字段">#</a> 所有涉及的表及其字段</h1>
+<h2 id="用户"><a class="anchor" href="#用户">#</a> 用户</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">主键，采用 uuid 的形式</td>
+</tr>
+<tr>
+<td style="text-align:center">username</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">用户名</td>
+</tr>
+<tr>
+<td style="text-align:center">email</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">用户邮箱</td>
+</tr>
+<tr>
+<td style="text-align:center">password</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">用户密码</td>
+</tr>
+<tr>
+<td style="text-align:center">backgroundImg</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">用户个人主页</td>
+</tr>
+<tr>
+<td style="text-align:center">avatar</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">用户个人头像</td>
+</tr>
+<tr>
+<td style="text-align:center">signature</td>
+<td style="text-align:center">stirng</td>
+<td style="text-align:center">用户个人签名</td>
+</tr>
+<tr>
+<td style="text-align:center">gender</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">用户性别</td>
+</tr>
+<tr>
+<td style="text-align:center">fanCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">粉丝数</td>
+</tr>
+<tr>
+<td style="text-align:center">followCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">关注数</td>
+</tr>
+<tr>
+<td style="text-align:center">originCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">原创作品数</td>
+</tr>
+<tr>
+<td style="text-align:center">reprintedCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">转载作品数</td>
+</tr>
+<tr>
+<td style="text-align:center">likeCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">喜欢的作品数</td>
+</tr>
+<tr>
+<td style="text-align:center">collectCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">收藏的作品数</td>
+</tr>
+<tr>
+<td style="text-align:center">favoriteCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">收藏夹数量</td>
+</tr>
+<tr>
+<td style="text-align:center">createdTime</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">用户创建时间</td>
+</tr>
+<tr>
+<td style="text-align:center">updatedTime</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">用户修改时间</td>
+</tr>
+</tbody>
+</table>
+<h2 id="插画家"><a class="anchor" href="#插画家">#</a> 插画家</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">主键，采用 uuid 的形式</td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">插画家的名称</td>
+</tr>
+<tr>
+<td style="text-align:center">avatar</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">插画家的头像</td>
+</tr>
+<tr>
+<td style="text-align:center">homeUrl</td>
+<td style="text-align:center">string[]</td>
+<td style="text-align:center">插画家的个人主页地址（不同用户上传可能会有多个）</td>
+</tr>
+<tr>
+<td style="text-align:center">workCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">在这个网站上插画家发布的作品数</td>
+</tr>
+<tr>
+<td style="text-align:center">createdDate</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">创建时间</td>
+</tr>
+<tr>
+<td style="text-align:center">updatedDate</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">修改时间</td>
+</tr>
+</tbody>
+</table>
+<h2 id="收藏夹"><a class="anchor" href="#收藏夹">#</a> 收藏夹</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">主键，采用 uuid 的形式</td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">收藏夹名称</td>
+</tr>
+<tr>
+<td style="text-align:center">cover</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">收藏夹封面图片</td>
+</tr>
+<tr>
+<td style="text-align:center">introduce</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">收藏夹简介</td>
+</tr>
+<tr>
+<td style="text-align:center">order</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">收藏夹顺序（从 0 开始）</td>
+</tr>
+<tr>
+<td style="text-align:center">createdDate</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">创建时间</td>
+</tr>
+<tr>
+<td style="text-align:center">updatedDate</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">修改时间</td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">外键，关联用户表</td>
+</tr>
+<tr>
+<td style="text-align:center">workCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">这个收藏夹包含的作品数</td>
+</tr>
+</tbody>
+</table>
+<h2 id="插画"><a class="anchor" href="#插画">#</a> 插画</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">主键，采用 uuid 的形式</td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">插画名称</td>
+</tr>
+<tr>
+<td style="text-align:center">introduce</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">插画简介</td>
+</tr>
+<tr>
+<td style="text-align:center">isReprinted</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">是否是转载作品</td>
+</tr>
+<tr>
+<td style="text-align:center">openComment</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">是否开启评论</td>
+</tr>
+<tr>
+<td style="text-align:center">isAIGenerated</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">是否是 AI 生成的</td>
+</tr>
+<tr>
+<td style="text-align:center">workList</td>
+<td style="text-align:center">string[]</td>
+<td style="text-align:center">图片 url 列表，一个插画 item 内部可能有多个图片</td>
+</tr>
+<tr>
+<td style="text-align:center">likeCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">作品被喜欢的次数</td>
+</tr>
+<tr>
+<td style="text-align:center">viewCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">作品被浏览的次数</td>
+</tr>
+<tr>
+<td style="text-align:center">collectCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">作品被收藏的次数</td>
+</tr>
+<tr>
+<td style="text-align:center">commentCount</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">作品的评论数</td>
+</tr>
+<tr>
+<td style="text-align:center">createdDate</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">作品发布的日期</td>
+</tr>
+<tr>
+<td style="text-align:center">updatedDate</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">作品最后一次被修改的日期</td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">外键，关联用户表</td>
+</tr>
+<tr>
+<td style="text-align:center">illustratorId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">外键，关联插画家表。 <strong>如果不是转载作品，允许为 null</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="标签"><a class="anchor" href="#标签">#</a> 标签</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">主键，采用 uuid 的形式</td>
+</tr>
+<tr>
+<td style="text-align:center">name</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">标签名</td>
+</tr>
+<tr>
+<td style="text-align:center">color</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">标签的颜色，在创建的时候随机赋值</td>
+</tr>
+</tbody>
+</table>
+<h2 id="评论"><a class="anchor" href="#评论">#</a> 评论</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">主键，采用 uuid 的形式</td>
+</tr>
+<tr>
+<td style="text-align:center">content</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">评论的具体内容</td>
+</tr>
+<tr>
+<td style="text-align:center">level</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">评论的等级，true - 一级评论；false - 二级评论</td>
+</tr>
+<tr>
+<td style="text-align:center">resToCommentId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">这条评论回复的评论 id</td>
+</tr>
+<tr>
+<td style="text-align:center">resToUserId</td>
+<td style="text-align:center">stirng</td>
+<td style="text-align:center">这条评论回复的用户 id</td>
+</tr>
+<tr>
+<td style="text-align:center">createDate</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">评论发布的日期</td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">外键，关联用户表（是哪个用户发的评论）</td>
+</tr>
+<tr>
+<td style="text-align:center">illustrationId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">外键，关联插画表（是哪个插画下面的评论）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="浏览记录"><a class="anchor" href="#浏览记录">#</a> 浏览记录</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">主键，采用 uuid 的形式</td>
+</tr>
+<tr>
+<td style="text-align:center">lastTime</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">上一次浏览过的日期</td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">外键，关联用户表（是谁的历史记录）</td>
+</tr>
+<tr>
+<td style="text-align:center">illustrationId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">外键，关联插画表（这个历史记录是哪个插画）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="搜索记录"><a class="anchor" href="#搜索记录">#</a> 搜索记录</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">字段名</th>
+<th style="text-align:center">字段类型</th>
+<th style="text-align:center">注释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">主键，采用 uuid 的形式</td>
+</tr>
+<tr>
+<td style="text-align:center">content</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">搜索记录的内容</td>
+</tr>
+<tr>
+<td style="text-align:center">userId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">外键，关联用户表（是谁的搜索记录）</td>
+</tr>
+<tr>
+<td style="text-align:center">createdDate</td>
+<td style="text-align:center">Date</td>
+<td style="text-align:center">上次搜索的日期</td>
+</tr>
+</tbody>
+</table>
+<h2 id="多对多关联表"><a class="anchor" href="#多对多关联表">#</a> 多对多关联表</h2>
+<p>这个部分就交给我们的 <strong>TypeORM</strong> 来进行吧，我很相信他 www 如果字段不对的话之后再改就行</p>
+<h1 id="触发器"><a class="anchor" href="#触发器">#</a> 触发器</h1>
+<ol>
+<li>当用户发布新作品时，根据作品是否转载的性质，选择 originCount 还是 reprintedCount+1，并且根据是否是转载作品，如果是，则根据原作插画家的名称将 workCount+1。</li>
+<li>当用户收藏作品时，将自己的收藏数 + 1，并且根据收藏在哪个收藏夹将这个收藏夹的作品数 + 1，同时将这个作品的被收藏数 + 1。</li>
+<li>当用户喜欢作品时，将自己的喜欢数 + 1，同时将这个作品的被喜欢数 + 1。</li>
+<li>当用户发布评论时，将这个作品的评论数 + 1。</li>
+<li>当用户点进某个作品的详情页面时，将这个作品的浏览数 + 1。</li>
+<li>当用户 1 对用户 2 进行关注的时候，用户 1 的关注数 + 1，用户 2 的粉丝数 + 1；如果取关就反过来。</li>
+</ol>
+<h1 id="存储过程"><a class="anchor" href="#存储过程">#</a> 存储过程</h1>
+<p>老实说我自己也不知道究竟什么时候才要加存储过程，貌似是封装一些很复杂的查询方法的时候才需要，因此在这里暂时不写</p>
+<div class="tags"><a href="/tags/Picals/" rel="tag"><i class="ic i-tag"></i>Picals</a><a href="/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" rel="tag"><i class="ic i-tag"></i>项目设计</a><a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"><i class="ic i-tag"></i>数据库</a></div></div><footer><div class="meta"><span class="item"><span class="icon"><i class="ic i-calendar-check"></i></span><span class="text">更新于</span><time title="修改时间：2024-03-15 11:53:03" itemprop="dateModified" datetime="2024-03-15T11:53:03+08:00">2024-03-15</time></span></div><div class="reward"><button><i class="ic i-heartbeat"></i>赞赏</button><p>请我喝[茶]~(￣▽￣)~*</p><div id="qr"><div><img loading="lazy" data-src="/assets/wechatpay.png" alt="non_hana 微信支付"/><p>微信支付</p></div><div><img loading="lazy" data-src="/assets/alipay.png" alt="non_hana 支付宝"/><p>支付宝</p></div></div></div><div id="copyright"><ul><li class="author"><strong>本文作者：</strong>non_hana<i class="ic i-at"><em>@</em></i>GreyFlowers</li><li class="link"><strong>本文链接：</strong><a href="https://nonhana.xyz/2024/03/15/picals-about/Picals%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/" title="Picals数据库设计文档">https://nonhana.xyz/2024/03/15/picals-about/Picals数据库设计文档/</a></li><li class="license"><strong>版权声明：</strong>本站所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"><i class="ic i-creative-commons"><em>(CC)</em></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div></footer></article></div><div class="post-nav"><div class="item left"><a href="/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/" rel="prev" itemprop="url" data-background-image="https:&#x2F;&#x2F;common-1319721118.cos.ap-shanghai.myqcloud.com&#x2F;grey-flowers&#x2F;100605548.jpg" title="Picals项目UI原型设计"><span class="type">上一篇</span><span class="category"><i class="ic i-flag"></i>Picals相关文档</span><h3>Picals项目UI原型设计</h3></a></div><div class="item right"></div></div><div class="wrap" id="comments"></div></div><div id="sidebar"><div class="inner"><div class="panels"><div class="inner"><div class="contents panel pjax" data-title="文章目录"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AE%9E%E4%BD%93%E5%88%86%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text"> 数据实体分析</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%9E%E4%BD%93%E9%97%B4%E5%85%B3%E7%B3%BB%E5%88%86%E6%9E%90"><span class="toc-number">2.</span> <span class="toc-text"> 实体间关系分析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%AF%B9%E4%B8%80"><span class="toc-number">2.1.</span> <span class="toc-text"> 一对一</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E5%AF%B9%E5%A4%9A"><span class="toc-number">2.2.</span> <span class="toc-text"> 一对多</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%AF%B9%E5%A4%9A"><span class="toc-number">2.3.</span> <span class="toc-text"> 多对多</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%89%80%E6%9C%89%E6%B6%89%E5%8F%8A%E7%9A%84%E8%A1%A8%E5%8F%8A%E5%85%B6%E5%AD%97%E6%AE%B5"><span class="toc-number">3.</span> <span class="toc-text"> 所有涉及的表及其字段</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%94%A8%E6%88%B7"><span class="toc-number">3.1.</span> <span class="toc-text"> 用户</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E7%94%BB%E5%AE%B6"><span class="toc-number">3.2.</span> <span class="toc-text"> 插画家</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%B6%E8%97%8F%E5%A4%B9"><span class="toc-number">3.3.</span> <span class="toc-text"> 收藏夹</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E7%94%BB"><span class="toc-number">3.4.</span> <span class="toc-text"> 插画</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E7%AD%BE"><span class="toc-number">3.5.</span> <span class="toc-text"> 标签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%84%E8%AE%BA"><span class="toc-number">3.6.</span> <span class="toc-text"> 评论</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E8%AE%B0%E5%BD%95"><span class="toc-number">3.7.</span> <span class="toc-text"> 浏览记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%9C%E7%B4%A2%E8%AE%B0%E5%BD%95"><span class="toc-number">3.8.</span> <span class="toc-text"> 搜索记录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%9A%E5%AF%B9%E5%A4%9A%E5%85%B3%E8%81%94%E8%A1%A8"><span class="toc-number">3.9.</span> <span class="toc-text"> 多对多关联表</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A6%E5%8F%91%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text"> 触发器</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%98%E5%82%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text"> 存储过程</span></a></li></ol></div><div class="related panel pjax" data-title="系列文章"><ul><li ><a href="/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/" rel="bookmark" title="Picals项目UI原型设计">Picals项目UI原型设计</a></li><li ><a href="/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/" rel="bookmark" title="Picals项目技术栈设计">Picals项目技术栈设计</a></li><li ><a href="/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/" rel="bookmark" title="Picals项目功能分析">Picals项目功能分析</a></li><li ><a href="/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/" rel="bookmark" title="Picals项目概述">Picals项目概述</a></li><li  class="active"><a href="/2024/03/15/picals-about/Picals%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/" rel="bookmark" title="Picals数据库设计文档">Picals数据库设计文档</a></li></ul></div><div class="overview panel" data-title="站点概览"><div class="author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person"><img class="image" loading="lazy" decoding="async" itemprop="image" alt="non_hana" src="/assets/avatar.jpg"/><p class="name" itemprop="name">non_hana</p><div class="description" itemprop="description">不要为每一件事都赋予意义。</div></div><nav class="state"><div class="item posts"><a href="/archives/"><span class="count">31</span><span class="name">文章</span></a></div><div class="item categories"><a href="/categories/"><span class="count">8</span><span class="name">分类</span></a></div><div class="item tags"><a href="/tags/"><span class="count">38</span><span class="name">标签</span></a></div></nav><div class="social"><a target="_blank" rel="noopener" href="https://github.com/nonhana" class="item github" title="https:&#x2F;&#x2F;github.com&#x2F;nonhana"><i class="ic i-github"></i></a><a target="_blank" rel="noopener" href="https://www.zhihu.com/people/da-ming-22-8-3" class="item zhihu" title="https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;da-ming-22-8-3"><i class="ic i-zhihu"></i></a><a target="_blank" rel="noopener" href="https://twitter.com/non_hanaz" class="item twitter" title="https:&#x2F;&#x2F;twitter.com&#x2F;non_hanaz"><i class="ic i-twitter"></i></a><a href="mailto:zhouxiang757@gmail.com" class="item email" title="mailto:zhouxiang757@gmail.com"><i class="ic i-envelope"></i></a></div><div class="menu"><li class="item"><a href="/" rel="section"><i class="ic i-home"></i>首页</a></li><li class="item"><a href="/about/" rel="section"><i class="ic i-user"></i>关于</a></li><li class="item dropdown"><a href="#" onclick="return false;"><i class="ic i-feather"></i>文章</a><ul class="submenu"><li class="item"><a href="/categories/" rel="section"><i class="ic i-list-ol"></i>分类</a></li><li class="item"><a href="/tags/" rel="section"><i class="ic i-tags"></i>标签</a></li><li class="item"><a href="/archives/" rel="section"><i class="ic i-archive"></i>归档</a></li></ul></li></div></div></div></div><ul id="quick"><li class="prev pjax"></li><li class="up"><i class="ic i-arrow-up"></i></li><li class="down"><i class="ic i-arrow-down"></i></li><li class="next pjax"><a href="/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/" rel="next" title="下一篇"><i class="ic i-chevron-right"></i></a></li><li class="percent"></li></ul></div></div><div class="dimmer"></div></div></main><footer id="footer"><div class="inner"><div class="widgets"><div class="rpost pjax"><h2>随机文章</h2><ul><li class="item"><div class="breadcrumb"><a href="/categories/nestjs-study-notes/" title="分类于Nest.js学习笔记">Nest.js学习笔记</a></div><span><a href="/2024/01/31/nestjs-study-notes/Nest-js%E6%98%AF%E4%BB%80%E4%B9%88/">学习Nest.js笔记（一）：Nest.js是什么</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/common-study-notes/" title="分类于平时学习">平时学习</a></div><span><a href="/2024/01/31/common-study-notes/%E5%85%B3%E4%BA%8ERxJS%E4%B8%AD%E7%9A%84Observable%E7%9A%84%E7%90%86%E8%A7%A3/">关于RxJS中的Observable的理解</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/daily-developing/" title="分类于一些日常开发积累">一些日常开发积累</a></div><span><a href="/2024/02/16/daily-developing/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E8%88%ACgit-commit%E8%A7%84%E8%8C%83/">团队项目的一般git commit规范</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/daily-developing/" title="分类于一些日常开发积累">一些日常开发积累</a></div><span><a href="/2024/02/21/daily-developing/%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E4%B8%AD%E4%B8%80%E8%88%AC%E7%9A%84github%E5%8D%8F%E4%BD%9C%E6%B5%81%E7%A8%8B/">团队开发中一般的github协作流程</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/interview-records/" title="分类于面试记录">面试记录</a></div><span><a href="/2024/01/31/interview-records/%E7%99%BE%E5%BA%94%E7%A7%91%E6%8A%80%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/">百应科技前端开发实习生一面面试记录</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/daily-developing/" title="分类于一些日常开发积累">一些日常开发积累</a></div><span><a href="/2024/01/31/daily-developing/Vue3-Node-js%E5%AE%9E%E7%8E%B0%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/">Vue3+Node.js实现微信扫码登录流程</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/project-experiences/" title="分类于一些项目相关总结">一些项目相关总结</a></div><span><a href="/2024/01/31/littlesharing-about/%E5%85%B3%E4%BA%8E%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E4%BB%8E%E9%9B%B6%E8%87%AA%E5%B7%B1%E8%AE%BE%E8%AE%A1%E3%80%81%E5%85%A8%E6%A0%88%E7%BC%96%E5%86%99%E5%87%BA%E4%B8%AA%E4%BA%BA%E5%B0%8F%E7%AB%99%E7%9A%84%E7%BB%8F%E5%8E%86/">关于我是如何从零自己设计、全栈编写出个人小站的经历</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/react-study-notes/" title="分类于React学习笔记">React学习笔记</a></div><span><a href="/2024/02/10/react-study-notes/React%E5%AD%A6%E4%B9%A0-useEffect/">React学习 useEffect</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/picals-about/" title="分类于Picals相关文档">Picals相关文档</a></div><span><a href="/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/">Picals项目功能分析</a></span></li><li class="item"><div class="breadcrumb"><a href="/categories/interview-records/" title="分类于面试记录">面试记录</a></div><span><a href="/2024/01/31/interview-records/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8%E5%B9%BF%E5%91%8A%E5%89%8D%E7%AB%AF%EF%BC%88%E5%85%A8%E6%A0%88%EF%BC%89%E5%BC%80%E5%8F%91%E5%AE%9E%E4%B9%A0%E7%94%9F-Ads-Infra%E4%B8%80%E9%9D%A2%E9%9D%A2%E8%AF%95%E8%AE%B0%E5%BD%95/">字节跳动广告前端（全栈）开发实习生-Ads Infra一面面试记录</a></span></li></ul></div><div class="rpost pjax"><h2>最新评论</h2><ul class="leancloud-recent-comment" id="new-comment"></ul></div></div><div class="status"><div class="copyright">&copy; 2010 -<span itemprop="copyrightYear">2024</span><span class="with-love"><i class="ic i-sakura rotate"></i></span><span class="author" itemprop="copyrightHolder">non_hana @ hana's blog</span></div><div class="count"><span class="post-meta-item-icon"><i class="ic i-chart-area"></i></span><span title="站点总字数">191k 字</span><span class="post-meta-divider"> | </span><span class="post-meta-item-icon"><i class="ic i-coffee"></i></span><span title="站点阅读时长">2:54</span></div><div class="powered-by">基于 <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a> & Theme.<a target="_blank" rel="noopener" href="https://github.com/theme-shoka-x/hexo-theme-shokaX/">ShokaX</a></div></div></div></footer></div><script data-config type="text/javascript">var LOCAL = {
+    ispost: true,
+        path: `2024/03/15/picals-about/Picals数据库设计文档/`,
+        favicon: {
+        show: `灰色の花，`,
+        hide: `どこに咲くでしょうか？`
+    },
+    search: {
+        placeholder: "文章搜索",
+        empty: "关于 「 ${query} 」，什么也没搜到",
+        stats: "${time} ms 内找到 ${hits} 条结果"
+    },
+    copy_tex: false,
+    katex: false,
+    mermaid: false,
+    audio: undefined,
+    fancybox: true,
+    nocopy: false,
+    outime: true,
+    template: `<div class="note warning"><p><span class="label warning">文章时效性提示</span><br>这是一篇发布于 {{publish}} 天前，最后一次更新在 {{updated}} 天前的文章，部分信息可能已经发生改变，请注意甄别。</p></div>`,
+    quiz: {
+        choice: `单选题`,
+        multiple: `多选题`,
+        true_false: `判断题`,
+        essay: `问答题`,
+        gap_fill: `填空题`,
+        mistake: `错题备注`
+    },
+    ignores: [
+        (uri) => uri.includes('#'),
+        (uri) => new RegExp(LOCAL.path + '$').test(uri),
+            []
+    ]
+};
+</script><script src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-6-M/pace/1.2.4/pace.min.js" async></script><script src="/js/siteInit.js?v=0.4.2" type="module" fetchpriority="high" defer></script></body></html>
