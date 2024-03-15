@@ -753,106 +753,6 @@
         <updated>2024-03-12T09:58:15.000Z</updated>
     </entry>
     <entry>
-        <id>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/</id>
-        <title>Picals项目技术栈设计</title>
-        <link rel="alternate" href="https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/"/>
-        <content type="html">&lt;p&gt;说起技术栈，其实思来想去也是考虑了蛮多东西的。因为我自己是前端出身，也是沾了 Node.js 的光才慢慢摸索到后端相关的知识之后进行系统性的学习。 &lt;strong&gt;而这个项目创立的初衷之一，也是为了巩固我目前所学到的技术，并且期望遇到一些技术难点并加以解决。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;因此，在这个项目中我打算采用目前比较流行的、目前我正在学习的技术栈，分为前端、后端、部署三部分进行设计。&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;前端代码仓库：&lt;a href=&#34;https://github.com/nonhana/Picals-Frontend-React&#34;&gt;https://github.com/nonhana/Picals-Frontend-React&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;后端代码仓库：&lt;a href=&#34;https://github.com/nonhana/Picals-Backend-Nest&#34;&gt;https://github.com/nonhana/Picals-Backend-Nest&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&#34;前端技术栈&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前端技术栈&#34;&gt;#&lt;/a&gt; 前端技术栈&lt;/h1&gt;
-&lt;p&gt;前端部分，主要考虑采用的技术栈为：  &lt;code&gt;React + TypeScript + Redux + Vite + Unocss&lt;/code&gt;  。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;React&lt;/strong&gt;: React 是一个用于构建用户界面的 JavaScript 库，由 Facebook 开发。它的主要特点包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;组件化&lt;/strong&gt;：React 鼓励将界面拆分成可重用的组件，这有助于提高开发效率和代码质量。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;声明式编程&lt;/strong&gt;：React 采用声明式编程范式，使代码更容易理解和维护。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;虚拟 DOM&lt;/strong&gt;：React 使用虚拟 DOM 来提高应用的性能，只对发生变化的部分进行实际的 DOM 更新。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;TypeScript&lt;/strong&gt;: TypeScript 是 JavaScript 的一个超集，它为 JavaScript 添加了静态类型检查的功能。其优点包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;类型安全&lt;/strong&gt;：静态类型检查可以在编译时发现潜在的问题，减少运行时错误。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;代码质量&lt;/strong&gt;：类型系统有助于维护大型代码库，提高代码的可读性和可维护性。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;IDE 支持&lt;/strong&gt;：TypeScript 提供了更好的 IDE 支持，包括自动完成、接口文档查看等。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Redux&lt;/strong&gt;: Redux 是一个用于 JavaScript 应用的状态管理库，常与 React 一起使用。其特点包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;可预测性&lt;/strong&gt;：Redux 通过单一数据源（store）和纯函数（reducer）来管理状态，使得状态的变化可预测和追踪。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;中间件&lt;/strong&gt;：Redux 支持中间件，使得在处理复杂异步逻辑时更加灵活。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;开发工具&lt;/strong&gt;：Redux 提供了强大的开发工具，如 Redux DevTools，可以帮助开发者更好地理解和调试应用状态。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Vite&lt;/strong&gt;: Vite 是一个现代前端构建工具，它具有以下优点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;快速启动&lt;/strong&gt;：Vite 利用 ES 模块导入，在开发时不需要打包操作，可以实现快速的服务器启动和热重载。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;按需编译&lt;/strong&gt;：只有当模块被请求时才会进行编译，提高了开发效率。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;优化的构建&lt;/strong&gt;：Vite 在生产环境下使用 Rollup 进行打包，提供优化后的高效代码。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;UnoCSS&lt;/strong&gt;: UnoCSS 是一个原子化 CSS 框架，其特点包括：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;按需生成&lt;/strong&gt;：只为你实际使用的样式生成对应的 CSS，减少最终包的大小。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;高性能&lt;/strong&gt;：UnoCSS 的设计注重性能，确保即使在大型项目中也能快速运行。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;可定制&lt;/strong&gt;：支持高度定制，你可以根据项目需求定制生成的 CSS 规则。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h1 id=&#34;后端技术栈&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#后端技术栈&#34;&gt;#&lt;/a&gt; 后端技术栈&lt;/h1&gt;
-&lt;p&gt;后端部分主要考虑的开发技术栈为：  &lt;code&gt;Nest.js + TypeScript + Redis + MySQL + Jwt + Webpack&lt;/code&gt; 。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;strong&gt;Nest.js&lt;/strong&gt;: Nest.js 是一个高效、可扩展的 Node.js 框架，用于构建服务器端应用程序。它的特点包括：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;架构&lt;/strong&gt;：Nest.js 使用模块化的方式组织代码，支持控制器、服务和模块等概念，有助于维护大型项目。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TypeScript 支持&lt;/strong&gt;：Nest.js 天生支持 TypeScript，让开发者能够享受到类型安全带来的好处。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;依赖注入&lt;/strong&gt;：Nest.js 实现了依赖注入容器，简化了模块和服务之间的依赖管理。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;TypeScript&lt;/strong&gt;: 在后端使用 TypeScript 可以带来与前端相同的优点，如类型安全、更好的 IDE 支持和更易于维护和理解的代码。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;: Redis 是一个开源的内存中的数据结构存储系统，可以用作数据库、缓存和消息代理。其特点包括：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;速度快&lt;/strong&gt;：由于数据存储在内存中，Redis 提供极快的读写速度，适合需要高速读写的场景。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;支持多种数据结构&lt;/strong&gt;：Redis 支持字符串、列表、集合、哈希、有序集合等数据结构，适用于各种场景。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;持久化&lt;/strong&gt;：Redis 支持 RDB 和 AOF 两种持久化机制，可以根据需求选择合适的方式确保数据安全。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;MySQL&lt;/strong&gt;: MySQL 是一个广泛使用的关系数据库管理系统，适用于存储结构化数据。它的优点包括：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;成熟稳定&lt;/strong&gt;：MySQL 被广泛使用多年，拥有大量的用户和丰富的文档。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;灵活&lt;/strong&gt;：MySQL 支持多种存储引擎，可以根据需要选择最适合的。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;社区支持&lt;/strong&gt;：有一个庞大的社区支持 MySQL，遇到问题时可以容易地找到解决方案。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;JWT (JSON Web Tokens)&lt;/strong&gt;: JWT 用于在网络应用环境间传递声明的一种紧凑的、自包含的方式。它的优点包括：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;无状态认证&lt;/strong&gt;：JWT 是自包含的，包含了所有用户认证所需的信息，适合分布式微服务架构。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;跨语言支持&lt;/strong&gt;：作为一个开放标准，JWT 支持各种编程语言。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;安全性&lt;/strong&gt;：JWT 可以使用密钥进行签名，保证了传输过程中的安全性。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Webpack&lt;/strong&gt;: 虽然 Webpack 通常用于前端资源打包，但它也可以用在 Node.js 后端应用，优化应用的加载和执行。Webpack 的优点包括：
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;模块打包&lt;/strong&gt;：Webpack 可以将多个模块打包成一个或多个 bundle，减少服务器加载资源的数量和大小。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;灵活配置&lt;/strong&gt;：Webpack 提供丰富的配置选项，支持各种插件和 loader，满足不同的打包需求。&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;环境优化&lt;/strong&gt;：Webpack 可以根据开发环境和生产环境提供不同的打包策略，优化应用性能。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-</content>
-        <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
-        <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
-        <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
-        <updated>2024-03-12T09:58:15.000Z</updated>
-    </entry>
-    <entry>
         <id>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/</id>
         <title>Picals项目功能分析</title>
         <link rel="alternate" href="https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/"/>
@@ -954,6 +854,106 @@
         <updated>2024-03-12T09:58:15.000Z</updated>
     </entry>
     <entry>
+        <id>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/</id>
+        <title>Picals项目技术栈设计</title>
+        <link rel="alternate" href="https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/"/>
+        <content type="html">&lt;p&gt;说起技术栈，其实思来想去也是考虑了蛮多东西的。因为我自己是前端出身，也是沾了 Node.js 的光才慢慢摸索到后端相关的知识之后进行系统性的学习。 &lt;strong&gt;而这个项目创立的初衷之一，也是为了巩固我目前所学到的技术，并且期望遇到一些技术难点并加以解决。&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;因此，在这个项目中我打算采用目前比较流行的、目前我正在学习的技术栈，分为前端、后端、部署三部分进行设计。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;前端代码仓库：&lt;a href=&#34;https://github.com/nonhana/Picals-Frontend-React&#34;&gt;https://github.com/nonhana/Picals-Frontend-React&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;后端代码仓库：&lt;a href=&#34;https://github.com/nonhana/Picals-Backend-Nest&#34;&gt;https://github.com/nonhana/Picals-Backend-Nest&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&#34;前端技术栈&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前端技术栈&#34;&gt;#&lt;/a&gt; 前端技术栈&lt;/h1&gt;
+&lt;p&gt;前端部分，主要考虑采用的技术栈为：  &lt;code&gt;React + TypeScript + Redux + Vite + Unocss&lt;/code&gt;  。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;React&lt;/strong&gt;: React 是一个用于构建用户界面的 JavaScript 库，由 Facebook 开发。它的主要特点包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;组件化&lt;/strong&gt;：React 鼓励将界面拆分成可重用的组件，这有助于提高开发效率和代码质量。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;声明式编程&lt;/strong&gt;：React 采用声明式编程范式，使代码更容易理解和维护。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;虚拟 DOM&lt;/strong&gt;：React 使用虚拟 DOM 来提高应用的性能，只对发生变化的部分进行实际的 DOM 更新。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;TypeScript&lt;/strong&gt;: TypeScript 是 JavaScript 的一个超集，它为 JavaScript 添加了静态类型检查的功能。其优点包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;类型安全&lt;/strong&gt;：静态类型检查可以在编译时发现潜在的问题，减少运行时错误。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;代码质量&lt;/strong&gt;：类型系统有助于维护大型代码库，提高代码的可读性和可维护性。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IDE 支持&lt;/strong&gt;：TypeScript 提供了更好的 IDE 支持，包括自动完成、接口文档查看等。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Redux&lt;/strong&gt;: Redux 是一个用于 JavaScript 应用的状态管理库，常与 React 一起使用。其特点包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;可预测性&lt;/strong&gt;：Redux 通过单一数据源（store）和纯函数（reducer）来管理状态，使得状态的变化可预测和追踪。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;中间件&lt;/strong&gt;：Redux 支持中间件，使得在处理复杂异步逻辑时更加灵活。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;开发工具&lt;/strong&gt;：Redux 提供了强大的开发工具，如 Redux DevTools，可以帮助开发者更好地理解和调试应用状态。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Vite&lt;/strong&gt;: Vite 是一个现代前端构建工具，它具有以下优点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;快速启动&lt;/strong&gt;：Vite 利用 ES 模块导入，在开发时不需要打包操作，可以实现快速的服务器启动和热重载。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;按需编译&lt;/strong&gt;：只有当模块被请求时才会进行编译，提高了开发效率。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优化的构建&lt;/strong&gt;：Vite 在生产环境下使用 Rollup 进行打包，提供优化后的高效代码。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;UnoCSS&lt;/strong&gt;: UnoCSS 是一个原子化 CSS 框架，其特点包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;按需生成&lt;/strong&gt;：只为你实际使用的样式生成对应的 CSS，减少最终包的大小。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高性能&lt;/strong&gt;：UnoCSS 的设计注重性能，确保即使在大型项目中也能快速运行。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可定制&lt;/strong&gt;：支持高度定制，你可以根据项目需求定制生成的 CSS 规则。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;后端技术栈&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#后端技术栈&#34;&gt;#&lt;/a&gt; 后端技术栈&lt;/h1&gt;
+&lt;p&gt;后端部分主要考虑的开发技术栈为：  &lt;code&gt;Nest.js + TypeScript + Redis + MySQL + Jwt + Webpack&lt;/code&gt; 。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Nest.js&lt;/strong&gt;: Nest.js 是一个高效、可扩展的 Node.js 框架，用于构建服务器端应用程序。它的特点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;架构&lt;/strong&gt;：Nest.js 使用模块化的方式组织代码，支持控制器、服务和模块等概念，有助于维护大型项目。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TypeScript 支持&lt;/strong&gt;：Nest.js 天生支持 TypeScript，让开发者能够享受到类型安全带来的好处。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;依赖注入&lt;/strong&gt;：Nest.js 实现了依赖注入容器，简化了模块和服务之间的依赖管理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;TypeScript&lt;/strong&gt;: 在后端使用 TypeScript 可以带来与前端相同的优点，如类型安全、更好的 IDE 支持和更易于维护和理解的代码。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Redis&lt;/strong&gt;: Redis 是一个开源的内存中的数据结构存储系统，可以用作数据库、缓存和消息代理。其特点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;速度快&lt;/strong&gt;：由于数据存储在内存中，Redis 提供极快的读写速度，适合需要高速读写的场景。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;支持多种数据结构&lt;/strong&gt;：Redis 支持字符串、列表、集合、哈希、有序集合等数据结构，适用于各种场景。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;持久化&lt;/strong&gt;：Redis 支持 RDB 和 AOF 两种持久化机制，可以根据需求选择合适的方式确保数据安全。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MySQL&lt;/strong&gt;: MySQL 是一个广泛使用的关系数据库管理系统，适用于存储结构化数据。它的优点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;成熟稳定&lt;/strong&gt;：MySQL 被广泛使用多年，拥有大量的用户和丰富的文档。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;灵活&lt;/strong&gt;：MySQL 支持多种存储引擎，可以根据需要选择最适合的。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;社区支持&lt;/strong&gt;：有一个庞大的社区支持 MySQL，遇到问题时可以容易地找到解决方案。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;JWT (JSON Web Tokens)&lt;/strong&gt;: JWT 用于在网络应用环境间传递声明的一种紧凑的、自包含的方式。它的优点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;无状态认证&lt;/strong&gt;：JWT 是自包含的，包含了所有用户认证所需的信息，适合分布式微服务架构。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跨语言支持&lt;/strong&gt;：作为一个开放标准，JWT 支持各种编程语言。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全性&lt;/strong&gt;：JWT 可以使用密钥进行签名，保证了传输过程中的安全性。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Webpack&lt;/strong&gt;: 虽然 Webpack 通常用于前端资源打包，但它也可以用在 Node.js 后端应用，优化应用的加载和执行。Webpack 的优点包括：
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模块打包&lt;/strong&gt;：Webpack 可以将多个模块打包成一个或多个 bundle，减少服务器加载资源的数量和大小。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;灵活配置&lt;/strong&gt;：Webpack 提供丰富的配置选项，支持各种插件和 loader，满足不同的打包需求。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;环境优化&lt;/strong&gt;：Webpack 可以根据开发环境和生产环境提供不同的打包策略，优化应用性能。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+        <category term="Picals相关文档" scheme="https://nonhana.xyz/categories/picals-about/" />
+        <category term="Picals" scheme="https://nonhana.xyz/tags/Picals/" />
+        <category term="项目设计" scheme="https://nonhana.xyz/tags/%E9%A1%B9%E7%9B%AE%E8%AE%BE%E8%AE%A1/" />
+        <updated>2024-03-12T09:58:15.000Z</updated>
+    </entry>
+    <entry>
         <id>https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/</id>
         <title>Picals项目概述</title>
         <link rel="alternate" href="https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%A6%82%E8%BF%B0/"/>
@@ -972,7 +972,7 @@
 &lt;li&gt;&lt;a href=&#34;https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E5%8A%9F%E8%83%BD%E5%88%86%E6%9E%90/&#34;&gt;&lt;strong&gt;项目功能分析&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AEUI%E5%8E%9F%E5%9E%8B%E8%AE%BE%E8%AE%A1/&#34;&gt;&lt;strong&gt;项目 UI 原型设计&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;https://nonhana.xyz/2024/03/12/picals-about/Picals%E9%A1%B9%E7%9B%AE%E6%8A%80%E6%9C%AF%E6%A0%88%E8%AE%BE%E8%AE%A1/&#34;&gt;&lt;strong&gt;项目技术栈设计&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://nonhana.xyz/2024/03/12/picals-about/Picals%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/&#34;&gt;&lt;strong&gt;项目数据库设计&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://nonhana.xyz/2024/03/15/picals-about/Picals%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3/&#34;&gt;&lt;strong&gt;项目数据库设计&lt;/strong&gt;&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;项目接口文档&lt;/li&gt;
 &lt;li&gt;项目部署方案&lt;/li&gt;
 &lt;/ul&gt;
@@ -1130,8 +1130,8 @@
 &lt;p&gt;其实这很简单，因为 &lt;strong&gt;SSE 本身就是基于 HTTP 协议的一种实现而已&lt;/strong&gt; ，而 fetch 这个 api 本身被设计就是用来处理 HTTP 响应的。而之所以能够源源不断地接收服务端返回的数据，其实也只是 SSE 返回的数据格式为  &lt;code&gt;text/event-stream&lt;/code&gt;  ，而我们一般的一次性获取数据的返回格式一般为  &lt;code&gt;application/json&lt;/code&gt;  。&lt;/p&gt;
 </content>
         <category term="平时学习" scheme="https://nonhana.xyz/categories/common-study-notes/" />
-        <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
         <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+        <category term="前端" scheme="https://nonhana.xyz/tags/%E5%89%8D%E7%AB%AF/" />
         <category term="数据流" scheme="https://nonhana.xyz/tags/%E6%95%B0%E6%8D%AE%E6%B5%81/" />
         <category term="SSE" scheme="https://nonhana.xyz/tags/SSE/" />
         <updated>2024-03-12T08:42:50.000Z</updated>
@@ -1197,8 +1197,8 @@
 &lt;/ul&gt;
 </content>
         <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
-        <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
         <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
+        <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
         <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
         <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
         <category term="IOC/DI" scheme="https://nonhana.xyz/tags/IOC-DI/" />
@@ -1366,8 +1366,8 @@
 &lt;p&gt;当然，如果你的项目只有你一个人开发，那么你也可以按照这样的流程来走，不过可以进行一定程度的简化。 &lt;strong&gt;我个人觉得自己开发的时候也遵循这样的流程对未来的开发积累是非常有利的，虽然在一定程度上会降低开发的效率。&lt;/strong&gt;&lt;/p&gt;
 </content>
         <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
-        <category term="github" scheme="https://nonhana.xyz/tags/github/" />
         <category term="团队协作" scheme="https://nonhana.xyz/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" />
+        <category term="github" scheme="https://nonhana.xyz/tags/github/" />
         <updated>2024-02-21T07:58:04.000Z</updated>
     </entry>
     <entry>
@@ -1526,8 +1526,8 @@
 &lt;/ul&gt;
 </content>
         <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
-        <category term="团队协作" scheme="https://nonhana.xyz/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" />
         <category term="git" scheme="https://nonhana.xyz/tags/git/" />
+        <category term="团队协作" scheme="https://nonhana.xyz/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" />
         <updated>2024-02-16T06:03:10.000Z</updated>
     </entry>
     <entry>
