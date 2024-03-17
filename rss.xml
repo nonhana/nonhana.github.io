@@ -1146,8 +1146,8 @@
             <category term="Nest.js学习笔记" scheme="https://nonhana.xyz/categories/nestjs-study-notes/" />
             <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="Node.js" scheme="https://nonhana.xyz/tags/Node-js/" />
-            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="后端" scheme="https://nonhana.xyz/tags/%E5%90%8E%E7%AB%AF/" />
+            <category term="Nest.js" scheme="https://nonhana.xyz/tags/Nest-js/" />
             <category term="IOC/DI" scheme="https://nonhana.xyz/tags/IOC-DI/" />
             <pubDate>Sat, 09 Mar 2024 18:23:32 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
@@ -1212,8 +1212,8 @@
             <title>关于n数之和问题的通用解决方法</title>
             <link>https://nonhana.xyz/2024/03/09/algorithm-exercises/%E5%85%B3%E4%BA%8En%E6%95%B0%E4%B9%8B%E5%92%8C%E9%97%AE%E9%A2%98%E7%9A%84%E9%80%9A%E7%94%A8%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</link>
             <category term="算法练习" scheme="https://nonhana.xyz/categories/algorithm-exercises/" />
-            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="算法" scheme="https://nonhana.xyz/tags/%E7%AE%97%E6%B3%95/" />
+            <category term="TypeScript" scheme="https://nonhana.xyz/tags/TypeScript/" />
             <category term="哈希表" scheme="https://nonhana.xyz/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/" />
             <pubDate>Sat, 09 Mar 2024 13:04:19 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;前言&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#前言&#34;&gt;#&lt;/a&gt; 前言&lt;/h1&gt;
@@ -1288,8 +1288,8 @@
             <title>团队开发中一般的github协作流程</title>
             <link>https://nonhana.xyz/2024/02/21/daily-developing/%E5%9B%A2%E9%98%9F%E5%BC%80%E5%8F%91%E4%B8%AD%E4%B8%80%E8%88%AC%E7%9A%84github%E5%8D%8F%E4%BD%9C%E6%B5%81%E7%A8%8B/</link>
             <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
-            <category term="团队协作" scheme="https://nonhana.xyz/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" />
             <category term="github" scheme="https://nonhana.xyz/tags/github/" />
+            <category term="团队协作" scheme="https://nonhana.xyz/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" />
             <pubDate>Wed, 21 Feb 2024 15:58:04 +0800</pubDate>
             <description><![CDATA[ &lt;blockquote&gt;
 &lt;p&gt;事先声明，纯纯做记录用，如果有哪里说的不对请留一下言哦！&lt;/p&gt;
@@ -1480,8 +1480,8 @@
             <title>团队项目的一般git commit规范</title>
             <link>https://nonhana.xyz/2024/02/16/daily-developing/%E5%9B%A2%E9%98%9F%E9%A1%B9%E7%9B%AE%E7%9A%84%E4%B8%80%E8%88%ACgit-commit%E8%A7%84%E8%8C%83/</link>
             <category term="一些日常开发积累" scheme="https://nonhana.xyz/categories/daily-developing/" />
-            <category term="git" scheme="https://nonhana.xyz/tags/git/" />
             <category term="团队协作" scheme="https://nonhana.xyz/tags/%E5%9B%A2%E9%98%9F%E5%8D%8F%E4%BD%9C/" />
+            <category term="git" scheme="https://nonhana.xyz/tags/git/" />
             <pubDate>Fri, 16 Feb 2024 14:03:10 +0800</pubDate>
             <description><![CDATA[ &lt;h1 id=&#34;为什么需要-commit-管理&#34;&gt;&lt;a class=&#34;anchor&#34; href=&#34;#为什么需要-commit-管理&#34;&gt;#&lt;/a&gt; 为什么需要 commit 管理？&lt;/h1&gt;
 &lt;p&gt;在团队协作开发一个项目的过程中，尤其是一些相对大型的、多人合作的 monorepo 项目中，每个团队成员完成一项特定功能后的提交说明往往关系着整个项目的开发流程的统筹推进与管理。而反应这些团队成员完成的工作的，除了代码变更本身，便是成员提交的 commit 信息了。&lt;/p&gt;
